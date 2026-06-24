@@ -1110,12 +1110,12 @@ async function extractCOEfromPDF(file) {
     }
   }
 
-  // 4. Fall back: use assets already parsed for this client (Renda Variável Global = COE proxy)
+  // 4. Fall back: use assets already parsed for this client
   if (!foundCOE && c.ativos && c.ativos.length) {
-    const rvgPct = c.ativos
-      .filter(a => /renda\s*vari/i.test(a.categoria))
+    const coePct = c.ativos
+      .filter(a => isCoeLike(a.nome) || /renda\s*vari/i.test(a.categoria))
       .reduce((s, a) => s + (a.pct || 0), 0);
-    if (rvgPct > 0) return rvgPct;
+    if (coePct > 0) return coePct;
   }
 
   if (foundCOE && patrimonio && patrimonio > 0) {
@@ -1226,6 +1226,13 @@ let assetQuery = '';
 
 function normalizeAsset(s) {
   return s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').trim();
+}
+
+// COE = produto com duração no formato "5y06m - DD.MM.YYYY" ou "8y02m - DD.MM.YYYY"
+// também captura "Taxa Fixa ou Retorno Otimizado", "Retorno Otimizado", etc.
+function isCoeLike(nome) {
+  return /\d+y\d*m?\s*[-–]\s*\d{2}\.\d{2}\.\d{4}/i.test(nome) ||
+         /retorno\s+otimizado|taxa\s+fixa.*alta|taxa\s+fixa.*retorno|\bcoe\b/i.test(nome);
 }
 
 async function ensurePDFjs() {
@@ -1387,13 +1394,12 @@ async function loadClientAssets(c) {
       }
     }
 
-    // Auto-estimate COE % from "Renda Variável Global" (proxy in XPerformance)
-    // Only store if perfil doesn't already have coe_pct set
+    // Auto-estimate COE % from parsed assets (isCoeLike catches all XP COE naming patterns)
     if (!parseFloat(c.perfil.coe_pct || 0)) {
-      const rvgPct = c.ativos
-        .filter(a => /renda\s*vari/i.test(a.categoria))
+      const coePct = c.ativos
+        .filter(a => isCoeLike(a.nome) || /renda\s*vari/i.test(a.categoria))
         .reduce((s, a) => s + (a.pct || 0), 0);
-      if (rvgPct > 0) c.coePctEstimado = Math.round(rvgPct * 100) / 100;
+      if (coePct > 0) c.coePctEstimado = Math.round(coePct * 100) / 100;
     }
   } catch(e) {
     console.warn('Erro ao ler PDF de', c.nome, e);
@@ -1446,11 +1452,12 @@ function renderAtivos() {
         '</div>' +
         '<table class="ativos-table">' +
           '<thead><tr><th>Ativo</th><th class="nr">Valor</th><th class="nr">%</th></tr></thead>' +
-          '<tbody>' + items.map(a =>
-            '<tr><td class="ativo-nome">' + esc(a.nome) + '</td>' +
-            '<td class="nr">' + (a.valor ? fmMoney(a.valor) : '—') + '</td>' +
-            '<td class="nr">' + (a.pct != null ? fmPctPlain(a.pct) + '%' : '—') + '</td></tr>'
-          ).join('') + '</tbody></table></div>';
+          '<tbody>' + items.map(a => {
+            const coeTag = isCoeLike(a.nome) ? '<span style="font-size:9px;background:#1c1735;color:#a78bfa;border:1px solid #5b21b6;border-radius:3px;padding:0 4px;margin-left:6px;vertical-align:middle">COE</span>' : '';
+            return '<tr><td class="ativo-nome">' + esc(a.nome) + coeTag + '</td>' +
+              '<td class="nr">' + (a.valor ? fmMoney(a.valor) : '—') + '</td>' +
+              '<td class="nr">' + (a.pct != null ? fmPctPlain(a.pct) + '%' : '—') + '</td></tr>';
+          }).join('') + '</tbody></table></div>';
     }).join('');
   }).catch(e => {
     const statusEl = document.getElementById('ativos-status');

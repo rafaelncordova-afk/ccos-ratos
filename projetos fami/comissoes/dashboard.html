@@ -157,6 +157,10 @@ tr:hover td{background:rgba(255,255,255,.02)}
       <label>Carteira ADM &mdash; Estimativa (m&ecirc;s anterior)</label>
       <input type="text" id="cfg-adm" value="1.714,00" placeholder="Ex: 1.714,00">
     </div>
+    <div class="cfg-item">
+      <label>Previd&ecirc;ncia &mdash; Estimativa (m&ecirc;s anterior)</label>
+      <input type="text" id="cfg-prev" value="620,00" placeholder="Ex: 620,00">
+    </div>
     <div class="cfg-item" style="flex:0.6;min-width:140px">
       <label>Desconto Fami</label>
       <input type="text" value="19,5%" readonly style="opacity:.5;cursor:default">
@@ -367,6 +371,7 @@ let currentFname='';
 function parseBR(s){return parseFloat((s||'0').replace(/\./g,'').replace(',','.'))||0;}
 function getMFO(){return parseBR(document.getElementById('cfg-mfo').value);}
 function getADM(){return parseBR(document.getElementById('cfg-adm').value);}
+function getPREV(){return parseBR(document.getElementById('cfg-prev').value);}
 
 // Drag & drop
 const dropEl=document.getElementById('drop-area');
@@ -441,7 +446,7 @@ function renderResult(){
   document.getElementById('prog-title').textContent=
     'Progresso do M\xeas — '+today.toLocaleString('pt-BR',{month:'long',year:'numeric'});
 
-  const mfoEst=getMFO(), admEst=getADM(), mfoAdm=mfoEst+admEst;
+  const mfoEst=getMFO(), admEst=getADM(), prevEst=getPREV(), mfoAdm=mfoEst+admEst+prevEst;
 
   // Separa conhecidos e desconhecidos
   const known=rows.filter(r=>r.rPct!==undefined&&r.rPct!==null);
@@ -461,7 +466,7 @@ function renderResult(){
     {l:'Faturamento Gerado',v:fatTotal,c:'cb',tip:''},
     {l:'Repasse Bruto',v:repBruto,c:'',tip:''},
     {l:'L\xedquido Apurado',v:liqApurado,c:'cg',tip:''},
-    {l:'MFO + ADM (est.)',v:mfoAdm,c:'cy',tip:''},
+    {l:'MFO + ADM + Prev. (est.)',v:mfoAdm,c:'cy',tip:''},
     {l:'Total Projetado',v:liqTotal,c:'cp',tip:''},
     {l:'% Repasse s/ Fat.',v:null,pct:pctRepasse,c:'',tip:''},
   ].map(cd=>
@@ -555,7 +560,7 @@ function resetUpload(){
 }
 
 // Re-renderiza quando MFO/ADM muda
-['cfg-mfo','cfg-adm'].forEach(id=>{
+['cfg-mfo','cfg-adm','cfg-prev'].forEach(id=>{
   document.getElementById(id).addEventListener('change',()=>{
     if(currentRows.length)renderResult();
   });

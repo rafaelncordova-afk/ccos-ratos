@@ -239,6 +239,7 @@ body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', syste
           <button class="filter-btn" id="fb-fee_fixo" onclick="toggleFilter('fee_fixo',this)">Fee Fixo</button>
           <button class="filter-btn" id="fb-ff_excl_rv" onclick="toggleFilter('ff_excl_rv',this)">c/ Excl. RV</button>
           <button class="filter-btn" id="fb-liquidez" onclick="toggleFilter('liquidez',this)">Liquidez</button>
+          <button class="filter-btn" id="fb-credito_pf" onclick="toggleFilter('credito_pf',this)">Cr&eacute;dito PF</button>
         </div>
       </div>
       <div class="client-list" id="client-list"></div>
@@ -290,9 +291,10 @@ body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', syste
 // CONSTANTS
 // ================================================================
 const FLAG_DEFS = [
-  { key: 'fee_fixo',     label: 'Fee Fixo',        color: '#818cf8', bg: '#1e1f45', border: '#3730a3', dot: '#818cf8' },
+  { key: 'fee_fixo',    label: 'Fee Fixo',         color: '#818cf8', bg: '#1e1f45', border: '#3730a3', dot: '#818cf8' },
   { key: 'ff_excl_rv',  label: 'FF c/ Excl. RV',  color: '#a78bfa', bg: '#1c1735', border: '#5b21b6', dot: '#a78bfa' },
   { key: 'liquidez',    label: 'Liquidez',          color: '#fbbf24', bg: '#261f0a', border: '#b45309', dot: '#fbbf24' },
+  { key: 'credito_pf',  label: 'Crédito PF',       color: '#34d399', bg: '#0a2018', border: '#065f46', dot: '#34d399' },
 ];
 
 // Clientes com Fee Fixo em mai/2026 (do relatório de comissões)

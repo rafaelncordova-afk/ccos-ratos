@@ -1301,17 +1301,20 @@ async function extractAssetsFromPDF(arrayBuffer) {
     const line = row.map(i => i.str).join(' ').trim();
     if (!line || line.length < 2) continue;
 
-    // Detect the start of "POSIÇÃO DETALHADA DOS ATIVOS" table
+    // Detect the start of "POSIÇÃO DETALHADA DOS ATIVOS" table.
+    // Triggers: (A) section title, (B) column header row with "Saldo Bruto" + "%Aloc"
+    // Using loose regex to survive encoding variations (Ç/Ã may come out garbled).
+    const isSectionTitle = /POSI.{0,8}O\s+DETALH|DETALH.*ATIVO/i.test(line);
+    const isColHeader = /saldo\s*bruto/i.test(line) && /%\s*aloc/i.test(line);
     if (!inDetail) {
-      if (/POSIÇÃO DETALHADA DOS ATIVOS|POSI.{1,5}O\s+DETALH.*ATIVO/i.test(line)) {
-        inDetail = true;
-      }
+      if (isSectionTitle || isColHeader) { inDetail = true; }
       continue;
     }
 
-    // Skip section headers repeated on subsequent pages and column headers
+    // Skip headers and decorations even once inside the section
     if (SKIP_RE.test(line) || /^([A-Z] ){3,}/.test(line) ||
-        /POSIÇÃO DETALHADA|POSICAO DETALH|PRECIFICAÇÃO/i.test(line)) {
+        isSectionTitle || isColHeader ||
+        /PRECIFICA/i.test(line)) {
       pendingName = '';
       continue;
     }
@@ -1408,6 +1411,32 @@ async function loadClientAssets(c) {
   return c.ativos;
 }
 
+async function debugPDF(c) {
+  if (!c?.relatorios?.length) { toast('Nenhum PDF disponível', 'err'); return; }
+  await ensurePDFjs();
+  const file = await c.relatorios[0].handle.getFile();
+  const pdf = await window.pdfjsLib.getDocument({ data: await file.arrayBuffer() }).promise;
+  const lines = [];
+  for (let p = 1; p <= Math.min(pdf.numPages, 12); p++) {
+    const page = await pdf.getPage(p);
+    const content = await page.getTextContent();
+    const rowMap = new Map();
+    for (const item of content.items) {
+      const s = item.str.trim(); if (!s) continue;
+      const key = Math.round(item.transform[5]);
+      if (!rowMap.has(key)) rowMap.set(key, []);
+      rowMap.get(key).push(s);
+    }
+    [...rowMap.entries()].sort((a,b)=>b[0]-a[0]).forEach(([y, parts]) => {
+      lines.push(`p${p}:y${y} | ${parts.join(' ')}`);
+    });
+  }
+  const el = document.getElementById('ativos-content');
+  el.innerHTML = '<pre style="font-size:9px;color:#a1a1aa;white-space:pre-wrap;max-height:400px;overflow:auto">' +
+    lines.slice(0,300).join('\n') + '</pre>';
+  toast('Debug: primeiras 300 linhas do PDF', '');
+}
+
 function renderAtivos() {
   const c = selectedClient;
   const el = document.getElementById('tab-ativos');
@@ -1429,7 +1458,9 @@ function renderAtivos() {
 
     if (!ativos.length) {
       statusEl.textContent = 'Nenhum ativo identificado';
-      contentEl.innerHTML = '<div class="empty-state">Não encontrei linhas de ativos no PDF.<br><span style="font-size:11px">Verifique se é o XPerformance padrão da XP.</span></div>';
+      contentEl.innerHTML = '<div class="empty-state">Não encontrei linhas de ativos no PDF.<br>' +
+        '<span style="font-size:11px">Verifique se é o XPerformance padrão da XP.</span><br>' +
+        '<button class="btn-sm" style="margin-top:8px" onclick="debugPDF(selectedClient)">&#x1F50D; Debug PDF</button></div>';
       return;
     }
 

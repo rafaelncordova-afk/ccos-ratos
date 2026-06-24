@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//IA Fami//PT
+BEGIN:VEVENT
+DTSTART:20260710T090000
+RRULE:FREQ=MONTHLY;BYMONTHDAY=10
+SUMMARY:Atualizar projeção fee fixo
+DESCRIPTION:Atualizar o arquivo projecao_receita_fee_fixo.md com os dados do mês:\n\n1. Acessar HUB > Gestão > Fee Based Gerencial\n2. Atualizar patrimônio líquido de cada cliente\n3. Verificar se houve novos contratos ou mudanças de taxa\n4. Recalcular receita bruta e líquida (fórmula: Patrimônio × Taxa ÷ 12 × 0,805)\n5. Atualizar total e resumo financeiro\n\nArquivo: IA Trabalho/fee-fixo/projecao_receita_fee_fixo.md
+LOCATION:HUB XP
+BEGIN:VALARM
+TRIGGER:-PT60M
+ACTION:DISPLAY
+DESCRIPTION:Lembrete: atualizar projeção fee fixo hoje (dia 10)
+END:VALARM
+END:VEVENT
+END:VCALENDAR

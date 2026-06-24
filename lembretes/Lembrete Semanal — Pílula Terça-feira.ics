@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//IA Fami//PT
+BEGIN:VEVENT
+DTSTART:20260616T090000
+RRULE:FREQ=WEEKLY;BYDAY=TU
+SUMMARY:Publicar Pílula (LinkedIn)
+DESCRIPTION:Publicar uma pílula no LinkedIn — conteúdo curto e informativo sobre atualidades do mercado financeiro.\nArquivos em: linkedin/Pílulas/
+LOCATION:LinkedIn
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Lembrete: publicar pílula no LinkedIn em 30 minutos
+END:VALARM
+END:VEVENT
+END:VCALENDAR

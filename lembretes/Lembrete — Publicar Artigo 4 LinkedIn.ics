@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//IA Fami//PT
+BEGIN:VEVENT
+DTSTART:20260619T090000
+DTEND:20260619T093000
+SUMMARY:Publicar Artigo 4 — Jornada do Investidor (LinkedIn)
+DESCRIPTION:Publicar o Artigo 4 da sequência no LinkedIn.\nTema: Horizontes temporais — planejamento de curto\, médio e longo prazo.\nArquivo em: linkedin/Sequência de Artigos — Jornada do Investidor/
+LOCATION:LinkedIn
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Lembrete: publicar Artigo 4 no LinkedIn em 30 minutos
+END:VALARM
+END:VEVENT
+END:VCALENDAR

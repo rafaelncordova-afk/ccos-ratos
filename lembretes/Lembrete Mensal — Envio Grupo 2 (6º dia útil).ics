@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//IA Fami//PT
+BEGIN:VEVENT
+DTSTART:20260708T090000
+RRULE:FREQ=MONTHLY;BYMONTHDAY=8
+SUMMARY:Enviar mensagens — Grupo 2
+DESCRIPTION:Enviar mensagens mensais para os clientes do Grupo 2.\n\nLembrete: este lembrete está fixado no dia 8, que corresponde ao 6º dia útil na maioria dos meses. Ajustar em meses com feriados no início.\n\nGrupo 2 inclui: Leonardo, Diego, Maria Regina/Marta, Nestor, Adriano (3547280), Rafael Costa, Rosangela, Tiana, Oseas/Dayvidiane, Marcelo (2078232).\n\nArquivo de grupos: IA Trabalho/grupos_envio_mensagens.md
+LOCATION:WhatsApp
+BEGIN:VALARM
+TRIGGER:-PT60M
+ACTION:DISPLAY
+DESCRIPTION:Lembrete: enviar mensagens do Grupo 2 hoje (6º dia útil)
+END:VALARM
+END:VEVENT
+END:VCALENDAR

@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//IA Fami//PT
+BEGIN:VEVENT
+DTSTART:20260617T083000
+RRULE:FREQ=DAILY
+SUMMARY:Modelo de Servir — ação do dia
+DESCRIPTION:Checar e agir em pelo menos 1 dos critérios:\n\n📋 ATIVIDADE DE RELACIONAMENTO (prioridade máxima)\n→ Enviei mensagem/resumo para algum cliente hoje?\n→ Está registrado no HUB?\n\n📊 FINANCIAL PLANNING\n→ Tenho reunião de FP agendada esta semana?\n→ Próximos: Integrasul, Marcelo (2143369), Gilberto, Martin\n\n📈 ORDEM ENVIADA\n→ Algum cliente sem ordem nos últimos 50+ dias?\n→ Sugerir operação antes de completar 60 dias\n\nDashboard: HUB > Menu > Gestão > Índice de Esforços do Assessor\nMeta jan/2027: média ≥ 65 pts compostos (Modelo de Servir + Saúde do Cliente)
+LOCATION:HUB XP
+BEGIN:VALARM
+TRIGGER:-PT0M
+ACTION:DISPLAY
+DESCRIPTION:Modelo de Servir — o que você fez hoje?
+END:VALARM
+END:VEVENT
+END:VCALENDAR

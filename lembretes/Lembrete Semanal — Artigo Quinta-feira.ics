@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//IA Fami//PT
+BEGIN:VEVENT
+DTSTART:20260625T090000
+RRULE:FREQ=WEEKLY;BYDAY=TH
+SUMMARY:Publicar Artigo — Jornada do Investidor (LinkedIn)
+DESCRIPTION:Publicar o próximo artigo da sequência Jornada do Investidor no LinkedIn.\nArquivos em: linkedin/Sequência de Artigos — Jornada do Investidor/
+LOCATION:LinkedIn
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Lembrete: publicar artigo da jornada no LinkedIn em 30 minutos
+END:VALARM
+END:VEVENT
+END:VCALENDAR

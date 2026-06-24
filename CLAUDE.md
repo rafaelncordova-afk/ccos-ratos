@@ -1,14 +1,58 @@
-# Claude Code OS — Kit Ratos de IA
+# Rafa Córdova — Claude Code OS
 
-Este repositório é o kit de boas-vindas do curso Claude Code OS.
+## O que é esse workspace
 
-Se você acabou de clonar esse repositório:
-1. Rode `/setup` pra configurar o sistema pro seu negócio (uns 5 minutos)
-2. Depois rode `/mapear` pra criar skills personalizadas pro que você faz no dia a dia
+Workspace pessoal do Rafael Nascimento de Córdova, assessor de investimentos na Fami Capital.
+Aqui ficam os clientes, conteúdo, apresentações e ferramentas de trabalho do dia a dia.
+
+**Estrutura de pastas:**
+- `_contexto/` — memória do sistema (não apagar)
+- `clientes/` — histórico de reuniões e comunicações por cliente
+- `linkedin/` — artigos, pílulas e anotações para conteúdo no LinkedIn
+- `apresentacoes/` — decks de reuniões e apresentações
+- `instagram/` — projeto de educação financeira anônimo
+- `relatorios/` — relatórios de ativos e análises
+- `dados/` — arquivos brutos para análise (PDFs, CSVs, planilhas)
+- `marca/` — identidade visual e design guide
+- `templates/skills/` — templates de skills prontos para personalizar com /mapear
+- `templates/ferramentas/catalogo.md` — APIs e ferramentas disponíveis para usar em skills
+
+## Sobre o negócio
+
+Rafa é assessor de investimentos na Fami Capital (escritório XP), com certificações CEA e CFP.
+Atende clientes pessoa física com foco em investimentos e planejamento patrimonial.
+É porta-voz da Planejar, associação responsável pelos CFPs no Brasil, e escreve artigos e pílulas no LinkedIn sobre finanças pessoais e planejamento.
+
+## O que mais fazemos aqui
+
+- Mensagens e comunicação com clientes (WhatsApp, email)
+- Resumos de reunião com próximos passos
+- Apresentações para reuniões com clientes
+- Artigos e pílulas para o LinkedIn (Planejar / CFP)
+- Relatórios de ativos e análises de rentabilidade
+- Conteúdo de educação financeira para o Instagram (projeto em construção, anônimo)
+
+## Clientes e contexto
+
+Clientes externos: investidores pessoa física atendidos individualmente.
+Time grande: ~700 colaboradores na Fami Capital em todo o país, ~60 no escritório local.
+Rafa tem autonomia sobre sua própria carteira e construção de marca pessoal como CFP.
+
+## Tom de voz
+
+**Comigo (Claude):** direto e informal — trata como amigo e auxiliar.
+
+**Com clientes:** técnico mas claro. Certificação CFP exige precisão técnica, mas a comunicação precisa ser acessível. O texto precisa soar como se o próprio Rafa tivesse escrito — ele escreve bem, acima da média. Nunca usar travessão (—) nos textos para clientes. Sem frases genéricas de IA.
+
+## Ferramentas conectadas
+
+- Excel — controles pessoais, análise de remuneração
+- PowerPoint — apresentações para reuniões
+- CRM (interno Fami) — anotações de reunião e agendamentos
+- WhatsApp — comunicação principal com clientes
+- HUB da XP — visualização de carteiras
 
 ---
-
-<!-- Este arquivo será atualizado pelo /setup com o contexto do seu negócio. -->
 
 ## Contexto do negócio
 

@@ -1,0 +1,13 @@
+O CDI é uma taxa, não uma meta
+
+Pergunte a qualquer investidor brasileiro qual é o benchmark do mercado. A resposta quase sempre vem na ponta da língua: CDI.
+Mas o que é o CDI, afinal?
+CDI significa Certificado de Depósito Interbancário. É a taxa que os bancos cobram uns dos outros em empréstimos de curtíssimo prazo, geralmente de um dia para o outro. Calculado diariamente pela B3, ele acompanha de perto a taxa Selic e se tornou a referência padrão da renda fixa brasileira. CDBs, fundos DI, LCIs e LCAs são quase todos comparados a ele.
+Até aqui, faz sentido.
+O problema começa quando o CDI vira o único critério de avaliação.
+O CDI mede o retorno nominal: quanto você ganhou em números absolutos. Mas o que preserva patrimônio de verdade é o retorno real, ou seja, o que sobra depois de descontada a inflação.
+E há períodos em que essa conta não fecha.
+Entre 2020 e 2021, o CDI ficou abaixo do IPCA por cerca de dois anos seguidos. Em 2021, a inflação encerrou o ano em 10,06%, enquanto o CDI rodou próximo a 4,4%. Quem ficou "protegido no CDI" perdeu poder de compra. O ganho real foi negativo.
+Esse resultado não aparece no extrato. Mas aparece no carrinho do mercado.
+O CDI é um ponto de partida útil. A pergunta certa não é só "rendeu quanto do CDI?", mas "rendeu acima da inflação?"
+Benchmark é bússola, não destino.

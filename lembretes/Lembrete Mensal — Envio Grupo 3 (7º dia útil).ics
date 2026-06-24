@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//IA Fami//PT
+BEGIN:VEVENT
+DTSTART:20260709T090000
+RRULE:FREQ=MONTHLY;BYMONTHDAY=9
+SUMMARY:Enviar mensagens — Grupo 3
+DESCRIPTION:Enviar mensagens mensais para os clientes do Grupo 3.\n\nLembrete: este lembrete está fixado no dia 9, que corresponde ao 7º dia útil na maioria dos meses. Ajustar em meses com feriados no início.\n\nGrupo 3 inclui: Maria Juliana, William, Marcio, Valdir, Naila, Vanessa, Ricardo, Reginaldo, Ivanir, Maria Elisabete, Manoel, Adriano (29662), Rosana, Camile, Gustavo, Mauricio, Maristela, Eduardo, Servitec, Globus, Jorge, Fabiana, Guilherme, Claudia, Elias, Antonia, Marieta, Ana Carolina.\n\nArquivo de grupos: IA Trabalho/grupos_envio_mensagens.md
+LOCATION:WhatsApp
+BEGIN:VALARM
+TRIGGER:-PT60M
+ACTION:DISPLAY
+DESCRIPTION:Lembrete: enviar mensagens do Grupo 3 hoje (7º dia útil)
+END:VALARM
+END:VEVENT
+END:VCALENDAR

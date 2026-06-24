@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//IA Fami//PT
+BEGIN:VEVENT
+DTSTART:20260707T090000
+RRULE:FREQ=MONTHLY;BYMONTHDAY=7
+SUMMARY:Enviar mensagens — Grupo 1 (Fee Fixo)
+DESCRIPTION:Enviar mensagens mensais para os clientes do Grupo 1 (fee fixo).\n\nLembrete: este lembrete está fixado no dia 7, que corresponde ao 5º dia útil na maioria dos meses. Ajustar em meses com feriados no início.\n\nGrupo 1 inclui: Integrasul, Fernanda, Marcelo (2143369), Ana Paula, Gilberto, Martin, Francisco, Marcelo (3355473), Silvio, Marisa, Taine, Carla, Nelio, Leonardo (3039570), João Pedro, Bruna, Francisco Ricardo LTDA.\n\nArquivo de grupos: IA Trabalho/grupos_envio_mensagens.md
+LOCATION:WhatsApp
+BEGIN:VALARM
+TRIGGER:-PT60M
+ACTION:DISPLAY
+DESCRIPTION:Lembrete: enviar mensagens do Grupo 1 hoje (5º dia útil)
+END:VALARM
+END:VEVENT
+END:VCALENDAR

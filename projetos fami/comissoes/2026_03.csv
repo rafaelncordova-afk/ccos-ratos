@@ -1,0 +1,396 @@
+ï»¿Recebedor;Area;Tipo Receita;Categoria;Produto;Codigo Cliente;Nome Cliente;Faturamento EscritÃ³rio;Repasse;ComissÃ£o Bruta;ComissÃ£o LiquÃ­da
+rafael.cordova;MFO;Consultoria;MFO;MFO;AF;MARIA NORMA CRUZ PINTO COELHO;11.643;0,25;2.911;2342,322816
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Renda Fixa;Campanha Renda Fixa;MissÃµes do Assessor - Renda Fixa;1;-;2.068;1;2.068;1664,1196
+rafael.cordova;Banking;CrÃ©dito PF;CRÃDITO - PF;ConsÃ³rcio;242706;DIEGO EDUARDO PIRES DE BORBA;8.196;0,25;2.049;1648,741783
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;FEE Fixo / Wealth;FEE FIXO;ExceÃ§Ã£o RV;3424140;INTEGRASUL SOLUCOES EM INFORMATICA LTDA;3.976;0,5;1.988;1599,638989
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos ImobiliÃ¡rios;SECUNDÃRIO Fundos;XP Renda ImobiliÃ¡ria Feeder FII RL;6761987;LEONARDO MASCARENHAS LEITE;2.490;0,5;1.245;1002,036581
+rafael.cordova;MFO;Carteira ADM;Carteira Administrada;Persevera;0047;-;3.900;0,25;975;784,6529113
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;Campanha Fundos;MissÃµes do Assessor - Fundos;1;-;932;1;932;749,9804
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;FEE Fixo / Wealth;FEE FIXO;Fee Fixo;8227409;FERNANDA MARIA COELHO VASQUES;1.834;0,5;917;738,014511
+rafael.cordova;MFO;Carteira ADM;Carteira Administrada;Persevera;0081;-;3.548;0,25;887;713,7507943
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;FEE Fixo / Wealth;FEE FIXO;Fee Fixo;2143369;MARCELO DANEMBERG MARSILI;1.439;0,5;719;578,82071
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;FEE Fixo / Wealth;FEE FIXO;ExceÃ§Ã£o RV;2861533;GILBERTO ROSSATO DE MEDEIROS;1.302;0,5;651;524,036734
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Renda Fixa;RENDA FIXA;NTN-B 760198;3547280;ADRIANO ESPINDULA;1.134;0,5;567;456,3574405
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos ImobiliÃ¡rios;SECUNDÃRIO FIIs;PIER11 - PÃ¡tria Infra Energia Core Renda FIP INFRA;4571340;MARISA GAZZI KLOSS;1.013;0,5;506;407,4236335
+rafael.cordova;Renda VariÃ¡vel;Renda VariÃ¡vel;BOVESPA;Trade Push;242706;DIEGO EDUARDO PIRES DE BORBA;1.366;0,3375;461;371,0628617
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;FEE Fixo / Wealth;FEE FIXO;ExceÃ§Ã£o RV;2498565;MARTIN JOSE CAMMAROTA GEROSA;769;0,5;384;309,254257
+rafael.cordova;Renda VariÃ¡vel;Renda VariÃ¡vel;BOVESPA;Trade Push;7755401;CARLOS VOLTOLINI;1.106;0,3375;373;300,2396857
+rafael.cordova;Renda VariÃ¡vel;COE;COE;MS Global Selection - Alta Alavancada - 5y - 31.03.2026;6761987;LEONARDO MASCARENHAS LEITE;760;0,451354062;343;276,0355064
+rafael.cordova;MFO;Carteira ADM;Carteira Administrada;Persevera;0039;-;1.361;0,25;340;273,8031985
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;FEE Fixo / Wealth;FEE FIXO;Fee Fixo;2010572;RICARDO ADAIL ALVES;675;0,5;338;271,682814
+rafael.cordova;Assessoria;Outros;Ajuste;ConsÃ³rcio - 1 cota itaÃº cliente DIEGO EDUARDO PIRES BORBA - faturamento 1.292,31;-;-;;1;323;259,982476
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;FEE Fixo / Wealth;FEE FIXO;Fee Fixo;2112212;REGINALDO LOPES DE JESUS;644;0,5;322;259,1013295
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;FEE Fixo / Wealth;FEE FIXO;ExceÃ§Ã£o RV;4547934;FRANCISCO DONIZETE GOMES;581;0,5;291;233,958478
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;FEE Fixo / Wealth;FEE FIXO;Fee Fixo;2978828;ARTECASA COMERCIO DE MATERIAIS DE CONSTRUCAO LTDA;543;0,5;271;218,4478855
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;FEE Fixo / Wealth;FEE FIXO;ExceÃ§Ã£o RV;3355473;MARCELO TRAVI PACHECO;528;0,5;264;212,368377
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos ImobiliÃ¡rios;SECUNDÃRIO Fundos;SPX CRI Portfolio Renda Mais;2656669;VALDIR JOSE MATTIOLLO;522;0,5;261;210,002559
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;FEE Fixo / Wealth;FEE FIXO;ExceÃ§Ã£o RV;3242303;SILVIO LUIZ FRASSON;471;0,5;236;189,635602
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;PrevidÃªncia;PrevidÃªncia - Co-corretagem;-;6905836;MARIA REGINA SOARES PINTO VIDAL;420;0,5;210;168,9998752
+rafael.cordova;Renda VariÃ¡vel;Renda VariÃ¡vel;BOVESPA Empacotados;Trade Idea;6761987;LEONARDO MASCARENHAS LEITE;585;0,3375;198;158,9974542
+rafael.cordova;Renda VariÃ¡vel;Renda VariÃ¡vel;BOVESPA Empacotados;Trade Idea;242706;DIEGO EDUARDO PIRES DE BORBA;572;0,3375;193;155,3364716
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;FEE Fixo / Wealth;FEE FIXO;Fee Fixo;3950461;IRONITA TEREZINHA MATTIOLLO;383;0,5;191;154,0155565
+rafael.cordova;Banking;CrÃ©dito PF;CRÃDITO - PF;ConsÃ³rcio;18295452;TAINE MELLO VIDALETTI;748;0,25;187;150,5312055
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Renda Fixa;RENDA FIXA;NTN-B 760198;242706;DIEGO EDUARDO PIRES DE BORBA;356;0,5;178;143,2567175
+rafael.cordova;Banking;CrÃ©dito PF;CRÃDITO - PF;ConsÃ³rcio;2078232;MARCELO DOMINICALI;701;0,25;175;140,9794165
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos ImobiliÃ¡rios;SECUNDÃRIO FIIs;PIER11 - PÃ¡tria Infra Energia Core Renda FIP INFRA;3242303;SILVIO LUIZ FRASSON;344;0,5;172;138,368165
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;FEE Fixo / Wealth;FEE FIXO;ExceÃ§Ã£o RV;4571340;MARISA GAZZI KLOSS;339;0,5;170;136,4006735
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;FEE Fixo / Wealth;FEE FIXO;ExceÃ§Ã£o RV;18295452;TAINE MELLO VIDALETTI;324;0,5;162;130,3332355
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;FEE Fixo / Wealth;FEE FIXO;ExceÃ§Ã£o RV;18382970;CARLA VALENTINI;317;0,5;159;127,7260075
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Renda Fixa;RENDA FIXA;CDB PRE DU CDB326EQ2CO;8179563;DOUGLAS MATTIOLLO;307;0,5;154;123,5818025
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;FEE Fixo / Wealth;FEE FIXO;ExceÃ§Ã£o RV;5892942;JOAO PEDRO DELLA MEA MAGRO;301;0,5;150;120,922269
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;FEE Fixo / Wealth;FEE FIXO;ExceÃ§Ã£o RV;5993019;NELIO ENDERLE;261;0,5;131;105,126008
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;FEE Fixo / Wealth;FEE FIXO;ExceÃ§Ã£o RV;18382020;BRUNA VALENTINI SIEGA;255;0,5;128;102,6113205
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Treasury & Bond & Fund & Equity;CÃ¢mbio - Mercado Internacional;-;549539;NESTOR PEDRO GIACOMIN;311;0,4;125;100,201244
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Renda Fixa;RENDA FIXA;CDB FLU CDB3216RZX3;6761987;LEONARDO MASCARENHAS LEITE;249;0,5;124;100,1247975
+rafael.cordova;Banking;CÃ¢mbio;CÃ¢mbio;-;3342459;SERVITEC INDUSTRIA ELETRONICA LTDA;272;0,4;109;87,680112
+rafael.cordova;Renda VariÃ¡vel;PE;OPERAÃÃES ESTRUTURADAS;Call;242706;DIEGO EDUARDO PIRES DE BORBA;388;0,27027027;105;84,36300802
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;PrevidÃªncia;PrevidÃªncia - Co-corretagem;-;2891989;ANA PAULA DE BORTOLI;207;0,5;103;83,1923001
+rafael.cordova;MFO;Carteira ADM;Carteira Administrada;Persevera;0040;-;410;0,25;103;82,50387925
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;FEE Fixo / Wealth;FEE FIXO;ExceÃ§Ã£o RV;19119719;FRANCISCO RICARDO VALERIANO LOPES LTDA;202;0,5;101;81,250559
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;PrevidÃªncia;PrevidÃªncia - Co-corretagem;-;4663767;HELAINE FLORES DO NASCIMENTO;182;0,5;91;73,1995355
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Treasury & Bond & Fund & Equity;CLEARTHROUGH;Fund;549539;NESTOR PEDRO GIACOMIN;223;0,4;89;71,8146468
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;PrevidÃªncia;PrevidÃªncia - Co-corretagem;-;6677277;ROSANGELA MARIA ISOPPO;160;0,5;80;64,384047
+rafael.cordova;Seguros;A. Patrimonial;A. Patrimonial;-;242706;DIEGO EDUARDO PIRES DE BORBA;262;0,3;79;63,3146007
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Renda Fixa;RENDA FIXA;CRA FLU CRA02300MOQ;14643463;DAYVIDIANE NOGUEIRA DE LIMA;147;0,5;73;58,98451
+rafael.cordova;Seguros;A. Patrimonial;A. Patrimonial;-;3899776;MARIETA LUCE MADEIRA;232;0,3;70;56,0119482
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;PrevidÃªncia;PrevidÃªncia - Co-corretagem;-;9232238;IVANIR MORO;134;0,5;67;54,04324965
+rafael.cordova;Seguros;A. Patrimonial;A. Patrimonial;-;3242303;SILVIO LUIZ FRASSON;222;0,3;67;53,5640508
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;PrevidÃªncia;PrevidÃªncia - Co-corretagem;-;92845;BIAZID HALABI FILHO;132;0,5;66;53,045824
+rafael.cordova;Renda VariÃ¡vel;Renda VariÃ¡vel;BOVESPA Self Service;HB;15375451;CRISTIANO CAMPOS DE CARVALHO;168;0,3375;57;45,56782737
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;PrevidÃªncia;PrevidÃªncia - Co-corretagem;-;8573174;NAILA MONNERAT MODENESI;110;0,5;55;44,0661767
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;PrevidÃªncia;PrevidÃªncia - Co-corretagem;-;6302904;ROSANA CRUZ;100;0,5;50;40,4080105
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Renda Fixa;RENDA FIXA;LCA 26C05852925;8390382;MARIA JULIANA TURCATTI PAGANINI;98;0,5;49;39,5308875
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos ImobiliÃ¡rios;BOVESPA FIIs;Mesa;29662;ADRIANO FORLIN;87;0,5;43;34,8241972
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;PrevidÃªncia;PrevidÃªncia - Co-corretagem;-;3565469;NALI LEDI ARNDT MORENO;85;0,5;43;34,3429866
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Western Asset US Index 500 FIF;442135;MARCIO FITTEL MALUF;78;0,5;39;31,512052
+rafael.cordova;Renda VariÃ¡vel;Renda VariÃ¡vel;BTC;BTC - Receita Tomador;405397;JOSMAR ALEXANDRE PERINI;192;0,2;38;30,8892142
+rafael.cordova;MFO;Carteira ADM;Carteira Administrada;Persevera;0041;-;148;0,25;37;29,69544175
+rafael.cordova;Assessoria;Outros;Desconto de TransferÃªncia de Clientes;[ESTORNO] Desconto de TransferÃªncia de Clientes - Assessor: A24559 Cliente: 5155422;5155422;MAURO ANTONIO DE CARVALHO MAGALHAES;73;0,5;36;29,274986
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos ImobiliÃ¡rios;Campanha SecundÃ¡rio Fundos;PIER11 - PÃ¡tria Infra Energia Core Renda FIP INFRA;4571340;MARISA GAZZI KLOSS;71;0,5;36;28,5708735
+rafael.cordova;Seguros;Seguros Corporativos;SEGUROS CORPORATIVOS;VIDA EM GRUPO;-;SERVITEC INDUSTRIA ELETRONICA LTDA EPP           C;140;0,25;35;28,19467625
+rafael.cordova;Renda VariÃ¡vel;Renda VariÃ¡vel;BOVESPA;PNT AÃ§Ãµes;405397;JOSMAR ALEXANDRE PERINI;103;0,3375;35;27,9407934
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Persevera Yield FIRF LP;4663767;HELAINE FLORES DO NASCIMENTO;66;0,5;33;26,38732005
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;PrevidÃªncia;PrevidÃªncia - Co-corretagem;-;7755401;CARLOS VOLTOLINI;65;0,5;32;26,0682565
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos ImobiliÃ¡rios;BOVESPA FIIs;-;29662;ADRIANO FORLIN;60;0,5;30;24,3405656
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Persevera Yield FIRF LP;8480375;TIANA BALDISSERA;58;0,5;29;23,41314885
+rafael.cordova;Assessoria;Outros;Desconto de TransferÃªncia de Clientes;[ESTORNO] Desconto de TransferÃªncia de Clientes - Assessor: A24559 Cliente: 582699;582699;ANA LUCIA MONTEIRO OLIVEIRA;56;0,5;28;22,716681
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos ImobiliÃ¡rios;Campanha SecundÃ¡rio Fundos;PIER11 - PÃ¡tria Infra Energia Core Renda FIP INFRA;3242303;SILVIO LUIZ FRASSON;56;0,5;28;22,6402345
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;PrevidÃªncia;PrevidÃªncia - Co-corretagem;-;3107986;CAMILE ARNDT DOS SANTOS;55;0,5;28;22,2169623
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;PrevidÃªncia;PrevidÃªncia - Co-corretagem;-;2219078;MARISTELA FISCHER;55;0,5;27;21,96227475
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;XP CrÃ©dito Estruturado 360 FIDC RL;3539793;VIRGINIA SILVA DOS SANTOS;53;0,5;26;21,195798
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Persevera Yield FIRF LP;4502419;SILVANA PICCOLI BALDISSERA;51;0,5;25;20,4570834
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Valora Guardian Advisory FIDC RL;8480375;TIANA BALDISSERA;46;0,5;23;18,604664
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Valora Guardian Advisory FIDC RL;4502419;SILVANA PICCOLI BALDISSERA;46;0,5;23;18,483959
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Persevera Yield FIRF LP;4347476;TIANA BALDISSERA;45;0,5;23;18,1129923
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Persevera Trinity FIRF REF DI RL;3342459;SERVITEC INDUSTRIA ELETRONICA LTDA;45;0,5;22;17,9826309
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;PrevidÃªncia;PrevidÃªncia - Co-corretagem;-;2431686;CARLOS ALBERTO NAZZARI CAMARGO;43;0,5;21;17,2149471
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Renda Fixa;RENDA FIXA;CDB PRE DU CDB223NFJM3;242706;DIEGO EDUARDO PIRES DE BORBA;42;0,5;21;17,083781
+rafael.cordova;Renda VariÃ¡vel;Renda VariÃ¡vel;BOVESPA Self Service;Proftchart;29662;ADRIANO FORLIN;62;0,3375;21;16,75578528
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Persevera Yield FIRF LP;2891989;ANA PAULA DE BORTOLI;40;0,5;20;16,1141175
+rafael.cordova;Renda VariÃ¡vel;PE;OPERAÃÃES ESTRUTURADAS;Put;6761987;LEONARDO MASCARENHAS LEITE;73;0,27027027;20;15,83519107
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;XP CrÃ©dito Estruturado 360 FIDC RL;3475484;EDUARDO ANTUNES DO LIVRAMENTO NETO;39;0,5;20;15,820402
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Compass Yield 30 FIF RF CP LP RL;8573174;NAILA MONNERAT MODENESI;38;0,5;19;15,466334
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;PrevidÃªncia;PrevidÃªncia - Co-corretagem;-;2944008;MARIA ELISABETE NEIS ARALDI;35;0,5;17;14,08023825
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;PÃ¡tria Infraestrutura CrÃ©dito DI III FIP-IE RL;6761987;LEONARDO MASCARENHAS LEITE;34;0,5;17;13,6356415
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Persevera Trinity FIRF REF DI RL;14643463;DAYVIDIANE NOGUEIRA DE LIMA;33;0,5;17;13,3354884
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Valora Horizon High Yield FIDC;2891989;ANA PAULA DE BORTOLI;33;0,5;17;13,2896205
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Valora Horizon High Yield FIDC;4347476;TIANA BALDISSERA;33;0,5;16;13,261456
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Solis Capital Antares Advisory FIC de FIDC;4347476;TIANA BALDISSERA;31;0,5;15;12,328004
+rafael.cordova;Renda VariÃ¡vel;Renda VariÃ¡vel;BOVESPA;Mesa;15375451;CRISTIANO CAMPOS DE CARVALHO;45;0,3375;15;12,23659008
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos ImobiliÃ¡rios;XP RevolvÃªncia;XP CDI 93 Dezembro 2027 FII RL;2439637;PAULO ROBERTO NAZARI CAMARGO;30;0,5;15;12,2193695
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Persevera Trinity FIRF REF DI RL;8573174;NAILA MONNERAT MODENESI;30;0,5;15;12,08619165
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Persevera Yield FIRF LP;8573174;NAILA MONNERAT MODENESI;28;0,5;14;11,4017943
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Persevera Trinity FIRF REF DI RL;6761987;LEONARDO MASCARENHAS LEITE;27;0,5;13;10,7620578
+rafael.cordova;Renda VariÃ¡vel;Renda VariÃ¡vel;BM&F;Mesa;6761987;LEONARDO MASCARENHAS LEITE;40;0,3375;13;10,73091591
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Newave Energia FIP - Classe D (com DI);242706;DIEGO EDUARDO PIRES DE BORBA;26;0,5;13;10,6421575
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos ImobiliÃ¡rios;TX ADM;Persevera Plano & Plano FII RL - Senior;242706;DIEGO EDUARDO PIRES DE BORBA;26;0,5;13;10,52595882
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Persevera Yield FIRF LP;306220;VANESSA GAPRIOTTI NADALIN;26;0,5;13;10,38666525
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Persevera Trinity FIRF REF DI RL;9416824;GLOBUS SISTEMAS ELETRONICOS LTDA;26;0,5;13;10,3854582
+rafael.cordova;Renda VariÃ¡vel;Renda VariÃ¡vel;BOVESPA Self Service;HB;92845;BIAZID HALABI FILHO;37;0,3375;13;10,11169926
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;XP Private Equity I FIP Multi - Classe A;3342459;SERVITEC INDUSTRIA ELETRONICA LTDA;25;0,5;12;10,010468
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Solis Capital Antares Light FIC de FIDC;4663767;HELAINE FLORES DO NASCIMENTO;25;0,5;12;9,9501155
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Persevera Yield FIRF LP;2219078;MARISTELA FISCHER;24;0,5;12;9,7650345
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Persevera Yield FIRF LP;2078232;MARCELO DOMINICALI;24;0,5;12;9,57311355
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Renda Fixa;RENDA FIXA;CDB FLU CDB326AQJXX;549539;NESTOR PEDRO GIACOMIN;23;0,5;12;9,3546375
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Compass Yield 30 FIF RF CP LP RL;4347476;TIANA BALDISSERA;23;0,5;11;9,2258855
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Persevera Trinity FIRF REF DI RL;242706;DIEGO EDUARDO PIRES DE BORBA;23;0,5;11;9,1277121
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;PrevidÃªncia;PrevidÃªncia - Co-corretagem;-;410260;MAURICIO FISCHER COSTA;23;0,5;11;9,0673596
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Trend Ouro FIF Multi RL;442135;MARCIO FITTEL MALUF;22;0,5;11;8,916076
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Renda Fixa;RENDA FIXA;LCA PRE 26C05221925;2439637;PAULO ROBERTO NAZARI CAMARGO;22;0,5;11;8,8637705
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;XP Corporate Light FIRF CP LP;8480375;TIANA BALDISSERA;22;0,5;11;8,8315825
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Renda Fixa;RENDA FIXA;LCA PRE 24L01494338;2439637;PAULO ROBERTO NAZARI CAMARGO;22;0,5;11;8,8074415
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Persevera Yield FIRF LP;3274787;MANOEL LUCE MADEIRA;22;0,5;11;8,6521344
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;XP Infra V FIP IE RL - Subclasse A;242706;DIEGO EDUARDO PIRES DE BORBA;21;0,5;11;8,61029
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Renda Fixa;RENDA FIXA;CDB PRE DU CDB326AQJX7;549539;NESTOR PEDRO GIACOMIN;21;0,5;11;8,5499375
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Tivio DÃ³lar Cambial FIF CIC Cambial RL;442135;MARCIO FITTEL MALUF;21;0,5;10;8,296457
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Persevera Yield FIRF LP;3039570;LEONARDO DE BORTOLI ESTRELLA;20;0,5;10;8,1017196
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Persevera Trinity FIRF REF DI RL;4502419;SILVANA PICCOLI BALDISSERA;20;0,5;10;7,94842425
+rafael.cordova;Renda VariÃ¡vel;PE;OPERAÃÃES ESTRUTURADAS;Put;242706;DIEGO EDUARDO PIRES DE BORBA;36;0,27027027;10;7,918682965
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Compass Yield 30 FIF RF CP LP RL;306220;VANESSA GAPRIOTTI NADALIN;20;0,5;10;7,9061775
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Persevera Yield FIRF LP;410260;MAURICIO FISCHER COSTA;20;0,5;10;7,8892788
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Alaska Black FIC de FIA - BDR NÃVEL I;29662;ADRIANO FORLIN;20;0,5;10;7,869966
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Riza Meyenii 360 Advisory FIF de Cotas de FIM;2758306;RAFAEL COSTA HERNANDEZ MENDES;19;0,5;10;7,8337545
+rafael.cordova;Renda VariÃ¡vel;Renda VariÃ¡vel;BOVESPA Self Service;Proftchart;4445328;LUCAS RANGEL PINTO;29;0,3375;10;7,7999571
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;PIER11 - PÃ¡tria Infra Energia Core Renda FIP INFRA;6761987;LEONARDO MASCARENHAS LEITE;19;0,5;10;7,757308
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;XP Corporate Top CP FIF FIRF LP RL;306220;VANESSA GAPRIOTTI NADALIN;19;0,5;9;7,5440625
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos ImobiliÃ¡rios;TX ADM;XP Renda ImobiliÃ¡ria Feeder FII RL;6761987;LEONARDO MASCARENHAS LEITE;19;0,5;9;7,523945
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;ACE Capital Advisory FIF CIC Multi RL;4590586;YVONNE MARIA KFOURI COSTA HERNANDEZ MENDES;18;0,5;9;7,3428875
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Persevera Yield FIRF LP;2944008;MARIA ELISABETE NEIS ARALDI;18;0,5;9;7,3171371
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Kapitalo Kappa Advisory FIF em Cotas de FIM;4590586;YVONNE MARIA KFOURI COSTA HERNANDEZ MENDES;18;0,5;9;7,1256185
+rafael.cordova;Assessoria;Outros;Desconto de TransferÃªncia de Clientes;[ESTORNO] Desconto de TransferÃªncia de Clientes - Assessor: A24559 Cliente: 2236190;2236190;LIZIA STONE AQUINO;18;0,5;9;7,0612425
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Kapitalo Kappa Advisory FIF em Cotas de FIM;4663767;HELAINE FLORES DO NASCIMENTO;17;0,5;8;6,751433
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Jive BossaNova High Yield Advisory FIC FIDC;2891989;ANA PAULA DE BORTOLI;16;0,5;8;6,606587
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos ImobiliÃ¡rios;TX ADM;AZ Quest Renda Mais Infra-Yield VI FIP-IE;6761987;LEONARDO MASCARENHAS LEITE;16;0,5;8;6,397365
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Jive BossaNova 90 FIDC;6761987;LEONARDO MASCARENHAS LEITE;16;0,5;8;6,324942
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Compass High Yield 180 Advisory FIF em Cotas de FIM;4347476;TIANA BALDISSERA;16;0,5;8;6,2404485
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;ARZ Confidas Dwight Real Estate Credit PÃ³s-Fixado FIF MM IE;3547280;ADRIANO ESPINDULA;15;0,5;8;6,172049
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Persevera Trinity FIRF REF DI RL;2078232;MARCELO DOMINICALI;15;0,5;7;6,0304218
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Persevera Trinity FIRF REF DI RL;3274787;MANOEL LUCE MADEIRA;15;0,5;7;6,01473015
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Valora Guardian Advisory FIDC RL;14643463;DAYVIDIANE NOGUEIRA DE LIMA;15;0,5;7;5,9507565
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Persevera Trinity FIRF REF DI RL;3624340;GUSTAVO ALEXANDRO MARCON;15;0,5;7;5,9459283
+rafael.cordova;Assessoria;Outros;Desconto de TransferÃªncia de Clientes;[ESTORNO] Desconto de TransferÃªncia de Clientes - Assessor: A24559 Cliente: 2216513;2216513;BRUNO MONTEIRO MAGALHAES;15;0,5;7;5,906498
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Persevera Trinity FIRF REF DI RL;8480375;TIANA BALDISSERA;15;0,5;7;5,842122
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Ibiuna Hedge ST Advisory FIF CIC Multimercado RL;2758306;RAFAEL COSTA HERNANDEZ MENDES;14;0,5;7;5,7495815
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Capitania Yield 120 FIC FIDC;306220;VANESSA GAPRIOTTI NADALIN;14;0,5;7;5,737511
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Solis Capital Antares Light FIC de FIDC;4502419;SILVANA PICCOLI BALDISSERA;14;0,5;7;5,7093465
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Jive BossaNova 90 FIDC;2219078;MARISTELA FISCHER;14;0,5;7;5,673135
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Solis Capital Antares Light FIC de FIDC;8480375;TIANA BALDISSERA;14;0,5;7;5,640947
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Hashdex 40 Nasdaq Crypto Index FIF em Cotas de FIM;2758306;RAFAEL COSTA HERNANDEZ MENDES;14;0,5;7;5,6047355
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Dahlia Total Return Advisory FIC FIF Multi RL;4590586;YVONNE MARIA KFOURI COSTA HERNANDEZ MENDES;14;0,5;7;5,463913
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;MCFA11 - MauÃ¡ Capital High Grade FII RL;242706;DIEGO EDUARDO PIRES DE BORBA;13;0,5;7;5,2909025
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Ibiuna Hedge FIF FIM RL;4590586;YVONNE MARIA KFOURI COSTA HERNANDEZ MENDES;13;0,5;7;5,2828555
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Persevera Trinity FIRF REF DI RL;2329776;RAFAEL NASCIMENTO DE CORDOVA;13;0,5;6;5,20600665
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;JiveMauÃ¡ BossaNova CrÃ©dito Securitizado FIDC - Cota SÃªnior;3547280;ADRIANO ESPINDULA;13;0,5;6;5,1701975
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Persevera Trinity FIRF REF DI RL;15010066;OSEAS DE SOUZA RODRIGUES FILHO;13;0,5;6;5,166174
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Franklin BSP CrÃ©dito Estruturado Global I FIF MM IE RL;6761987;LEONARDO MASCARENHAS LEITE;12;0,5;6;4,997187
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Treasury & Bond & Fund & Equity;CLEARTHROUGH;12b-1 Fee;8227409;FERNANDA MARIA COELHO VASQUES;15;0,4;6;4,9633896
+rafael.cordova;Seguros;A. Patrimonial;A. Patrimonial;-;2329776;RAFAEL NASCIMENTO DE CORDOVA;20;0,3;6;4,755777
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Persevera Yield FIRF LP;14643463;DAYVIDIANE NOGUEIRA DE LIMA;12;0,5;6;4,6399002
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;XP CrÃ©dito Estruturado 15 FIC de FIF RF CP LP RL;306220;VANESSA GAPRIOTTI NADALIN;11;0,5;6;4,58679
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Persevera Trinity FIRF REF DI RL;3547280;ADRIANO ESPINDULA;11;0,5;5;4,3912479
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Root Capital CrÃ©dito HG Plus FIC de FIF Multimercado CP RL;6761987;LEONARDO MASCARENHAS LEITE;11;0,5;5;4,3574505
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Hashdex 40 Nasdaq Crypto Index FIF em Cotas de FIM;4590586;YVONNE MARIA KFOURI COSTA HERNANDEZ MENDES;11;0,5;5;4,313192
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Renda Fixa;RENDA FIXA;LCA PRE 26C03180097;549539;NESTOR PEDRO GIACOMIN;11;0,5;5;4,272957
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Riza Meyenii 360 Advisory FIF de Cotas de FIM;442135;MARCIO FITTEL MALUF;10;0,5;5;4,1562755
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Persevera Yield FIRF LP;15010066;OSEAS DE SOUZA RODRIGUES FILHO;10;0,5;5;4,1377674
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Riza Daikon Advisory FIF em Cotas de FIM;4590586;YVONNE MARIA KFOURI COSTA HERNANDEZ MENDES;10;0,5;5;4,071782
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Oaktree Global Credit USD Advisory FIC FIM;92845;BIAZID HALABI FILHO;10;0,5;5;3,991312
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Compass Yield 30 FIF RF CP LP RL;14643463;DAYVIDIANE NOGUEIRA DE LIMA;10;0,5;5;3,854513
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Valora Guardian Advisory FIDC RL;92845;BIAZID HALABI FILHO;9;0,5;5;3,7539255
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Compass Yield 30 FIF RF CP LP RL;410260;MAURICIO FISCHER COSTA;9;0,5;5;3,7056435
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Persevera Yield FIRF LP;4144499;JAIRO AUGUSTO DE CORDOVA;9;0,5;5;3,6815025
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Persevera Trinity FIRF REF DI RL;4663767;HELAINE FLORES DO NASCIMENTO;9;0,5;4;3,5559693
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Persevera Trinity FIRF REF DI RL;2891989;ANA PAULA DE BORTOLI;9;0,5;4;3,5076873
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;XP Corporate Light FIRF CP LP;4347476;TIANA BALDISSERA;9;0,5;4;3,444116
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Renda Fixa;RENDA FIXA;CDB PRE DU CDB925AT4QF;2439637;PAULO ROBERTO NAZARI CAMARGO;9;0,5;4;3,4320455
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;PDIVER - Gama Pearl Diver CrÃ©dito Estruturado Global FIM RL;3547280;ADRIANO ESPINDULA;8;0,5;4;3,411928
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Persevera Trinity FIRF REF DI RL;3475484;EDUARDO ANTUNES DO LIVRAMENTO NETO;8;0,5;4;3,40991625
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;MCCE11 - MauÃ¡ Capital CrÃ©dito Estruturado;6761987;LEONARDO MASCARENHAS LEITE;8;0,5;4;3,4079045
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;PrevidÃªncia;PrevidÃªncia - Co-corretagem;-;3039570;LEONARDO DE BORTOLI ESTRELLA;8;0,5;4;3,3821541
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;XP Referenciado FIF RF Referenciado DI CP RL;8573174;NAILA MONNERAT MODENESI;8;0,5;4;3,37974
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;XP Private Equity II - Classe A - FIP MultiestratÃ©gia;242706;DIEGO EDUARDO PIRES DE BORBA;8;0,5;4;3,3354815
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;XP Private Equity II - Classe A - FIP MultiestratÃ©gia;6761987;LEONARDO MASCARENHAS LEITE;8;0,5;4;3,3354815
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos ImobiliÃ¡rios;TX ADM;Sparta PrÃ© 2028 FI-Infra RF CP RL;242706;DIEGO EDUARDO PIRES DE BORBA;8;0,5;4;3,315364
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;PÃ¡tria Infraestrutura CrÃ©dito DI III FIP-IE RL;242706;DIEGO EDUARDO PIRES DE BORBA;8;0,5;4;3,2711055
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Riza Lotus FIF RF - Referenciada DI CP RL;4347476;TIANA BALDISSERA;8;0,5;4;3,250988
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Newave Energia FIP - Classe D (com DI);405397;JOSMAR ALEXANDRE PERINI;8;0,5;4;3,2389175
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;PIMCO INCOME DÃLAR FIC de FIF Multimercado IE RL;92845;BIAZID HALABI FILHO;8;0,5;4;3,162471
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Persevera Trinity FIRF REF DI RL;3539793;VIRGINIA SILVA DOS SANTOS;8;0,5;4;3,1528146
+rafael.cordova;Renda VariÃ¡vel;Renda VariÃ¡vel;BOVESPA;-;4590586;YVONNE MARIA KFOURI COSTA HERNANDEZ MENDES;11;0,3375;4;3,10911939
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;JGFA11 - JGP Ecossistema Infra CDI CP RL;2656669;VALDIR JOSE MATTIOLLO;8;0,5;4;3,065907
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;JGFA11 - JGP Ecossistema Infra CDI CP RL;3624340;GUSTAVO ALEXANDRO MARCON;8;0,5;4;3,065907
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Augme 30 Advisory CIC RF CP LP RL;4144499;JAIRO AUGUSTO DE CORDOVA;8;0,5;4;3,0457895
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos ImobiliÃ¡rios;TX ADM;MauÃ¡ Capital LogÃ­stica Feeder FII - RL;2219078;MARISTELA FISCHER;8;0,5;4;3,0216485
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Guepardo Institucional FIF em Cotas FIA RL;2605189;LARYSSA MELO CARINHENA;7;0,5;4;2,864732
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;XP Private Equity II - Classe A - FIP MultiestratÃ©gia;405397;JOSMAR ALEXANDRE PERINI;7;0,5;4;2,8365675
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;JGFA11 - JGP Ecossistema Infra CDI CP RL;2219078;MARISTELA FISCHER;7;0,5;3;2,7560975
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Polo CrÃ©dito Corporativo Advisory FIC FIF RF CP LP RL;8390382;MARIA JULIANA TURCATTI PAGANINI;7;0,5;3;2,7400035
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;PÃ¡tria Infraestrutura CrÃ©dito DI III FIP-IE RL;3547280;ADRIANO ESPINDULA;7;0,5;3;2,727933
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;JiveMauÃ¡ BossaNova CrÃ©dito Securitizado FIDC - Cota SÃªnior;2758306;RAFAEL COSTA HERNANDEZ MENDES;6;0,5;3;2,5871105
+rafael.cordova;Renda VariÃ¡vel;Renda VariÃ¡vel;BM&F;Mesa;242706;DIEGO EDUARDO PIRES DE BORBA;9;0,3375;3;2,54421999
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;MNH Private Income FIF MM IE - RL;14643463;DAYVIDIANE NOGUEIRA DE LIMA;6;0,5;3;2,518711
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Kinea Atlas II FIM RL - Subclasse I;2758306;RAFAEL COSTA HERNANDEZ MENDES;6;0,5;3;2,5066405
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Western Asset BDR FIF;2891989;ANA PAULA DE BORTOLI;6;0,5;3;2,4824995
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Renda Fixa;RENDA FIXA;CDB PRE DU CDB123S2ZJJ;2439637;PAULO ROBERTO NAZARI CAMARGO;6;0,5;3;2,4583585
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Guepardo Institucional FIF em Cotas FIA RL;3922839;VAGNER MATTIOLLO;6;0,5;3;2,446288
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;XP Special Opportunities FIP Multi - Classe A;2219078;MARISTELA FISCHER;6;0,5;3;2,4181235
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;TrÃ­gono Verbier FIF em Cotas de FIA;29662;ADRIANO FORLIN;6;0,5;3;2,3778885
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Guepardo Institucional FIF em Cotas FIA RL;29662;ADRIANO FORLIN;6;0,5;3;2,3376535
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;MRFA11 - XP Multi Renda FII RL;3624340;GUSTAVO ALEXANDRO MARCON;6;0,5;3;2,317536
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Brasil Capital 30 Advisory FIF FIA RL;4590586;YVONNE MARIA KFOURI COSTA HERNANDEZ MENDES;6;0,5;3;2,277301
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Compass Yield 30 FIF RF CP LP RL;8480375;TIANA BALDISSERA;6;0,5;3;2,277301
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Trend PÃ³s-Fixado FIC FIRF Simples RL;9416824;GLOBUS SISTEMAS ELETRONICOS LTDA;6;0,5;3;2,2169485
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Ibiuna Equities FIF CIC AÃ§Ãµes RL;92845;BIAZID HALABI FILHO;5;0,5;3;2,204878
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Newave Energia FIP - Classe D (com DI);442135;MARCIO FITTEL MALUF;5;0,5;3;2,196831
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Trend PÃ³s-Fixado FIC FIRF Simples RL;7755401;CARLOS VOLTOLINI;5;0,5;3;2,196831
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Real Investor FIC de FIF em AÃ§Ãµes RL;92845;BIAZID HALABI FILHO;5;0,5;3;2,124408
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Oaktree Global Credit BRL FIC FIM;92845;BIAZID HALABI FILHO;5;0,5;3;2,100267
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;XP Selection Alternativo FIP Multi - Classe A;377749;WILLIAM ALBERTO BRETERNITZ;5;0,5;3;2,084173
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Trend Bolsas Globais FIA RL;92845;BIAZID HALABI FILHO;5;0,5;3;2,068079
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;JivemauÃ¡ Bossanova CrÃ©dito Securitizado II FIDC RL - Subclasse SÃªnior;6761987;LEONARDO MASCARENHAS LEITE;5;0,5;3;2,035891
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;SulAmÃ©rica Exclusive FIRF REF DI;2431686;CARLOS ALBERTO NAZZARI CAMARGO;5;0,5;3;2,027844
+rafael.cordova;Renda VariÃ¡vel;Renda VariÃ¡vel;BOVESPA;Mesa;2329776;RAFAEL NASCIMENTO DE CORDOVA;7;0,3375;3;2,02277439
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Persevera Yield FIRF LP;6302904;ROSANA CRUZ;5;0,5;2;2,0061171
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Trend Ouro FIF Multi RL;92845;BIAZID HALABI FILHO;5;0,5;2;1,963468
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;ARZ Confidas Dwight Real Estate Credit PrÃ© FIF MM IE RL;3547280;ADRIANO ESPINDULA;5;0,5;2;1,9513975
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;ARZ Confidas Dwight Real Estate Credit PÃ³s-Fixado FIF MM IE;29662;ADRIANO FORLIN;5;0,5;2;1,85081
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;JGFA11 - JGP Ecossistema Infra CDI CP RL;6302904;ROSANA CRUZ;5;0,5;2;1,8387395
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Persevera Trinity FIRF REF DI RL;442135;MARCIO FITTEL MALUF;4;0,5;2;1,7936763
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;ARZ Confidas Dwight Real Estate Credit PÃ³s-Fixado FIF MM IE;8179563;DOUGLAS MATTIOLLO;4;0,5;2;1,762293
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;IP ParticipaÃ§Ãµes IPG FIC FIF AÃ§Ãµes RL;92845;BIAZID HALABI FILHO;4;0,5;2;1,762293
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;JivemauÃ¡ Bossanova CrÃ©dito Securitizado II FIDC RL - Subclasse SÃªnior;2656669;VALDIR JOSE MATTIOLLO;4;0,5;2;1,762293
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;EB Futuro SustentÃ¡vel FIP MultiestratÃ©gia Classe 2;2656669;VALDIR JOSE MATTIOLLO;4;0,5;2;1,7502225
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;ARZ Alpine Bain Capital Private Credit II FIC FIM  CP RL;2656669;VALDIR JOSE MATTIOLLO;4;0,5;2;1,7180345
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Pimco Income FIC de FIF Multimercado IE RL;92845;BIAZID HALABI FILHO;4;0,5;2;1,7099875
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Persevera Trinity FIRF REF DI RL;3039570;LEONARDO DE BORTOLI ESTRELLA;4;0,5;2;1,70556165
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Vinci CrÃ©dito PortfÃ³lio CDI+ FIDC;3107986;CAMILE ARNDT DOS SANTOS;4;0,5;2;1,6456115
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;PrevidÃªncia;PrevidÃªncia - Co-corretagem;-;4347476;TIANA BALDISSERA;4;0,5;2;1,62106815
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos ImobiliÃ¡rios;TX ADM;Maua Lajes Corporativas Feeder FII RL - Senior;6761987;LEONARDO MASCARENHAS LEITE;4;0,5;2;1,617447
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Solis Capital Antares Light FIC de FIDC;2944008;MARIA ELISABETE NEIS ARALDI;4;0,5;2;1,6134235
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;XP Corporate Top CP FIF FIRF LP RL;2891989;ANA PAULA DE BORTOLI;4;0,5;2;1,6094
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;MNH Private Income FIF MM IE - RL;3547280;ADRIANO ESPINDULA;4;0,5;2;1,5731885
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Riza Lotus FIF RF - Referenciada DI CP RL;4144499;JAIRO AUGUSTO DE CORDOVA;4;0,5;2;1,5490475
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;XP Referenciado FIF RF Referenciado DI CP RL;2439637;PAULO ROBERTO NAZARI CAMARGO;4;0,5;2;1,520883
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Renda Fixa;RENDA FIXA;CDB FLU CDB22588PPE;549539;NESTOR PEDRO GIACOMIN;4;0,5;2;1,512836
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Persevera Yield FIRF LP;3624340;GUSTAVO ALEXANDRO MARCON;4;0,5;2;1,5112266
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos ImobiliÃ¡rios;TX ADM;Legacy Capital Portfolio Renda Mais FI-INFRA RF LP RL;549539;NESTOR PEDRO GIACOMIN;4;0,5;2;1,472601
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;ARZ Alpine Bain Capital Private Credit II FIC FIM  CP RL;549539;NESTOR PEDRO GIACOMIN;4;0,5;2;1,432366
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;MRFA11 - XP Multi Renda FII RL;14643463;DAYVIDIANE NOGUEIRA DE LIMA;3;0,5;2;1,392131
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;MRFA11 - XP Multi Renda FII RL;15010066;OSEAS DE SOUZA RODRIGUES FILHO;3;0,5;2;1,392131
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;PÃ¡tria Infraestrutura CrÃ©dito DI III FIP-IE RL;2219078;MARISTELA FISCHER;3;0,5;2;1,3639665
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;PDIVER - Gama Pearl Diver CrÃ©dito Estruturado Global FIM RL;3475484;EDUARDO ANTUNES DO LIVRAMENTO NETO;3;0,5;2;1,3639665
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;PDIVER - Gama Pearl Diver CrÃ©dito Estruturado Global FIM RL;3539793;VIRGINIA SILVA DOS SANTOS;3;0,5;2;1,3639665
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;PDIVER - Gama Pearl Diver CrÃ©dito Estruturado Global FIM RL;549539;NESTOR PEDRO GIACOMIN;3;0,5;2;1,3639665
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;PDIVER - Gama Pearl Diver CrÃ©dito Estruturado Global FIM RL;6302904;ROSANA CRUZ;3;0,5;2;1,3639665
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Occam Portfolio CrÃ©dito FIDC RL;306220;VANESSA GAPRIOTTI NADALIN;3;0,5;2;1,335802
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Occam Portfolio CrÃ©dito FIDC RL;549539;NESTOR PEDRO GIACOMIN;3;0,5;2;1,335802
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;PIER11 - PÃ¡tria Infra Energia Core Renda FIP INFRA;549539;NESTOR PEDRO GIACOMIN;3;0,5;2;1,295567
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;MNH Private Income FIF MM IE - RL;410260;MAURICIO FISCHER COSTA;3;0,5;2;1,2593555
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;XP Infra IV FIP IE - Classe A;6761987;LEONARDO MASCARENHAS LEITE;3;0,5;1;1,2030265
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;AZQA11 - AZ Quest Luna - FIAgro;3624340;GUSTAVO ALEXANDRO MARCON;3;0,5;1;1,199003
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Trend Dolar FIF Cambial RL;92845;BIAZID HALABI FILHO;3;0,5;1;1,1547445
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;VICA11 - Vinci CrÃ©dito FIAgro;2219078;MARISTELA FISCHER;3;0,5;1;1,1306035
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;XP Credit Opportunities FIDC - Modelo A;242706;DIEGO EDUARDO PIRES DE BORBA;3;0,5;1;1,12658
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos ImobiliÃ¡rios;TX ADM;Sparta PrÃ© 2028 FI-Infra RF CP RL;410260;MAURICIO FISCHER COSTA;3;0,5;1;1,1064625
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;PÃ¡tria Infraestrutura CrÃ©dito DI III FIP-IE RL;549539;NESTOR PEDRO GIACOMIN;3;0,5;1;1,0903685
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;JiveMauÃ¡ Bossanova CrÃ©dito Securitizado (Varejo) FIDC RL;549539;NESTOR PEDRO GIACOMIN;3;0,5;1;1,0340395
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;FAMI11 - REC-FAMI Fundo de CRI;242706;DIEGO EDUARDO PIRES DE BORBA;3;0,5;1;1,021969
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;PDIVER - Gama Pearl Diver CrÃ©dito Estruturado Global FIM RL;2219078;MARISTELA FISCHER;3;0,5;1;1,021969
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Renda Fixa;RENDA FIXA;LCA 25F01808566;2439637;PAULO ROBERTO NAZARI CAMARGO;3;0,5;1;1,021969
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;JGPT11 - JGP CrÃ©dito Agro;3624340;GUSTAVO ALEXANDRO MARCON;3;0,5;1;1,013922
+rafael.cordova;Renda VariÃ¡vel;Renda VariÃ¡vel;BOVESPA;Mesa;3922839;VAGNER MATTIOLLO;4;0,3375;1;1,01030085
+rafael.cordova;Renda VariÃ¡vel;Renda VariÃ¡vel;BOVESPA Self Service;HB;2320566;MAURICIO DO NASCIMENTO PERINI;4;0,3375;1;1,01030085
+rafael.cordova;Renda VariÃ¡vel;Renda VariÃ¡vel;BOVESPA Self Service;HB;2439637;PAULO ROBERTO NAZARI CAMARGO;4;0,3375;1;1,01030085
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;XP Private Equity II - Classe A - FIP MultiestratÃ©gia;3547280;ADRIANO ESPINDULA;2;0,5;1;1,0018515
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;XP Private Equity II - Classe A - FIP MultiestratÃ©gia;377749;WILLIAM ALBERTO BRETERNITZ;2;0,5;1;1,0018515
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;MCCE11 - MauÃ¡ Capital CrÃ©dito Estruturado;3107986;CAMILE ARNDT DOS SANTOS;2;0,5;1;0,997828
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;JGPI11 - JGP Infra;3107986;CAMILE ARNDT DOS SANTOS;2;0,5;1;0,9696635
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;VGIE11 - Valora Infra DÃ­vida FIP IE;2219078;MARISTELA FISCHER;2;0,5;1;0,9616165
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;VGIE11 - Valora Infra DÃ­vida FIP IE;306220;VANESSA GAPRIOTTI NADALIN;2;0,5;1;0,9616165
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;VGIE11 - Valora Infra DÃ­vida FIP IE;3107986;CAMILE ARNDT DOS SANTOS;2;0,5;1;0,9616165
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;VICA11 - Vinci CrÃ©dito FIAgro;3624340;GUSTAVO ALEXANDRO MARCON;2;0,5;1;0,941499
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;SPX Falcon 2 FIC FIA;92845;BIAZID HALABI FILHO;2;0,5;1;0,933452
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Persevera Trinity FIRF REF DI RL;2944008;MARIA ELISABETE NEIS ARALDI;2;0,5;1;0,8956311
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Persevera Trinity FIRF REF DI RL;6302904;ROSANA CRUZ;2;0,5;1;0,893217
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Occam Portfolio CrÃ©dito FIDC RL;6302904;ROSANA CRUZ;2;0,5;1;0,8891935
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;AZQI11 - AZ Quest Infra Yield FIP IE;377749;WILLIAM ALBERTO BRETERNITZ;2;0,5;1;0,8489585
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;JGPT11 - JGP CrÃ©dito Agro;3107986;CAMILE ARNDT DOS SANTOS;2;0,5;1;0,844935
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;PrevidÃªncia;PrevidÃªncia - Co-corretagem;-;2329776;RAFAEL NASCIMENTO DE CORDOVA;2;0,5;1;0,836888
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;CYHF11 - Cyrela Hedge Fund FII RL;2219078;MARISTELA FISCHER;2;0,5;1;0,820794
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;PDIVER - Gama Pearl Diver CrÃ©dito Estruturado Global FIM RL;410260;MAURICIO FISCHER COSTA;2;0,5;1;0,820794
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;PÃ¡tria Infraestrutura CrÃ©dito DI III FIP-IE RL;2656669;VALDIR JOSE MATTIOLLO;2;0,5;1;0,8167705
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;JGPI11 - JGP Infra;14643463;DAYVIDIANE NOGUEIRA DE LIMA;2;0,5;1;0,8087235
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Persevera Trinity FIRF REF DI RL;2758306;RAFAEL COSTA HERNANDEZ MENDES;2;0,5;1;0,79061775
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;CPAC11 - CapitÃ¢nia Agro CrÃ©dito;3624340;GUSTAVO ALEXANDRO MARCON;2;0,5;1;0,7845825
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Riza Lotus FIF RF - Referenciada DI CP RL;2891989;ANA PAULA DE BORTOLI;2;0,5;1;0,7684885
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;PIER11 - PÃ¡tria Infra Energia Core Renda FIP INFRA;3624340;GUSTAVO ALEXANDRO MARCON;2;0,5;1;0,7523945
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos ImobiliÃ¡rios;TX ADM;Sparta PrÃ© 2028 FI-Infra RF CP RL;2219078;MARISTELA FISCHER;2;0,5;1;0,7363005
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Jive Dist & Spec Sits IV Adv Qual FicFim CP - Modelo A;410260;MAURICIO FISCHER COSTA;2;0,5;1;0,6799715
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Oceana Long Biased Advisory FIC FIM;92845;BIAZID HALABI FILHO;2;0,5;1;0,667901
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;MCCE11 - MauÃ¡ Capital CrÃ©dito Estruturado;2891989;ANA PAULA DE BORTOLI;2;0,5;1;0,6638775
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;MCCE11 - MauÃ¡ Capital CrÃ©dito Estruturado;3565469;NALI LEDI ARNDT MORENO;2;0,5;1;0,6638775
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;MCCE11 - MauÃ¡ Capital CrÃ©dito Estruturado;377749;WILLIAM ALBERTO BRETERNITZ;2;0,5;1;0,6638775
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;XPAG11 - XP CrÃ©dito Agro;3107986;CAMILE ARNDT DOS SANTOS;2;0,5;1;0,659854
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Absolute Vertex Advisory FIC FIF Multimercado RL;92845;BIAZID HALABI FILHO;2;0,5;1;0,651807
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;JGPI11 - JGP Infra;306220;VANESSA GAPRIOTTI NADALIN;2;0,5;1;0,6477835
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;AZQI11 - AZ Quest Infra Yield FIP IE;3107986;CAMILE ARNDT DOS SANTOS;2;0,5;1;0,635713
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;JGPT11 - JGP CrÃ©dito Agro;2219078;MARISTELA FISCHER;2;0,5;1;0,635713
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;MNH Private Income FIF MM IE - RL;549539;NESTOR PEDRO GIACOMIN;2;0,5;1;0,6316895
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;MNH Private Income FIF MM IE - RL;6302904;ROSANA CRUZ;2;0,5;1;0,6316895
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Renda Fixa;RENDA FIXA;CDB PRE DU CDB3211FWIJ;2439637;PAULO ROBERTO NAZARI CAMARGO;2;0,5;1;0,619619
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;JGFA11 - JGP Ecossistema Infra CDI CP RL;3922839;VAGNER MATTIOLLO;2;0,5;1;0,611572
+rafael.cordova;Renda VariÃ¡vel;Renda VariÃ¡vel;BTC;BTC - Receita Doador;6761987;LEONARDO MASCARENHAS LEITE;4;0,2;1;0,6051344
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;AXA WF Framlington Digital Economy Advisory CIC CIA IE RL;3547280;ADRIANO ESPINDULA;1;0,5;1;0,5834075
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;ARZ Alpine Bain Capital Private Credit II FIC FIM  CP RL;410260;MAURICIO FISCHER COSTA;1;0,5;1;0,571337
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Persevera Trinity FIRF REF DI RL;2219078;MARISTELA FISCHER;1;0,5;1;0,56610645
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;PÃ¡tria Infraestrutura CrÃ©dito DI III FIP-IE RL;3922839;VAGNER MATTIOLLO;1;0,5;1;0,547196
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;PIER11 - PÃ¡tria Infra Energia Core Renda FIP INFRA;3107986;CAMILE ARNDT DOS SANTOS;1;0,5;1;0,5029375
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;MCCE11 - MauÃ¡ Capital CrÃ©dito Estruturado;3039570;LEONARDO DE BORTOLI ESTRELLA;1;0,5;1;0,498914
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;XP Infra IV FIP IE - Classe A;2656669;VALDIR JOSE MATTIOLLO;1;0,5;1;0,498914
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;XP Infra IV FIP IE - Classe A;6302904;ROSANA CRUZ;1;0,5;1;0,498914
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;XPAG11 - XP CrÃ©dito Agro;3624340;GUSTAVO ALEXANDRO MARCON;1;0,5;1;0,4948905
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;KJNT11 - Kijani Asatala FIAgro;3107986;CAMILE ARNDT DOS SANTOS;1;0,5;1;0,458679
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Renda Fixa;RENDA FIXA;CDB PRE DU CDB221AZXJT;2439637;PAULO ROBERTO NAZARI CAMARGO;1;0,5;1;0,458679
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;XP Referenciado FIF RF Referenciado DI CP RL;8390382;MARIA JULIANA TURCATTI PAGANINI;1;0,5;1;0,4385615
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Persevera Trinity FIRF REF DI RL;3565469;NALI LEDI ARNDT MORENO;1;0,5;1;0,4369521
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;AZQI11 - AZ Quest Infra Yield FIP IE;2891989;ANA PAULA DE BORTOLI;1;0,5;1;0,4224675
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;AZQI11 - AZ Quest Infra Yield FIP IE;410260;MAURICIO FISCHER COSTA;1;0,5;1;0,4224675
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Renda Fixa;RENDA FIXA;CDB PRE DU CDB3210V1RV;2439637;PAULO ROBERTO NAZARI CAMARGO;1;0,5;1;0,4224675
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;TGRE11 - TG Real Estate;3107986;CAMILE ARNDT DOS SANTOS;1;0,5;1;0,4144205
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;FAMI11 - REC-FAMI Fundo de CRI;2656669;VALDIR JOSE MATTIOLLO;1;0,5;1;0,410397
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;FAMI11 - REC-FAMI Fundo de CRI;3565469;NALI LEDI ARNDT MORENO;1;0,5;1;0,410397
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;FAMI11 - REC-FAMI Fundo de CRI;3624340;GUSTAVO ALEXANDRO MARCON;1;0,5;1;0,410397
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;FAMI11 - REC-FAMI Fundo de CRI;6302904;ROSANA CRUZ;1;0,5;1;0,410397
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Persevera Trinity FIRF REF DI RL;410260;MAURICIO FISCHER COSTA;1;0,5;0;0,386256
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;AVBI11 - VBI CrÃ©dito;410260;MAURICIO FISCHER COSTA;1;0,5;0;0,3661385
+rafael.cordova;Renda VariÃ¡vel;Renda VariÃ¡vel;BTC;BTC - Receita Doador;442135;MARCIO FITTEL MALUF;2;0,2;0;0,3572868
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Persevera Trinity FIRF REF DI RL;306220;VANESSA GAPRIOTTI NADALIN;1;0,5;0;0,3524586
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;MCFA11 - MauÃ¡ Capital High Grade FII RL;2656669;VALDIR JOSE MATTIOLLO;1;0,5;0;0,3419975
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;XPAG11 - XP CrÃ©dito Agro;410260;MAURICIO FISCHER COSTA;1;0,5;0;0,329927
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Riza Lotus FIF RF - Referenciada DI CP RL;306220;VANESSA GAPRIOTTI NADALIN;1;0,5;0;0,3259035
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Absolute Pace Long Biased Advisory FIC FIA RL;92845;BIAZID HALABI FILHO;1;0,5;0;0,313833
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Treasury & Bond & Fund & Equity;Mercado Internacional;-;2758306;RAFAEL COSTA HERNANDEZ MENDES;1;0,4;0;0,26584198
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Treasury & Bond & Fund & Equity;Mercado Internacional;-;549539;NESTOR PEDRO GIACOMIN;1;0,4;0;0,26584198
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Renda Fixa;RENDA FIXA;CDB PRE DU CDB121ICS6H;2656669;VALDIR JOSE MATTIOLLO;1;0,5;0;0,265551
+rafael.cordova;Renda VariÃ¡vel;Renda VariÃ¡vel;BTC;BTC - Receita Doador;4445328;LUCAS RANGEL PINTO;2;0,2;0;0,249457
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos ImobiliÃ¡rios;TX ADM;SPX CRI Portfolio Renda Mais;2656669;VALDIR JOSE MATTIOLLO;1;0,5;0;0,225316
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;XP Credit Opportunities FIDC - Modelo A;306220;VANESSA GAPRIOTTI NADALIN;1;0,5;0;0,225316
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Trend PÃ³s-Fixado FIC FIRF Simples RL;4144499;JAIRO AUGUSTO DE CORDOVA;1;0,5;0;0,201175
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Riza Lotus FIF RF - Referenciada DI CP RL;2758306;RAFAEL COSTA HERNANDEZ MENDES;0;0,5;0;0,168987
+rafael.cordova;Renda VariÃ¡vel;Renda VariÃ¡vel;BTC;BTC - Receita Doador;29662;ADRIANO FORLIN;1;0,2;0;0,1561118
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;XP Credit Opportunities FIDC - Modelo A;3475484;EDUARDO ANTUNES DO LIVRAMENTO NETO;0;0,5;0;0,1488695
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;XP Credit Opportunities FIDC - Modelo A;3539793;VIRGINIA SILVA DOS SANTOS;0;0,5;0;0,1488695
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;XP Referenciado FIF RF Referenciado DI CP RL;9232238;IVANIR MORO;0;0,5;0;0,1247285
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Persevera Trinity FIRF REF DI RL;3107986;CAMILE ARNDT DOS SANTOS;0;0,5;0;0,10984155
+rafael.cordova;Renda VariÃ¡vel;Renda VariÃ¡vel;BTC;BTC - Receita Doador;242706;DIEGO EDUARDO PIRES DE BORBA;1;0,2;0;0,08047
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;First Trust Megatrend FIA RL;2656669;VALDIR JOSE MATTIOLLO;0;0,5;0;0,056329
+rafael.cordova;Renda VariÃ¡vel;Renda VariÃ¡vel;BTC;BTC - Receita Doador;2329776;RAFAEL NASCIMENTO DE CORDOVA;0;0,2;0;0,0515008
+rafael.cordova;Renda VariÃ¡vel;Renda VariÃ¡vel;BTC;BTC - Receita Doador;405397;JOSMAR ALEXANDRE PERINI;0;0,2;0;0,0418444
+rafael.cordova;Renda VariÃ¡vel;Renda VariÃ¡vel;BTC;BTC - Receita Doador;5993019;NELIO ENDERLE;0;0,2;0;0,0305786
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;IMOV11 - Navi Hedge Fund;6302904;ROSANA CRUZ;0;0,5;0;0,024141
+rafael.cordova;Renda VariÃ¡vel;Renda VariÃ¡vel;BTC;BTC - Receita Doador;2320566;MAURICIO DO NASCIMENTO PERINI;0;0,2;0;0,016094
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;BNP Paribas Match FIF RF CP RL;9416824;GLOBUS SISTEMAS ELETRONICOS LTDA;0;0,5;0;0,008047
+rafael.cordova;Assessoria;Outros;Desconto de TransferÃªncia de Clientes;[MULTA] Desconto de TransferÃªncia de Clientes - Assessor: A24559 Cliente: 5719926;5719926;CASSIA NAVA JAEGER;-13;0,5;0;0
+rafael.cordova;Banking;CrÃ©dito;CrÃ©dito Colateralizado;-;5892942;JOAO PEDRO DELLA MEA MAGRO;0;0,3;0;0
+rafael.cordova;Banking;CrÃ©dito;CrÃ©dito Pessoal;-;2758306;RAFAEL COSTA HERNANDEZ MENDES;0;0,25;0;0
+rafael.cordova;Banking;CrÃ©dito;CrÃ©dito Pessoal;-;2944008;MARIA ELISABETE NEIS ARALDI;0;0,25;0;0
+rafael.cordova;Banking;CrÃ©dito;CrÃ©dito Pessoal;-;4590586;YVONNE MARIA KFOURI COSTA HERNANDEZ MENDES;0;0,25;0;0
+rafael.cordova;Banking;CrÃ©dito;CrÃ©dito Pessoal;-;6761987;LEONARDO MASCARENHAS LEITE;0;0,25;0;0
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos ImobiliÃ¡rios;TX ADM;AZ QUEST PANORAMA RENDA CDI FI RESPONSABILIDADE LIMITADA;14643463;DAYVIDIANE NOGUEIRA DE LIMA;0;0,5;0;0
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos ImobiliÃ¡rios;TX ADM;AZ QUEST PANORAMA RENDA CDI FI RESPONSABILIDADE LIMITADA;2219078;MARISTELA FISCHER;0;0,5;0;0
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos ImobiliÃ¡rios;TX ADM;AZ QUEST PANORAMA RENDA CDI FI RESPONSABILIDADE LIMITADA;242706;DIEGO EDUARDO PIRES DE BORBA;0;0,5;0;0
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos ImobiliÃ¡rios;TX ADM;AZ QUEST PANORAMA RENDA CDI FI RESPONSABILIDADE LIMITADA;4571340;MARISA GAZZI KLOSS;0;0,5;0;0
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos ImobiliÃ¡rios;TX ADM;AZ QUEST PANORAMA RENDA CDI FI RESPONSABILIDADE LIMITADA;5892942;JOAO PEDRO DELLA MEA MAGRO;0;0,5;0;0
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos ImobiliÃ¡rios;TX ADM;Sparta PrÃ© 2028 FI-Infra RF CP RL;8227409;FERNANDA MARIA COELHO VASQUES;0;0,5;0;0
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Absolute Creta Advisory FIF FIRF;18382970;CARLA VALENTINI;0;0,5;0;0
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;ARZ Alpine Bain Capital Private Credit II FIC FIM  CP RL;2978828;ARTECASA COMERCIO DE MATERIAIS DE CONSTRUCAO LTDA;0;0,5;0;0
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;AVBI11 - VBI CrÃ©dito;3424140;INTEGRASUL SOLUCOES EM INFORMATICA LTDA;0;0,5;0;0
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;AVBI11 - VBI CrÃ©dito;6874426;ELIAS SOLDATELLI OLIBONI;1;0,5;0;0
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Bocom BBM Corporate Credit II FIF RF CP RL;18382020;BRUNA VALENTINI SIEGA;0;0,5;0;0
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;Fundos Recorrentes;TX ADM;Bocom BBM Corporate Credit II FIF RF CP RL;3424140;INTEGRASUL SOLUCOES EM INFORMATICA LTDA;0;0,5;0;0
+rafael.cordova;DistribuiÃ§Ã£o de Produtos;FEE Fixo / Wealth;FEE FIXO;Fee de Plataforma;19119719;FRANCISCO RICARDO VALERIANO LOPES LTDA;-43;0,5;-21;-21,335
+rafael.cordova;Assessoria;Outros;Plano de saÃºde;Co Partic. Plano de SaÃºde Titular;-;-;;1;-60;-60,1
+rafael.cordova;Assessoria;Outros;Plano de saÃºde;Co Partic. Plano de SaÃºde Dependente;-;-;;1;-120;-120,2
+rafael.cordova;Assessoria;Outros;Plano de saÃºde;Unimed Ne Titular;-;-;;1;-367;-367,21
+rafael.cordova;Assessoria;Outros;Desconto ComissÃ£o paga a Maior;ComissÃ£o paga a Maior - parc 1/1;-;-;;1;-411;-410,9
+rafael.cordova;Assessoria;Outros;Plano de saÃºde;Unimed Ne Dependente;-;-;;1;-560;-560,48

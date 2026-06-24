@@ -1,0 +1,140 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Dashboard Comissoes â€” Fami Capital</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+:root{--bg:#0f1117;--card:#1a1d27;--bdr:#2a2d3e;--text:#e2e8f0;--mu:#8892a4;--gr:#22c55e;--ye:#eab308;--re:#ef4444;--bl:#3b82f6;--ac:#6366f1}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:system-ui,sans-serif;font-size:14px}
+header{padding:20px 32px;border-bottom:1px solid var(--bdr);display:flex;justify-content:space-between;align-items:center}
+h1{font-size:17px;font-weight:600}
+.sub{font-size:11px;color:var(--mu);margin-top:3px}
+.wrap{max-width:1400px;margin:0 auto;padding:24px 32px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(165px,1fr));gap:14px;margin-bottom:26px}
+.card{background:var(--card);border:1px solid var(--bdr);border-radius:10px;padding:18px}
+.lbl{font-size:11px;color:var(--mu);text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px}
+.val{font-size:20px;font-weight:700}
+.dlt{font-size:11px;color:var(--mu);margin-top:3px}
+.cb .val{color:var(--bl)}.cg .val{color:var(--gr)}.cy .val{color:var(--ye)}
+.sec{background:var(--card);border:1px solid var(--bdr);border-radius:10px;padding:22px;margin-bottom:22px}
+.sec h2{font-size:13px;font-weight:600;margin-bottom:16px}
+.pills{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:18px}
+.pill{padding:5px 12px;border-radius:20px;font-size:11px;font-weight:500;cursor:pointer;border:1px solid var(--bdr);background:transparent;color:var(--mu);transition:all .12s}
+.pill:hover{border-color:var(--ac);color:var(--text)}
+.pill.on{color:#fff!important}
+.pa.on{background:var(--ac)!important;border-color:var(--ac)!important}
+.ga.on{background:var(--gr)!important;border-color:var(--gr)!important}
+.ya.on{background:var(--ye)!important;border-color:var(--ye)!important;color:#000!important}
+.ra.on{background:var(--re)!important;border-color:var(--re)!important}
+.ch{position:relative;height:270px}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{text-align:left;color:var(--mu);font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.04em;padding:7px 10px;border-bottom:1px solid var(--bdr)}
+td{padding:9px 10px;border-bottom:1px solid var(--bdr)}
+tr:last-child td{border-bottom:none}
+tr:hover td{background:rgba(255,255,255,.02)}
+.nr{text-align:right;font-variant-numeric:tabular-nums}
+.tg{color:var(--gr)}.ty{color:var(--ye)}.tr{color:var(--re)}.tb{color:var(--bl)}.tm{color:var(--mu)}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+@media(max-width:800px){.g2{grid-template-columns:1fr}}
+</style>
+</head>
+<body><header>
+  <div>
+    <h1>Dashboard Comissoes</h1>
+    <div class="sub">Fami Capital Â· 23/06/2026 16:37</div>
+  </div>
+</header><div class="wrap">
+<div class="cards" id="cr"></div>
+<div class="sec">
+  <h2>Evolucao Mensal</h2>
+  <div class="pills">
+    <button class="pill pa on" onclick="sf(this,'tl')">Total</button>
+    <button class="pill pa" onclick="sf(this,'tsc')">Sem Campanhas</button>
+    <button class="pill ga" onclick="sf(this,'rec')">Recorrente</button>
+    <button class="pill ga" onclick="sf(this,'ff')">Fee Fixo</button>
+    <button class="pill ga" onclick="sf(this,'mfo')">MFO Consult.</button>
+    <button class="pill ga" onclick="sf(this,'adm')">Carteira ADM</button>
+    <button class="pill ga" onclick="sf(this,'tx')">TX ADM</button>
+    <button class="pill ga" onclick="sf(this,'prev')">Previdencia</button>
+    <button class="pill ga" onclick="sf(this,'seg')">Seguros</button>
+    <button class="pill ya" onclick="sf(this,'rv')">RV</button>
+    <button class="pill ya" onclick="sf(this,'coe')">COE</button>
+    <button class="pill ya" onclick="sf(this,'rf')">RF</button>
+    <button class="pill ya" onclick="sf(this,'fiis')">FIIs</button>
+    <button class="pill ya" onclick="sf(this,'of')">Oferta Fundos</button>
+    <button class="pill ya" onclick="sf(this,'bank')">Banking</button>
+    <button class="pill ya" onclick="sf(this,'intl')">Internacional</button>
+    <button class="pill ra" onclick="sf(this,'camp')">Campanhas</button>
+  </div>
+  <div class="ch"><canvas id="mc"></canvas></div>
+</div>
+<div class="g2">
+  <div class="sec"><h2>Detalhamento â€” Ultimo Mes</h2><table id="bt"></table></div>
+  <div class="sec"><h2>Comparativo Mensal</h2><table id="mt"></table></div>
+</div>
+</div>
+<script>const DATA=[{mes:"Fev/2026",tl:20042,tsc:20042,rec:10402,pctRec:51.9,ff:4887,mfo:2323,adm:1775,tx:785,prev:600,seg:33,rv:3209,coe:0,rf:1300,fiis:25,of:4418,bank:1790,intl:1,camp:0,est:64},{mes:"Mar/2026",tl:20066,tsc:17601,rec:12240,pctRec:61,ff:6072,mfo:2342,adm:1884,tx:1003,prev:732,seg:206,rv:1268,coe:276,rf:989,fiis:1816,of:0,bank:2288,intl:178,camp:2465,est:65},{mes:"Abr/2026",tl:19769,tsc:18355,rec:11185,pctRec:56.6,ff:5593,mfo:2399,adm:1672,tx:790,prev:643,seg:88,rv:2943,coe:0,rf:1633,fiis:997,of:0,bank:1956,intl:610,camp:1414,est:61},{mes:"Mai/2026",tl:28460,tsc:20413,rec:11579,pctRec:40.7,ff:5649,mfo:2447,adm:1714,tx:967,prev:620,seg:181,rv:1214,coe:3657,rf:4024,fiis:25,of:274,bank:832,intl:174,camp:8047,est:23}];
+const FL={
+  tl:{l:'Total Liquido',b:null},tsc:{l:'Sem Campanhas',b:null},
+  rec:{l:'Recorrente',b:'A'},ff:{l:'Fee Fixo',b:'A'},mfo:{l:'MFO Consult.',b:'A'},
+  adm:{l:'Carteira ADM',b:'A'},tx:{l:'TX ADM',b:'A'},prev:{l:'Previdencia',b:'A'},seg:{l:'Seguros',b:'A'},
+  rv:{l:'RV',b:'B'},coe:{l:'COE',b:'B'},rf:{l:'RF',b:'B'},fiis:{l:'FIIs Primario',b:'B'},
+  of:{l:'Oferta Fundos',b:'B'},bank:{l:'Banking',b:'B'},intl:{l:'Internacional',b:'B'},
+  camp:{l:'Campanhas',b:'C'},est:{l:'Estornos',b:'C'}
+};
+const BC={A:'#22c55e',B:'#eab308',C:'#ef4444',null:'#6366f1'};
+const VD=DATA.filter(d=>d.tl!==null);
+const L=VD[VD.length-1],P=VD.length>1?VD[VD.length-2]:null;
+
+function fm(v){if(v===null||v===undefined)return'â€”';return'R$ '+Math.round(v).toLocaleString('pt-BR')}
+function fp(v){if(v===null||v===undefined)return'â€”';return v.toFixed(1)+'%'}
+
+document.getElementById('cr').innerHTML=[
+  {l:'Total Liquido',k:'tl',c:'cb'},
+  {l:'Sem Campanhas',k:'tsc',c:''},
+  {l:'Recorrente',k:'rec',c:'cg'},
+  {l:'% Recorrente',k:'pctRec',c:'cg',pct:1},
+  {l:'Fee Fixo',k:'ff',c:''},
+  {l:'MFO + ADM',k:null,c:'cy',calc:d=>(d.mfo||0)+(d.adm||0)},
+].map(cd=>{
+  const v=cd.calc?cd.calc(L):L[cd.k];
+  const p=P?(cd.calc?cd.calc(P):P[cd.k]):null;
+  const d=p?((v-p)/p*100).toFixed(1):null;
+  const ds=d?(+(d)>=0?'+'+d+'%':d+'%')+' vs '+P.mes:L.mes;
+  return`<div class="card ${cd.c}"><div class="lbl">${cd.l}</div><div class="val">${cd.pct?fp(v):fm(v)}</div><div class="dlt">${ds}</div></div>`;
+}).join('');
+
+let ch;
+function buildC(k,col){
+  const pts=VD.filter(d=>d[k]!==null);
+  if(ch)ch.destroy();
+  ch=new Chart(document.getElementById('mc').getContext('2d'),{
+    type:'bar',
+    data:{labels:pts.map(d=>d.mes),datasets:[{label:FL[k]?FL[k].l:k,data:pts.map(d=>d[k]||0),
+      backgroundColor:col+'44',borderColor:col,borderWidth:2,borderRadius:6}]},
+    options:{responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>fm(c.parsed.y)}}},
+      scales:{y:{grid:{color:'#2a2d3e'},ticks:{color:'#8892a4',callback:v=>'R$ '+(v/1000).toFixed(0)+'k'}},
+        x:{grid:{display:false},ticks:{color:'#8892a4'}}}}
+  });
+}
+function sf(el,k){
+  document.querySelectorAll('.pill').forEach(p=>p.classList.remove('on'));
+  el.classList.add('on');
+  buildC(k,BC[FL[k]?FL[k].b:null]);
+}
+buildC('tl','#6366f1');
+
+const bk=Object.entries(FL).filter(([k])=>k!=='tl'&&k!=='tsc');
+document.getElementById('bt').innerHTML='<thead><tr><th>Categoria</th><th>Bloco</th><th class="nr">'+(L?L.mes:'')+
+  '</th>'+(P?'<th class="nr">'+P.mes+'</th>':'')+'</tr></thead><tbody>'+
+  bk.map(([k,f])=>{const v=L?L[k]:null,p=P?P[k]:null,cl=f.b==='A'?'tg':f.b==='B'?'ty':f.b==='C'?'tr':'';
+    return`<tr><td>${f.l}</td><td class="${cl} tm">${f.b?'Bloco '+f.b:'â€”'}</td><td class="nr ${cl}">${fm(v)}</td>${P?`<td class="nr tm">${fm(p)}</td>`:''}</tr>`;
+  }).join('')+'</tbody>';
+
+document.getElementById('mt').innerHTML='<thead><tr><th>Mes</th><th class="nr">Total</th><th class="nr">Recorr.</th><th class="nr">%</th><th class="nr">Fee Fixo</th></tr></thead><tbody>'+
+  [...VD].reverse().map(d=>`<tr><td>${d.mes}</td><td class="nr tb">${fm(d.tl)}</td><td class="nr tg">${fm(d.rec)}</td><td class="nr tm">${fp(d.pctRec)}</td><td class="nr">${fm(d.ff)}</td></tr>`).join('')+'</tbody>';
+</script></body></html>

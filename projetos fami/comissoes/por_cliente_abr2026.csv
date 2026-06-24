@@ -1,0 +1,67 @@
+Cliente;Código;Fee Fixo;MFO/Cart.ADM;TX ADM;Previdência;RV;RF;FIIs;Banking/Intl;Seguros;Campanha;TOTAL;Recorrente?
+Diego Pires de Borba;242706;0;0;60;0;2208;573;0;1654;0;0;4495;Não
+Maria Norma Cruz (MFO);AF;0;2399;0;0;0;0;0;0;0;0;2399;Sim
+Carteira ADM MFO (Persevera);0047/81/39/40/41;0;1672;0;0;0;0;0;0;0;0;1672;Sim
+Leonardo Mascarenhas;6761987;0;0;68;0;1469;0;289;0;0;0;1826;Não
+Integrasul;3424140;1463;0;10;0;0;0;0;0;0;0;1473;Sim
+Rafael Costa H. Mendes;2758306;0;0;30;0;66;165;460;0;0;0;721;Não
+Fernanda;8227409;678;0;0;0;0;0;0;0;0;0;678;Sim
+Marcelo;2143369;532;0;0;0;0;0;0;0;0;0;532;Sim
+Gilberto;2861533;482;0;0;0;16;0;0;0;0;0;498;Sim
+Maristela Fischer;2219078;0;0;33;20;0;286;0;0;0;0;339;Não
+Taine Vidaletti;18295452;119;0;0;0;0;0;0;151;0;0;270;Sim (FF) + Banking
+Marcelo Travi;3355473;195;0;0;0;0;0;0;0;0;0;195;Sim
+Marisa Gazzi Kloss;4571340;128;0;3;0;0;0;118;0;0;0;249;Sim (FF) + FII
+Artecasa;2978828;187;0;0;0;0;0;0;0;0;0;187;Sim
+Silvio Frasson;3242303;174;0;0;0;0;0;0;0;0;0;174;Sim
+Adriano Espindula;3547280;0;0;21;0;0;229;0;0;0;0;250;Não
+Ivanir Moro;9232238;0;0;3;50;0;209;0;0;0;0;262;Não
+Martin Cammarota;2498565;284;0;0;0;0;0;118;0;0;0;402;Sim (FF) + FII
+Nestor Giacomin;549539;0;0;15;0;0;20;0;610;0;0;645;Não
+Ricardo Adail;2010572;247;0;0;0;0;0;0;0;0;0;247;Sim
+Reginaldo Lopes;2112212;248;0;0;0;0;0;0;0;0;0;248;Sim
+Francisco D. Gomes;4547934;215;0;0;0;0;0;0;0;0;0;215;Sim
+Helaine Flores;4663767;0;0;46;76;0;0;0;0;0;0;122;Sim (Prev)
+Ironita Mattiollo;3950461;142;0;0;0;0;0;0;0;0;0;142;Sim
+Carlos Voltolini;7755401;0;0;3;24;277;0;0;0;0;0;304;Não
+Maria Regina Vidal;6905836;0;0;0;154;0;0;0;0;0;0;154;Sim (Prev)
+Naila Monnerat;8573174;0;0;58;40;0;0;0;0;0;0;98;Sim (Prev+TX)
+João Pedro Magro;5892942;112;0;0;0;0;0;0;0;0;0;112;Sim
+Ana Paula De Bortoli;2891989;0;0;30;91;0;0;0;0;0;0;121;Sim (Prev)
+Tiana Baldissera (A);4347476;0;0;67;1;0;0;0;0;0;0;68;Sim (TX ADM)
+Tiana Baldissera (B);8480375;0;0;57;0;0;0;0;0;0;0;57;Sim (TX ADM)
+Patricia H. Mendes;486898;0;0;60;4;0;0;0;0;0;0;64;Sim (TX ADM)
+Francisco Ricardo LTDA;19119719;79;0;0;0;0;0;0;0;0;0;79;Sim
+Carla Valentini;18382970;117;0;0;0;0;0;0;0;0;0;117;Sim
+Nelio Enderle;5993019;97;0;0;0;0;0;0;0;0;0;97;Sim
+Bruna Valentini;18382020;94;0;0;0;0;0;0;0;0;0;94;Sim
+Marcio Maluf;442135;0;0;47;0;0;0;0;0;0;0;47;Sim (TX ADM)
+Vanessa Nadalin;306220;0;0;43;0;0;0;0;0;0;0;43;Sim (TX ADM)
+Yvonne H. Mendes;4590586;0;0;32;0;9;0;0;0;0;0;41;Não
+Rosana Cruz;6302904;0;0;10;37;0;0;0;0;0;0;47;Sim (Prev)
+William Breternitz;377749;0;0;8;0;0;32;0;0;0;0;40;Não
+Marcelo Dominicali;2078232;0;0;10;0;0;0;0;141;0;0;151;Não
+Cristiano Carvalho;15375451;0;0;0;0;63;0;0;0;0;0;63;Não
+Camile Arndt;3107986;0;0;10;20;0;0;0;0;0;0;30;Sim (Prev)
+Nali Arndt Moreno;3565469;0;0;4;32;0;0;0;0;0;0;36;Sim (Prev)
+Claudia Isoppo;3483079;0;0;0;0;0;0;0;0;47;0;47;Sim (Seguros)
+Servitec;3342459;0;0;0;0;0;0;0;10;36;0;46;Sim (Seguros)
+Adriano Forlin;29662;0;0;30;0;18;0;12;0;0;0;60;Não
+Maria Juliana Paganini;8390382;0;0;3;0;0;68;0;0;0;0;71;Não
+Dayvidiane Lima;14643463;0;0;25;0;0;0;0;0;0;0;25;Sim (TX ADM)
+Maria Elisabete Araldi;2944008;0;0;11;13;0;0;0;0;0;0;24;Sim (Prev)
+Mauricio Fischer;410260;0;0;22;8;0;0;0;0;0;0;30;Sim (Prev+TX)
+Rafael Nascimento Cordova;2329776;0;0;5;1;0;0;0;0;5;0;11;Sim
+Manoel Madeira;3274787;0;0;18;0;0;0;0;0;0;0;18;Sim (TX ADM)
+Oseas Rodrigues;15010066;0;0;10;0;0;0;0;0;0;0;10;Sim (TX ADM)
+Gustavo Marcon;3624340;0;0;15;0;0;0;0;0;0;0;15;Sim (TX ADM)
+Eduardo Livramento;3475484;0;0;15;0;0;0;0;0;0;0;15;Sim (TX ADM)
+Josmar Perini;405397;0;0;7;0;15;0;0;0;0;0;22;Não
+Rosangela Isoppo;6677277;0;0;0;59;0;0;0;0;0;0;59;Sim (Prev)
+Lucas Rangel;4445328;0;0;0;0;8;0;0;0;0;0;8;Não
+Laryssa Carinhena;2605189;0;0;3;0;4;0;0;0;0;0;7;Não
+Virginia Santos;3539793;0;0;13;0;0;0;0;0;0;0;13;Sim (TX ADM)
+Vagner Mattiollo;3922839;0;0;5;0;0;0;0;0;0;0;5;Sim (TX ADM)
+Jairo Cordova;4144499;0;0;12;0;0;0;0;0;0;0;12;Sim (TX ADM)
+Campanha (sem cliente);-;0;0;0;0;0;0;0;0;0;1414;1414;Não
+Estornos transferência;-;0;0;0;0;0;0;0;0;0;61;61;Não

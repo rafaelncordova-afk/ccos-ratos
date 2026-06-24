@@ -1301,17 +1301,22 @@ async function extractAssetsFromPDF(arrayBuffer) {
     const line = row.map(i => i.str).join(' ').trim();
     if (!line || line.length < 2) continue;
 
-    // Detect the start of "POSIÇÃO DETALHADA DOS ATIVOS" table.
-    // Triggers: (A) section title, (B) column header row with "Saldo Bruto" + "%Aloc"
-    // Using loose regex to survive encoding variations (Ç/Ã may come out garbled).
-    const isSectionTitle = /POSI.{0,8}O\s+DETALH|DETALH.*ATIVO/i.test(line);
-    const isColHeader = /saldo\s*bruto/i.test(line) && /%\s*aloc/i.test(line);
+    // ─── Section detection ───
+    // Section titles in XPerformance come as spaced decorative text ("P O S I Ç Ã O..."),
+    // so regex on the title itself is unreliable.
+    // Most reliable trigger: the category rows ("Pós Fixado", "Inflação"...) are real table
+    // data and come in normal text. Detect on those.
+    const isSectionTitle = /POSI.{0,8}O\s+DETALH|D\s*E\s*T\s*A\s*L\s*H\s*A\s*D\s*A/i.test(line);
+    const isColHeader = /saldo\s*bruto/i.test(line) && /aloc/i.test(line);
+    const isCatTrigger = /^(pós?\s*fix|infla|pré?\s*fix|alternativo|renda\s*var|fundo.*list|caixa|previd)/i.test(line) && /R\$/.test(line);
+
     if (!inDetail) {
-      if (isSectionTitle || isColHeader) { inDetail = true; }
-      continue;
+      if (isSectionTitle || isColHeader) { inDetail = true; continue; }
+      if (isCatTrigger) { inDetail = true; } // process this row as a category row (no continue)
+      else { continue; }
     }
 
-    // Skip headers and decorations even once inside the section
+    // Skip decorative/header lines once inside the section
     if (SKIP_RE.test(line) || /^([A-Z] ){3,}/.test(line) ||
         isSectionTitle || isColHeader ||
         /PRECIFICA/i.test(line)) {
@@ -1416,8 +1421,8 @@ async function debugPDF(c) {
   await ensurePDFjs();
   const file = await c.relatorios[0].handle.getFile();
   const pdf = await window.pdfjsLib.getDocument({ data: await file.arrayBuffer() }).promise;
-  const lines = [];
-  for (let p = 1; p <= Math.min(pdf.numPages, 12); p++) {
+  const allLines = [];
+  for (let p = 1; p <= pdf.numPages; p++) {
     const page = await pdf.getPage(p);
     const content = await page.getTextContent();
     const rowMap = new Map();
@@ -1428,13 +1433,16 @@ async function debugPDF(c) {
       rowMap.get(key).push(s);
     }
     [...rowMap.entries()].sort((a,b)=>b[0]-a[0]).forEach(([y, parts]) => {
-      lines.push(`p${p}:y${y} | ${parts.join(' ')}`);
+      allLines.push({ page: p, line: `p${p}:y${y} | ${parts.join(' ')}` });
     });
   }
+  // Show pages 4+ (where the detail section starts) — skip first 3 summary pages
+  const detailLines = allLines.filter(l => l.page >= 4).map(l => l.line);
   const el = document.getElementById('ativos-content');
-  el.innerHTML = '<pre style="font-size:9px;color:#a1a1aa;white-space:pre-wrap;max-height:400px;overflow:auto">' +
-    lines.slice(0,300).join('\n') + '</pre>';
-  toast('Debug: primeiras 300 linhas do PDF', '');
+  el.innerHTML = `<div style="font-size:10px;color:#a78bfa;margin-bottom:6px">PDF: ${pdf.numPages} páginas — mostrando p4+ (${detailLines.length} linhas)</div>` +
+    '<pre style="font-size:9px;color:#a1a1aa;white-space:pre-wrap;max-height:500px;overflow:auto">' +
+    detailLines.slice(0, 400).join('\n') + '</pre>';
+  toast('Debug: páginas 4+ do PDF', '');
 }
 
 function renderAtivos() {

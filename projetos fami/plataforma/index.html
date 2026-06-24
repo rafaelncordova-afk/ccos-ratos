@@ -228,6 +228,17 @@ body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', syste
 .loading-text { color: var(--text2); font-size: 13px; }
 @keyframes spin { to { transform: rotate(360deg); } }
 
+/* ===== EDITABLE FIELDS ===== */
+.pf-val.editable { cursor: text; border-radius: 4px; padding: 1px 4px; margin: -1px -4px; transition: background .15s; }
+.pf-val.editable:hover { background: var(--bg4); }
+.pf-val.editable::after { content: ' ✏'; font-size: 9px; color: var(--text3); opacity: 0; transition: opacity .15s; }
+.pf-val.editable:hover::after { opacity: 1; }
+.field-edit-input {
+  background: var(--bg3); border: 1px solid var(--accent); color: var(--text);
+  padding: 3px 8px; border-radius: 4px; font-size: 12px; font-family: inherit;
+  width: 100%; min-width: 200px; outline: none;
+}
+
 /* ===== TOAST ===== */
 #toast {
   position: fixed; bottom: 24px; right: 24px; background: var(--bg4); color: var(--text);
@@ -418,10 +429,11 @@ async function loadData() {
     count++;
     if (count % 10 === 0) showLoading(`Lendo clientes... (${count})`);
 
-    let perfil = {};
+    let perfil = {}, perfilRaw = '';
     try {
       const pfh = await handle.getFileHandle('perfil.md');
-      perfil = parsePerfil(await (await pfh.getFile()).text());
+      perfilRaw = await (await pfh.getFile()).text();
+      perfil = parsePerfil(perfilRaw);
     } catch(e) {}
 
     const mensagens = [];
@@ -462,9 +474,10 @@ async function loadData() {
       relatorios.sort((a, b) => b.nome.localeCompare(a.nome));
     } catch(e) {}
 
-    allClients.push({ pasta: name, nome, codigo, handle, perfil, mensagens, relatorios, perf: tabelaData[codigo] || null });
+    allClients.push({ pasta: name, nome, codigo, handle, perfil, perfilRaw, mensagens, relatorios, perf: tabelaData[codigo] || null });
   }
 
+  filteredClients = [...allClients];
   sortAndRender();
   hideLoading();
   document.getElementById('splash').style.display = 'none';
@@ -734,9 +747,11 @@ function renderResumo() {
   ];
 
   function buildRows(map) {
-    return map.filter(r => pf[r.key]).map(r =>
-      '<div class="pf-row"><span class="pf-key">' + r.label + '</span><span class="pf-val">' + esc(pf[r.key]) + '</span></div>'
-    ).join('');
+    return map.map(r => {
+      const val = pf[r.key] || '';
+      return '<div class="pf-row"><span class="pf-key">' + r.label + '</span>' +
+        '<span class="pf-val editable" data-pfkey="' + r.key + '" onclick="startEditField(this,\'' + r.key + '\')">' + esc(val) + '</span></div>';
+    }).join('');
   }
 
   const pf_html = buildRows(pfMap);
@@ -873,19 +888,29 @@ function renderMensagens() {
   const msgs_html = c.mensagens.length
     ? c.mensagens.map((m, i) => {
         const statusLine = extractStatus(m.conteudo);
+        const isFirst = i === 0;
+        // Preview: first 4 non-empty lines
+        const preview = m.conteudo.split('\n').filter(l => l.trim()).slice(0, 4).join('\n');
         return '<div class="msg-item">' +
-          '<div class="msg-header" onclick="toggleMsg(' + i + ')">' +
-            '<span class="msg-nome">&#x1F4AC; ' + esc(m.nome.replace(/\.md$/i, '')) + '</span>' +
-            '<span class="msg-toggle" id="msg-toggle-' + i + '">&#x25BC;</span>' +
+          '<div class="msg-header" onclick="toggleMsg(' + i + ')" style="cursor:pointer">' +
+            '<div style="display:flex;align-items:center;gap:8px">' +
+              '<span style="font-size:15px">&#x1F4AC;</span>' +
+              '<div>' +
+                '<div class="msg-nome">' + esc(m.nome.replace(/\.md$/i, '')) + '</div>' +
+                (statusLine ? '<div style="font-size:10px;color:var(--text3);margin-top:2px">' + esc(statusLine) + '</div>' : '') +
+              '</div>' +
+            '</div>' +
+            '<span class="msg-toggle" id="msg-toggle-' + i + '">' + (isFirst ? '&#x25B2;' : '&#x25BC;') + '</span>' +
           '</div>' +
-          '<div class="msg-body" id="msg-body-' + i + '">' + esc(m.conteudo) + '</div>' +
-          (statusLine ? '<div class="msg-status">' + esc(statusLine) + '</div>' : '') +
+          '<div class="msg-body' + (isFirst ? ' open' : '') + '" id="msg-body-' + i + '">' + esc(m.conteudo) + '</div>' +
+          (!isFirst ? '<div class="msg-preview" id="msg-preview-' + i + '" onclick="toggleMsg(' + i + ')" style="padding:8px 14px;font-size:11px;color:var(--text3);cursor:pointer;border-top:1px solid var(--border)">' + esc(preview) + '...</div>' : '') +
           '</div>';
       }).join('')
-    : '<div class="empty-state">Nenhuma mensagem registrada ainda</div>';
+    : '<div class="empty-state">Nenhuma mensagem registrada ainda.<br><span style="font-size:11px">Use o formulário abaixo para registrar a primeira.</span></div>';
 
   const slug = monthSlug();
   document.getElementById('tab-mensagens').innerHTML =
+    '<div style="margin-bottom:6px;font-size:11px;color:var(--text3)">' + c.mensagens.length + ' mensagem(ns) registrada(s)</div>' +
     '<div class="msgs-list">' + msgs_html + '</div>' +
     '<div class="nova-msg">' +
       '<div class="nova-msg-head"><h4>&#x270F; Nova Mensagem</h4></div>' +
@@ -894,16 +919,69 @@ function renderMensagens() {
         '<input class="nm-input" id="nm-nome" value="mensagem_' + slug + '" placeholder="nome_do_arquivo">' +
         '<span class="nm-label" style="margin-left:4px">.md</span>' +
       '</div>' +
-      '<textarea class="nm-textarea" id="nm-texto" placeholder="Cole ou digite a mensagem aqui..."></textarea>' +
-      '<div class="nm-footer"><button class="btn-save" onclick="salvarMensagem()">&#x1F4BE; Salvar na pasta do cliente</button></div>' +
+      '<textarea class="nm-textarea" id="nm-texto" placeholder="Cole ou digite a mensagem aqui...\n\nEx:\nOi [Nome], tudo bem?\n\nRentabilidade do mês: 1,05% (98% CDI)\n..."></textarea>' +
+      '<div class="nm-footer">' +
+        '<span style="font-size:10px;color:var(--text3)">Salva na pasta do cliente como .md</span>' +
+        '<button class="btn-save" onclick="salvarMensagem()">&#x1F4BE; Salvar</button>' +
+      '</div>' +
     '</div>';
 }
 
 function toggleMsg(i) {
   const body = document.getElementById('msg-body-' + i);
   const toggle = document.getElementById('msg-toggle-' + i);
+  const preview = document.getElementById('msg-preview-' + i);
   const open = body.classList.toggle('open');
-  toggle.innerHTML = open ? '&#x25B2;' : '&#x25BC;';
+  if (toggle) toggle.innerHTML = open ? '&#x25B2;' : '&#x25BC;';
+  if (preview) preview.style.display = open ? 'none' : 'block';
+}
+
+// ============================================================
+// INLINE EDIT PERFIL
+// ============================================================
+function startEditField(el, key) {
+  if (el.querySelector('input')) return; // already editing
+  const original = el.textContent.replace(/ ✏$/, '').trim();
+  el.innerHTML = '<input class="field-edit-input" value="' + esc(original) + '">';
+  const input = el.querySelector('input');
+  input.focus(); input.select();
+  input.addEventListener('keydown', e => {
+    if (e.key === 'Enter') { e.preventDefault(); input.blur(); }
+    if (e.key === 'Escape') { el.textContent = original; return; }
+  });
+  input.addEventListener('blur', async () => {
+    const newVal = input.value.trim();
+    if (newVal === original) { el.textContent = original; return; }
+    await savePerfilField(key, original, newVal, el);
+  });
+}
+
+async function savePerfilField(key, oldVal, newVal, el) {
+  const c = selectedClient;
+  let raw = c.perfilRaw || '';
+
+  // Find and replace the line "- key: value" in the raw text
+  const lineRe = new RegExp('(^- ' + key.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ':\\s*).*$', 'm');
+  if (lineRe.test(raw)) {
+    raw = raw.replace(lineRe, '$1' + newVal);
+  } else {
+    // Field doesn't exist — append at end of file
+    raw = raw.trimEnd() + '\n- ' + key + ': ' + newVal + '\n';
+  }
+
+  try {
+    const fh = await c.handle.getFileHandle('perfil.md', { create: true });
+    const w = await fh.createWritable();
+    await w.write(raw);
+    await w.close();
+    c.perfilRaw = raw;
+    c.perfil[key] = newVal;
+    el.textContent = newVal;
+    toast('Salvo: ' + key, 'ok');
+  } catch(e) {
+    el.textContent = oldVal;
+    toast('Erro ao salvar: ' + e.message, 'err');
+  }
 }
 
 function extractStatus(text) {

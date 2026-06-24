@@ -211,6 +211,35 @@ body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', syste
 .coe-bar-labels { display: flex; justify-content: space-between; font-size: 10px; color: var(--text3); }
 .coe-rules { margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--border); font-size: 11px; color: var(--text3); display: flex; gap: 16px; flex-wrap: wrap; }
 
+/* ===== ASSET SEARCH SIDEBAR ===== */
+.asset-search-wrap { padding-top: 8px; margin-top: 4px; border-top: 1px solid var(--border); }
+.asset-search-label { font-size: 10px; color: var(--text3); margin-bottom: 4px; display: flex; justify-content: space-between; align-items: center; }
+.asset-clear-btn { font-size: 10px; color: var(--accent2); cursor: pointer; background: none; border: none; padding: 0; }
+.asset-search-input { width: 100%; background: var(--bg3); border: 1px solid var(--border); color: var(--text); padding: 6px 10px; border-radius: 6px; font-size: 12px; outline: none; transition: border-color .15s; }
+.asset-search-input:focus { border-color: var(--accent); }
+#asset-results { flex: 1; overflow-y: auto; }
+#asset-results::-webkit-scrollbar { width: 4px; }
+#asset-results::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+.asi-header { font-size: 11px; color: var(--text3); padding: 10px 14px 6px; }
+.asi-client { padding: 9px 14px; border-bottom: 1px solid var(--border); cursor: pointer; transition: background .1s; }
+.asi-client:hover { background: var(--bg3); }
+.asi-nome { font-size: 12px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
+.asi-match { font-size: 11px; color: var(--text2); padding: 2px 0; }
+.asi-match strong { color: var(--accent2); }
+
+/* ===== ATIVOS TAB ===== */
+.ativos-toolbar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+.ativos-status { font-size: 12px; color: var(--text2); }
+.ativos-category { margin-bottom: 18px; }
+.ativos-cat-header { display: flex; justify-content: space-between; align-items: center; padding: 8px 12px; background: var(--bg3); border-radius: 8px 8px 0 0; border: 1px solid var(--border); font-size: 11px; font-weight: 600; color: var(--text2); cursor: pointer; user-select: none; }
+.ativos-cat-header:hover { background: var(--bg4); }
+.ativos-table { width: 100%; border-collapse: collapse; border: 1px solid var(--border); border-top: none; border-radius: 0 0 8px 8px; overflow: hidden; }
+.ativos-table th { background: var(--bg2); color: var(--text3); font-size: 10px; text-transform: uppercase; letter-spacing: .4px; padding: 7px 12px; text-align: left; border-bottom: 1px solid var(--border); }
+.ativos-table td { padding: 8px 12px; border-bottom: 1px solid var(--border); font-size: 12px; }
+.ativos-table tr:last-child td { border-bottom: none; }
+.ativos-table tr:hover td { background: var(--bg3); }
+.ativo-nome { color: var(--text); max-width: 340px; word-break: break-word; line-height: 1.4; }
+
 /* ===== MISC ===== */
 .loading-overlay { position: fixed; inset: 0; background: rgba(15,17,23,.88); display: flex; align-items: center; justify-content: center; z-index: 1000; flex-direction: column; gap: 14px; }
 .loading-spin { width: 30px; height: 30px; border: 3px solid var(--border); border-top-color: var(--accent); border-radius: 50%; animation: spin .7s linear infinite; }
@@ -263,9 +292,17 @@ body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', syste
           <button class="filter-btn" id="fb-liquidez" onclick="toggleFilter('liquidez',this)">Liquidez</button>
           <button class="filter-btn" id="fb-credito_pf" onclick="toggleFilter('credito_pf',this)">Cr&eacute;dito PF</button>
           <button class="filter-btn" id="fb-alerta_coe" onclick="toggleFilter('alerta_coe',this)">&#x26A0; COE &gt;20%</button>
+        <div class="asset-search-wrap">
+          <div class="asset-search-label">
+            <span>&#x1F4C8; Buscar por ativo</span>
+            <button class="asset-clear-btn" onclick="exitAssetSearch()" id="asset-clear-btn" style="display:none">&#x2715; Limpar</button>
+          </div>
+          <input class="asset-search-input" id="asset-query" placeholder="Ex: KNJT11, BTG, Tesouro..." oninput="searchByAsset(this.value)">
+        </div>
         </div>
       </div>
       <div class="client-list" id="client-list"></div>
+      <div id="asset-results" style="display:none;flex:1;overflow-y:auto"></div>
     </aside>
 
     <main class="panel">
@@ -294,12 +331,14 @@ body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', syste
           <button class="tab-btn active" data-tab="resumo" onclick="showTab('resumo')">Resumo</button>
           <button class="tab-btn" data-tab="carteira" onclick="showTab('carteira')">Carteira</button>
           <button class="tab-btn" data-tab="mensagens" onclick="showTab('mensagens')">Mensagens <span id="msg-count" style="font-size:10px;color:var(--text3)"></span></button>
+          <button class="tab-btn" data-tab="ativos" onclick="showTab('ativos')">Ativos</button>
           <button class="tab-btn" data-tab="reunioes" onclick="showTab('reunioes')">Reuni&otilde;es</button>
         </nav>
         <div class="tab-body">
           <div id="tab-resumo"></div>
           <div id="tab-carteira" style="display:none"></div>
           <div id="tab-mensagens" style="display:none"></div>
+          <div id="tab-ativos" style="display:none"></div>
           <div id="tab-reunioes" style="display:none"></div>
         </div>
       </div>
@@ -667,12 +706,13 @@ function selectClient(c) {
 // ================================================================
 function showTab(tab) {
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-  ['tab-resumo','tab-carteira','tab-mensagens','tab-reunioes'].forEach(id => document.getElementById(id).style.display = 'none');
+  ['tab-resumo','tab-carteira','tab-mensagens','tab-ativos','tab-reunioes'].forEach(id => document.getElementById(id).style.display = 'none');
   document.querySelector('[data-tab="' + tab + '"]').classList.add('active');
   document.getElementById('tab-' + tab).style.display = 'block';
   if (tab === 'resumo') renderResumo();
   if (tab === 'carteira') renderCarteira();
   if (tab === 'mensagens') renderMensagens();
+  if (tab === 'ativos') renderAtivos();
   if (tab === 'reunioes') renderReunioes();
 }
 
@@ -1174,6 +1214,279 @@ function monthSlug() {
   const m = ['janeiro','fevereiro','marco','abril','maio','junho','julho','agosto','setembro','outubro','novembro','dezembro'];
   const d = new Date();
   return m[d.getMonth()] + '_' + d.getFullYear();
+}
+
+// ================================================================
+// ATIVOS — PDF PARSING + GLOBAL SEARCH
+// ================================================================
+let assetGlobalIndex = new Map(); // normalizedKey → [{codigo, nome, valor, pct, nome_ativo}]
+let assetQuery = '';
+
+function normalizeAsset(s) {
+  return s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').trim();
+}
+
+async function ensurePDFjs() {
+  if (window.pdfjsLib) return;
+  await new Promise((res, rej) => {
+    const s = document.createElement('script');
+    s.src = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js';
+    s.onload = res; s.onerror = rej;
+    document.head.appendChild(s);
+  });
+  window.pdfjsLib.GlobalWorkerOptions.workerSrc =
+    'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+}
+
+async function extractAssetsFromPDF(arrayBuffer) {
+  await ensurePDFjs();
+  const pdf = await window.pdfjsLib.getDocument({ data: arrayBuffer }).promise;
+
+  // Collect all text items with coordinates
+  const allItems = [];
+  for (let p = 1; p <= pdf.numPages; p++) {
+    const page = await pdf.getPage(p);
+    const content = await page.getTextContent();
+    for (const item of content.items) {
+      const s = item.str.trim();
+      if (s) allItems.push({ str: s, x: Math.round(item.transform[4]), y: Math.round(item.transform[5]), page: p });
+    }
+  }
+
+  // Group items by page+y (same row)
+  const rowMap = new Map();
+  for (const item of allItems) {
+    const key = item.page + '_' + item.y;
+    if (!rowMap.has(key)) rowMap.set(key, []);
+    rowMap.get(key).push(item);
+  }
+
+  // Sort rows: page asc, y desc (top of page = higher y in PDF coordinates)
+  const rows = [...rowMap.values()]
+    .sort((a, b) => a[0].page !== b[0].page ? a[0].page - b[0].page : b[0].y - a[0].y)
+    .map(row => row.sort((a, b) => a.x - b.x));
+
+  const assets = [];
+  let inDetail = false;
+  let currentCat = '';
+
+  const DETAIL_RE = /posi[çc][ãa]o\s+detalh|carteira\s+detalh|posicao\s+detalh/i;
+  const CAT_MAP = [
+    [/renda\s+fix/i, 'Renda Fixa'],
+    [/renda\s+vari/i, 'Renda Variável'],
+    [/fund[oa]s?\s+list/i, 'Fundos Listados'],
+    [/fund[oa]/i, 'Fundos'],
+    [/\bCOE\b/i, 'COE'],
+    [/previd/i, 'Previdência'],
+    [/internacion/i, 'Internacional'],
+    [/alternativ/i, 'Alternativo'],
+    [/caixa/i, 'Caixa'],
+    [/estruturad/i, 'Estruturados'],
+  ];
+  const SKIP_RE = /^(produto|ativo|papel|vencimento|duration|taxa|quant|valor total|saldo|pu\s|r\$\s*\d|p[aá]gina|total\s|patrim|referência|assessor|cliente|data\s|nome\s|código|codigo|emiss)/i;
+  const MONEY_RE = /\b(\d{1,3}(?:\.\d{3})*,\d{2})\b/g;
+  const PCT_RE = /\b(\d{1,3}[,.]\d{2})\s*%/;
+
+  for (const row of rows) {
+    const line = row.map(i => i.str).join(' ').trim();
+    if (!line || line.length < 3) continue;
+
+    // Detect detail section
+    if (DETAIL_RE.test(line)) { inDetail = true; continue; }
+
+    // Detect category header (short line matching category patterns)
+    if (line.length < 60) {
+      for (const [re, label] of CAT_MAP) {
+        if (re.test(line)) { currentCat = label; break; }
+      }
+    }
+
+    if (!inDetail) continue;
+    if (SKIP_RE.test(line)) continue;
+
+    // Must have a percentage
+    const pctMatch = line.match(PCT_RE);
+    if (!pctMatch) continue;
+    const pct = parseFloat(pctMatch[1].replace(',', '.'));
+    if (pct < 0.01 || pct > 100) continue;
+
+    // Extract monetary values
+    const moneyVals = [...line.matchAll(MONEY_RE)].map(m => parseBRMoney(m[1])).filter(v => v !== null && v > 100);
+    const valor = moneyVals.length > 0 ? Math.max(...moneyVals) : null;
+
+    // Name: leftmost items (x < midpoint), strip numbers
+    const midX = row.length > 1 ? (row[0].x + row[row.length - 1].x) / 2 : row[0].x + 200;
+    const nameRaw = row.filter(i => i.x <= midX).map(i => i.str).join(' ')
+      .replace(PCT_RE, '').replace(MONEY_RE, '').replace(/R\$\s*/g, '').replace(/\s+/g, ' ').trim();
+
+    if (nameRaw.length < 2) continue;
+
+    assets.push({ nome: nameRaw, categoria: currentCat || 'Outros', valor, pct });
+  }
+
+  return assets;
+}
+
+async function loadClientAssets(c) {
+  if (c.ativos !== undefined) return c.ativos;
+  if (!c.relatorios.length) { c.ativos = []; return []; }
+
+  try {
+    const file = await c.relatorios[0].handle.getFile();
+    c.ativos = await extractAssetsFromPDF(await file.arrayBuffer());
+    c.ativosPdfNome = c.relatorios[0].nome;
+
+    // Update global index
+    for (const a of c.ativos) {
+      const key = normalizeAsset(a.nome);
+      if (!assetGlobalIndex.has(key)) assetGlobalIndex.set(key, []);
+      // Avoid duplicates
+      const existing = assetGlobalIndex.get(key);
+      if (!existing.some(e => e.codigo === c.codigo)) {
+        existing.push({ codigo: c.codigo, nome: c.nome, valor: a.valor, pct: a.pct, nome_ativo: a.nome });
+      }
+    }
+  } catch(e) {
+    console.warn('Erro ao ler PDF de', c.nome, e);
+    c.ativos = [];
+  }
+  return c.ativos;
+}
+
+function renderAtivos() {
+  const c = selectedClient;
+  const el = document.getElementById('tab-ativos');
+
+  if (!c.relatorios.length) {
+    el.innerHTML = '<div class="empty-state">Nenhum PDF em <code>relatorios/</code>.<br><span style="font-size:11px">Coloque o XPerformance mais recente ali e recarregue.</span></div>';
+    return;
+  }
+
+  el.innerHTML =
+    '<div class="ativos-toolbar"><span class="ativos-status" id="ativos-status">&#x23F3; Lendo PDF...</span>' +
+    '<span class="relatorio-nome">' + esc(c.relatorios[0].nome) + '</span></div>' +
+    '<div id="ativos-content"></div>';
+
+  loadClientAssets(c).then(ativos => {
+    const statusEl = document.getElementById('ativos-status');
+    const contentEl = document.getElementById('ativos-content');
+    if (!statusEl || !contentEl) return;
+
+    if (!ativos.length) {
+      statusEl.textContent = 'Nenhum ativo identificado';
+      contentEl.innerHTML = '<div class="empty-state">Não encontrei linhas de ativos no PDF.<br><span style="font-size:11px">Verifique se é o XPerformance padrão da XP.</span></div>';
+      return;
+    }
+
+    statusEl.textContent = ativos.length + ' ativos encontrados';
+
+    // Group by category
+    const cats = {};
+    for (const a of ativos) { if (!cats[a.categoria]) cats[a.categoria] = []; cats[a.categoria].push(a); }
+
+    const CAT_ORDER = ['Renda Fixa','Renda Variável','Fundos Listados','Fundos','COE','Previdência','Internacional','Alternativo','Estruturados','Caixa','Outros'];
+    const ordered = [...CAT_ORDER.filter(k => cats[k]), ...Object.keys(cats).filter(k => !CAT_ORDER.includes(k))];
+
+    contentEl.innerHTML = ordered.map(cat => {
+      const items = cats[cat];
+      const catTotal = items.reduce((s, a) => s + (a.valor || 0), 0);
+      return '<div class="ativos-category">' +
+        '<div class="ativos-cat-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display===\'none\'?\'table\':\' none\'">' +
+          '<span>' + esc(cat) + ' <span style="font-size:10px;color:var(--text3)">(' + items.length + ')</span></span>' +
+          '<span>' + fmMoney(catTotal, true) + '</span>' +
+        '</div>' +
+        '<table class="ativos-table">' +
+          '<thead><tr><th>Ativo</th><th class="nr">Valor</th><th class="nr">%</th></tr></thead>' +
+          '<tbody>' + items.map(a =>
+            '<tr><td class="ativo-nome">' + esc(a.nome) + '</td>' +
+            '<td class="nr">' + (a.valor ? fmMoney(a.valor) : '—') + '</td>' +
+            '<td class="nr">' + (a.pct != null ? fmPctPlain(a.pct) + '%' : '—') + '</td></tr>'
+          ).join('') + '</tbody></table></div>';
+    }).join('');
+  }).catch(e => {
+    const statusEl = document.getElementById('ativos-status');
+    if (statusEl) statusEl.textContent = 'Erro ao ler PDF';
+    const contentEl = document.getElementById('ativos-content');
+    if (contentEl) contentEl.innerHTML = '<div class="empty-state">Erro: ' + esc(e.message) + '</div>';
+  });
+}
+
+// ============ GLOBAL ASSET SEARCH ============
+function searchByAsset(q) {
+  assetQuery = q.trim();
+  const clearBtn = document.getElementById('asset-clear-btn');
+
+  if (!assetQuery) { exitAssetSearch(); return; }
+
+  if (clearBtn) clearBtn.style.display = 'inline';
+  document.getElementById('client-list').style.display = 'none';
+  const resultsEl = document.getElementById('asset-results');
+  resultsEl.style.display = 'block';
+
+  const nq = normalizeAsset(assetQuery);
+  const byClient = new Map();
+
+  for (const [key, entries] of assetGlobalIndex.entries()) {
+    if (key.includes(nq)) {
+      for (const e of entries) {
+        if (!byClient.has(e.codigo)) byClient.set(e.codigo, []);
+        byClient.get(e.codigo).push(e);
+      }
+    }
+  }
+
+  if (byClient.size === 0 && assetGlobalIndex.size < allClients.length) {
+    resultsEl.innerHTML =
+      '<div class="asi-header">Índice parcial (' + assetGlobalIndex.size + ' clientes carregados)</div>' +
+      '<div style="padding:10px 14px"><button class="btn-save" style="font-size:11px;padding:6px 14px" onclick="loadAllAssets()">&#x23F3; Carregar todos os PDFs</button></div>';
+    return;
+  }
+
+  if (byClient.size === 0) {
+    resultsEl.innerHTML = '<div class="asi-header">Nenhum resultado para "' + esc(assetQuery) + '"</div>';
+    return;
+  }
+
+  resultsEl.innerHTML =
+    '<div class="asi-header">' + byClient.size + ' cliente(s) com "' + esc(assetQuery) + '"</div>' +
+    [...byClient.entries()].map(([codigo, entries]) => {
+      const c = allClients.find(cl => cl.codigo === codigo);
+      return '<div class="asi-client" onclick="selectClientByCodigo(\'' + codigo + '\')">' +
+        '<div class="asi-nome">' + esc(c ? c.nome : codigo) + ' <span style="color:var(--text3);font-weight:400">' + codigo + '</span></div>' +
+        entries.map(e =>
+          '<div class="asi-match">' + esc(e.nome_ativo) +
+          (e.pct != null ? ' · <strong>' + fmPctPlain(e.pct) + '%</strong>' : '') +
+          (e.valor ? ' · ' + fmMoney(e.valor, true) : '') + '</div>'
+        ).join('') + '</div>';
+    }).join('');
+}
+
+function exitAssetSearch() {
+  assetQuery = '';
+  const inp = document.getElementById('asset-query');
+  const clearBtn = document.getElementById('asset-clear-btn');
+  if (inp) inp.value = '';
+  if (clearBtn) clearBtn.style.display = 'none';
+  document.getElementById('client-list').style.display = 'block';
+  document.getElementById('asset-results').style.display = 'none';
+}
+
+function selectClientByCodigo(codigo) {
+  const c = allClients.find(cl => cl.codigo === codigo);
+  if (c) selectClient(c);
+}
+
+async function loadAllAssets() {
+  const toLoad = allClients.filter(c => c.ativos === undefined && c.relatorios.length > 0);
+  toast('Carregando ' + toLoad.length + ' PDFs...', '');
+  let done = 0;
+  for (const c of toLoad) {
+    await loadClientAssets(c);
+    done++;
+    if (done % 5 === 0) toast('Carregando PDFs... ' + done + '/' + toLoad.length, '');
+  }
+  toast('Todos os PDFs carregados!', 'ok');
+  if (assetQuery) searchByAsset(assetQuery);
 }
 
 // ================================================================

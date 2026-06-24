@@ -189,6 +189,28 @@ body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', syste
 .btn-save:hover { background: var(--accent2); }
 .empty-state { color: var(--text3); font-size: 12px; padding: 16px 0; }
 
+/* ===== COE CONCENTRAÇÃO ===== */
+.coe-section { background: var(--bg2); border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px; margin-top: 14px; }
+.coe-section.coe-danger { border-color: #7f1d1d; }
+.coe-section.coe-warn { border-color: #b45309; }
+.coe-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+.coe-header h3 { font-size: 10px; color: var(--text3); text-transform: uppercase; letter-spacing: .5px; }
+.coe-badge { padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 600; }
+.coe-badge.ok  { background: #0a2018; color: #34d399; border: 1px solid #065f46; }
+.coe-badge.warn { background: #261f0a; color: #fbbf24; border: 1px solid #b45309; }
+.coe-badge.danger { background: #2a0a0a; color: #ef4444; border: 1px solid #7f1d1d; }
+.coe-input-row { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; }
+.coe-label { font-size: 12px; color: var(--text2); }
+.coe-input { background: var(--bg3); border: 1px solid var(--border); color: var(--text); padding: 5px 9px; border-radius: 6px; font-size: 13px; font-weight: 600; width: 80px; outline: none; text-align: center; }
+.coe-input:focus { border-color: var(--accent); }
+.btn-coe-save { background: var(--bg4); border: 1px solid var(--border); color: var(--text2); padding: 5px 12px; border-radius: 6px; font-size: 11px; cursor: pointer; transition: all .15s; }
+.btn-coe-save:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
+.coe-bar-track { background: var(--bg4); border-radius: 6px; height: 10px; overflow: hidden; margin-bottom: 8px; position: relative; }
+.coe-bar-fill { height: 100%; border-radius: 6px; transition: width .4s, background .3s; }
+.coe-bar-limit { position: absolute; top: 0; bottom: 0; width: 2px; background: rgba(255,255,255,.3); }
+.coe-bar-labels { display: flex; justify-content: space-between; font-size: 10px; color: var(--text3); }
+.coe-rules { margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--border); font-size: 11px; color: var(--text3); display: flex; gap: 16px; flex-wrap: wrap; }
+
 /* ===== MISC ===== */
 .loading-overlay { position: fixed; inset: 0; background: rgba(15,17,23,.88); display: flex; align-items: center; justify-content: center; z-index: 1000; flex-direction: column; gap: 14px; }
 .loading-spin { width: 30px; height: 30px; border: 3px solid var(--border); border-top-color: var(--accent); border-radius: 50%; animation: spin .7s linear infinite; }
@@ -240,6 +262,7 @@ body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', syste
           <button class="filter-btn" id="fb-ff_excl_rv" onclick="toggleFilter('ff_excl_rv',this)">c/ Excl. RV</button>
           <button class="filter-btn" id="fb-liquidez" onclick="toggleFilter('liquidez',this)">Liquidez</button>
           <button class="filter-btn" id="fb-credito_pf" onclick="toggleFilter('credito_pf',this)">Cr&eacute;dito PF</button>
+          <button class="filter-btn" id="fb-alerta_coe" onclick="toggleFilter('alerta_coe',this)">&#x26A0; COE &gt;20%</button>
         </div>
       </div>
       <div class="client-list" id="client-list"></div>
@@ -571,7 +594,11 @@ function applyFiltersAndSort() {
     // filtros de flag: OR — mostra se tiver qualquer um dos filtros ativos
     if (activeFilters.size > 0) {
       const flags = getFlags(c);
-      if (![...activeFilters].some(f => flags.has(f))) return false;
+      const coePct = parseFloat(c.perfil.coe_pct || 0);
+      const matches = [...activeFilters].some(f =>
+        f === 'alerta_coe' ? coePct > 20 : flags.has(f)
+      );
+      if (!matches) return false;
     }
     return true;
   });
@@ -597,8 +624,11 @@ function renderSidebar() {
     div.className = 'client-item' + (selectedClient?.codigo === c.codigo ? ' selected' : '');
     div.onclick = () => selectClient(c);
 
+    const coePct = parseFloat(c.perfil.coe_pct || 0);
+    const coeAlerta = coePct > 20
+      ? `<span class="ci-dot" style="background:#f59e0b" title="COE ${coePct.toFixed(1)}%"></span>` : '';
     const dots = FLAG_DEFS.filter(f => flags.has(f.key))
-      .map(f => `<span class="ci-dot" style="background:${f.dot}" title="${f.label}"></span>`).join('');
+      .map(f => `<span class="ci-dot" style="background:${f.dot}" title="${f.label}"></span>`).join('') + coeAlerta;
 
     div.innerHTML =
       '<div class="ci-name">' + esc(c.nome) + '</div>' +
@@ -897,7 +927,8 @@ function renderCarteira() {
     '<div class="ganho-real-wrap"><h4>Ganho Real (acima do IPCA)</h4><div class="ganho-pills">' +
     [['No ano', p?.ganho_real_ano], ['12M', p?.ganho_real_12m], ['24M', p?.ganho_real_24m]]
       .filter(([,v]) => v != null).map(([l,v]) => '<div class="gpill">' + l + ': <span class="' + pclass(v) + '">' + fmPct(v) + '</span></div>').join('') +
-    '</div></div>';
+    '</div></div>' +
+    renderCOESection(c);
 
   if (chartInst) { chartInst.destroy(); chartInst = null; }
   if (rows.length) {
@@ -924,6 +955,138 @@ function renderCarteira() {
       }
     });
   }
+}
+
+function renderCOESection(c) {
+  const raw = parseFloat(c.perfil.coe_pct || 0);
+  const pct = Math.min(raw, 100);
+  const LIMITE_INTERNO = 20;
+  const LIMITE_XP = 25;
+
+  let badgeClass = 'ok', badgeLabel = 'OK';
+  let barColor = '#22c55e';
+  let secClass = '';
+  if (raw > LIMITE_XP) { badgeClass = 'danger'; badgeLabel = '⚠ Acima do limite XP'; barColor = '#ef4444'; secClass = 'coe-danger'; }
+  else if (raw > LIMITE_INTERNO) { badgeClass = 'warn'; badgeLabel = '⚠ Acima de 20%'; barColor = '#f59e0b'; secClass = 'coe-warn'; }
+
+  const limitePct20 = (LIMITE_INTERNO / 100) * 100; // 20% da barra total = posição 20
+  const limitePct25 = (LIMITE_XP / 100) * 100;
+
+  return '<div class="coe-section ' + secClass + '">' +
+    '<div class="coe-header">' +
+      '<h3>Concentração em COE</h3>' +
+      (raw > 0 ? '<span class="coe-badge ' + badgeClass + '">' + badgeLabel + '</span>' : '') +
+    '</div>' +
+    '<div class="coe-input-row">' +
+      '<span class="coe-label">% do patrimônio em COE:</span>' +
+      '<input class="coe-input" id="coe-input" type="number" min="0" max="100" step="0.1" value="' + (raw || '') + '" placeholder="0">' +
+      '<span class="coe-label">%</span>' +
+      '<button class="btn-coe-save" onclick="saveCOE()">Salvar</button>' +
+      '<button class="btn-upload" style="margin-left:8px;font-size:11px" onclick="uploadPDFforCOE()">&#x1F4C4; Extrair do PDF</button>' +
+    '</div>' +
+    '<div class="coe-bar-track">' +
+      '<div class="coe-bar-fill" style="width:' + pct + '%;background:' + barColor + '"></div>' +
+      '<div class="coe-bar-limit" style="left:' + LIMITE_INTERNO + '%"></div>' +
+      '<div class="coe-bar-limit" style="left:' + LIMITE_XP + '%;background:rgba(239,68,68,.4)"></div>' +
+    '</div>' +
+    '<div class="coe-bar-labels"><span>0%</span><span style="color:#fbbf24">20% (interno)</span><span style="color:#ef4444">25% (XP)</span><span>100%</span></div>' +
+    '<div class="coe-rules">' +
+      '<span>&#x25CF; Limite interno Rafa: <strong>20%</strong></span>' +
+      '<span>&#x25CF; Limite XP (em implementação): <strong>25%</strong></span>' +
+      '<span>&#x25CF; Acima de 70 anos: bloqueio automático pré-trade</span>' +
+    '</div>' +
+  '</div>';
+}
+
+async function saveCOE() {
+  const input = document.getElementById('coe-input');
+  if (!input) return;
+  const val = parseFloat(input.value);
+  if (isNaN(val) || val < 0 || val > 100) { toast('Valor inválido (0–100)', 'err'); return; }
+  const c = selectedClient;
+  const oldVal = c.perfil.coe_pct || '';
+  const newVal = val.toFixed(1);
+  c.perfil.coe_pct = newVal;
+  await writePerfilField(c, 'coe_pct', oldVal, newVal);
+  toast('COE salvo: ' + newVal + '%', val > 20 ? 'err' : 'ok');
+  renderSidebar();
+  renderCarteira(); // re-render pra atualizar barra e badge
+}
+
+async function uploadPDFforCOE() {
+  const input = document.createElement('input');
+  input.type = 'file'; input.accept = '.pdf';
+  input.onchange = async () => {
+    const file = input.files[0];
+    if (!file) return;
+    toast('Lendo PDF... (aguarde)', '');
+    try {
+      const pct = await extractCOEfromPDF(file);
+      if (pct !== null) {
+        document.getElementById('coe-input').value = pct.toFixed(1);
+        toast('COE extraído do PDF: ' + pct.toFixed(1) + '% — clique Salvar para confirmar', 'ok');
+      } else {
+        toast('Não encontrei COE no PDF. Insira manualmente.', 'err');
+      }
+    } catch(e) { toast('Erro ao ler PDF: ' + e.message, 'err'); }
+  };
+  input.click();
+}
+
+async function extractCOEfromPDF(file) {
+  // Carrega PDF.js dinamicamente se necessário
+  if (!window.pdfjsLib) {
+    await new Promise((res, rej) => {
+      const s = document.createElement('script');
+      s.src = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js';
+      s.onload = res; s.onerror = rej;
+      document.head.appendChild(s);
+    });
+    window.pdfjsLib.GlobalWorkerOptions.workerSrc =
+      'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+  }
+
+  const pdf = await window.pdfjsLib.getDocument({ data: await file.arrayBuffer() }).promise;
+  const c = selectedClient;
+  const patrimonio = c.perf?.patrimonio;
+
+  let totalCOE = 0;
+  let foundCOE = false;
+
+  for (let p = 1; p <= Math.min(pdf.numPages, 12); p++) {
+    const page = await pdf.getPage(p);
+    const content = await page.getTextContent();
+    const items = content.items.map(i => i.str.trim()).filter(Boolean);
+    const text = items.join(' ');
+
+    // Tenta achar "% em COE" já calculado na composição (formato XPerformance)
+    // Ex: "COE 15,34%"
+    const pctMatch = text.match(/COE[\s:]+(\d{1,2}[,\.]\d{1,2})\s*%/i);
+    if (pctMatch) return parseFloat(pctMatch[1].replace(',', '.'));
+
+    // Soma valores de ativos do tipo COE na posição detalhada
+    for (let i = 0; i < items.length; i++) {
+      if (/^COE\b/i.test(items[i])) {
+        // Próximo token que parece valor monetário
+        for (let j = i + 1; j < Math.min(i + 6, items.length); j++) {
+          const val = parseBRMoney(items[j]);
+          if (val !== null && val > 1000) { totalCOE += val; foundCOE = true; break; }
+        }
+      }
+    }
+  }
+
+  if (foundCOE && patrimonio && patrimonio > 0) {
+    return (totalCOE / patrimonio) * 100;
+  }
+  return null;
+}
+
+function parseBRMoney(s) {
+  // "1.234.567,89" → 1234567.89
+  const clean = s.replace(/\./g, '').replace(',', '.').replace(/[^0-9.]/g, '');
+  const n = parseFloat(clean);
+  return isNaN(n) ? null : n;
 }
 
 function uploadPDF() {

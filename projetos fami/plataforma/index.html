@@ -1251,7 +1251,6 @@ async function extractAssetsFromPDF(arrayBuffer) {
   await ensurePDFjs();
   const pdf = await window.pdfjsLib.getDocument({ data: arrayBuffer }).promise;
 
-  // Collect all text items with coordinates from all pages
   const allItems = [];
   for (let p = 1; p <= pdf.numPages; p++) {
     const page = await pdf.getPage(p);
@@ -1262,7 +1261,6 @@ async function extractAssetsFromPDF(arrayBuffer) {
     }
   }
 
-  // Group items into rows by page+y
   const rowMap = new Map();
   for (const item of allItems) {
     const key = item.page + '_' + item.y;
@@ -1270,113 +1268,139 @@ async function extractAssetsFromPDF(arrayBuffer) {
     rowMap.get(key).push(item);
   }
 
-  // Sort: page asc, y desc (top to bottom within each page)
   const rows = [...rowMap.values()]
     .sort((a, b) => a[0].page !== b[0].page ? a[0].page - b[0].page : b[0].y - a[0].y)
     .map(row => row.sort((a, b) => a.x - b.x));
 
+  // ─── findRs: locate "R$" + number in a row, handling spaced format ───
+  // XPerformance renders numbers as individual tokens: "R" "$" "56" "." "082" "," "57"
+  function findRs(row) {
+    for (let i = 0; i < row.length; i++) {
+      const s = row[i].str;
+      // Combined: "R$ 56.082,57"
+      const m1 = s.match(/^R\$\s*([\d.]+,\d{2})$/);
+      if (m1) return { value: parseBRMoney(m1[1]), nextIdx: i + 1, x: row[i].x };
+      // "R$" then number string
+      if ((s === 'R$' || s === 'R$ ') && i + 1 < row.length) {
+        let num = ''; let j = i + 1;
+        while (j < row.length && /^[\d.,]+$/.test(row[j].str)) { num += row[j].str; j++; }
+        if (/,\d{2}$/.test(num)) { const v = parseBRMoney(num); if (v !== null) return { value: v, nextIdx: j, x: row[i].x }; }
+      }
+      // Spaced: "R" "$" digit-chunks…
+      if (s === 'R' && i + 1 < row.length && row[i + 1].str === '$') {
+        let num = ''; let j = i + 2;
+        while (j < row.length && /^[\d.,]+$/.test(row[j].str)) { num += row[j].str; j++; }
+        if (/,\d{2}$/.test(num)) { const v = parseBRMoney(num); if (v !== null) return { value: v, nextIdx: j, x: row[i].x }; }
+      }
+    }
+    return null;
+  }
+
+  // ─── findPct: first percentage ≤100% starting at minIdx ───
+  // Handles "1,67%" (1 item) and "1" "," "67" "%" (4 items)
+  function findPct(items, minIdx) {
+    for (let i = minIdx; i < items.length; i++) {
+      const s = items[i].str;
+      const m1 = s.match(/^(\d{1,3}[,.]\d{1,2})%$/);
+      if (m1) { const v = parseFloat(m1[1].replace(',', '.')); if (v > 0 && v <= 100) return v; }
+      if (/^\d+$/.test(s) && i + 3 < items.length &&
+          items[i+1].str === ',' && /^\d{1,2}$/.test(items[i+2].str) && items[i+3].str === '%') {
+        const v = parseFloat(s + '.' + items[i+2].str);
+        if (v > 0 && v <= 100) return v;
+      }
+    }
+    return null;
+  }
+
+  // ─── detectCategory: handles ligature splits ("In fl ação") and diacritics ───
+  function detectCategory(name) {
+    const n = name.replace(/\s+/g, '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+    if (/posfix/.test(n)) return 'Pós Fixado';
+    if (/infla/.test(n)) return 'Inflação';
+    if (/prefix/.test(n)) return 'Pré Fixado';
+    if (/rendavar/.test(n)) return 'Renda Variável Global';
+    if (/fundoslist|listados/.test(n)) return 'Fundos Listados';
+    if (/alternativ/.test(n)) return 'Alternativo';
+    if (/previd/.test(n)) return 'Previdência';
+    if (/caixa/.test(n)) return 'Caixa';
+    if (/\bcoe\b/.test(n)) return 'COE';
+    return null;
+  }
+
   const assets = [];
+  let inComposition = false; // skip COMPOSIÇÃO section (also has category+R$ rows)
   let inDetail = false;
   let currentCat = '';
   let pendingName = '';
-
-  // Lines to skip entirely
-  const SKIP_RE = /^(Estrat[eé]gia|Saldo Bruto|Qtd\.|%Aloc|Rent\.|%CDI|M[ÊE]S AT|ANO\s*$|24 M|Relat[oó]rio|MOVIMENTA|Este material|Aviso|PRECIFICA|ÍNDICE|RENTAB|EVOLU|COMPOSI|HIST[OÓ]RICO|Referências|Benchmarks|Portf[oó]lio|CDI$|Ibovespa|IPCA$|D[oó]lar$)/i;
-
-  // Map category names from XPerformance to display labels
-  function detectCategory(name) {
-    if (/p[oó]s\s*fix/i.test(name)) return 'Pós Fixado';
-    if (/infla/i.test(name)) return 'Inflação';
-    if (/pr[eé]\s*fix/i.test(name)) return 'Pré Fixado';
-    if (/renda\s*vari/i.test(name)) return 'Renda Variável Global';
-    if (/fundo.*list|listados/i.test(name)) return 'Fundos Listados';
-    if (/alternativo/i.test(name)) return 'Alternativo';
-    if (/previd/i.test(name)) return 'Previdência';
-    if (/caixa/i.test(name)) return 'Caixa';
-    if (/\bcoe\b/i.test(name)) return 'COE';
-    return null;
-  }
 
   for (const row of rows) {
     const line = row.map(i => i.str).join(' ').trim();
     if (!line || line.length < 2) continue;
 
-    // ─── Section detection ───
-    // Section titles in XPerformance come as spaced decorative text ("P O S I Ç Ã O..."),
-    // so regex on the title itself is unreliable.
-    // Most reliable trigger: the category rows ("Pós Fixado", "Inflação"...) are real table
-    // data and come in normal text. Detect on those.
-    const isSectionTitle = /POSI.{0,8}O\s+DETALH|D\s*E\s*T\s*A\s*L\s*H\s*A\s*D\s*A/i.test(line);
-    const isColHeader = /saldo\s*bruto/i.test(line) && /aloc/i.test(line);
-    const isCatTrigger = /^(pós?\s*fix|infla|pré?\s*fix|alternativo|renda\s*var|fundo.*list|caixa|previd)/i.test(line) && /R\$/.test(line);
+    // Space-and-diacritic-free version for matching
+    const lineNorm = line.replace(/\s+/g, '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+
+    // ── Composition section header: "Mês Atual" column ──
+    if (/m[eê]s\s*atual/i.test(line)) { inComposition = true; inDetail = false; pendingName = ''; continue; }
+
+    // ── Detail section header: has "Qtd." column (not in composition) ──
+    if (/qtd\.?/i.test(lineNorm) && /aloc/i.test(lineNorm)) { inComposition = false; inDetail = true; pendingName = ''; continue; }
+
+    if (inComposition) continue;
 
     if (!inDetail) {
-      if (isSectionTitle || isColHeader) { inDetail = true; continue; }
-      if (isCatTrigger) { inDetail = true; } // process this row as a category row (no continue)
-      else { continue; }
+      // Fallback: category name + R$ without "(XX%)" between them = detail row
+      // Composition rows: "Pós Fixado (70,92%) R$..."  → has "(" before "r$"
+      // Detail rows:      "Pós Fixado R$..."           → no "(" before "r$"
+      const hasCat = /posfix|infla|prefix|rendavar|alternativ|caixa|previd/.test(lineNorm);
+      const rsPos = lineNorm.indexOf('r$');
+      const parenPos = lineNorm.indexOf('(');
+      const hasRS = rsPos >= 0;
+      const isDetailCat = hasCat && hasRS && (parenPos < 0 || parenPos > rsPos);
+      if (isDetailCat) { inDetail = true; } else continue;
     }
 
-    // Skip decorative/header lines once inside the section
-    if (SKIP_RE.test(line) || /^([A-Z] ){3,}/.test(line) ||
-        isSectionTitle || isColHeader ||
-        /PRECIFICA/i.test(line)) {
-      pendingName = '';
-      continue;
-    }
+    // Skip footers
+    if (/Relat[oó]rio informativo|MOVIMENTA|Este material|Aviso/i.test(line)) { pendingName = ''; continue; }
 
-    // ─── Find R$ monetary value in this row ───
-    // XPerformance format: "R$ 56.082,57" as one item, or "R$" + "56.082,57" as two items
-    let rsIdx = -1;
-    let rsX = 9999;
-    let monetaryValue = null;
+    // ── Find R$ in this row ──
+    const rsResult = findRs(row);
 
-    for (let i = 0; i < row.length; i++) {
-      const s = row[i].str;
-      const mA = s.match(/^R\$\s*([\d.]+,\d{2})$/);
-      if (mA) { monetaryValue = parseBRMoney(mA[1]); rsIdx = i; rsX = row[i].x; break; }
-      if ((s === 'R$' || s === 'R$ ') && i + 1 < row.length) {
-        const mB = row[i + 1].str.match(/^([\d.]+,\d{2})$/);
-        if (mB) { monetaryValue = parseBRMoney(mB[1]); rsIdx = i; rsX = row[i].x; break; }
-      }
-    }
-
-    if (monetaryValue === null) {
-      // No monetary value — possible multi-line asset name continuation
-      if (line.length > 2 && !/^\d/.test(line) && !/^[\d,. %R$]+$/.test(line)) {
+    if (!rsResult) {
+      // No R$ — save as pending name for multi-line assets
+      if (line.length > 2 && !/^\d/.test(line) && !/^[\d\s,. %R$()-]+$/.test(line)) {
         pendingName = pendingName ? pendingName + ' ' + line : line;
+      } else {
+        pendingName = ''; // numeric-only line resets pending name
       }
       continue;
     }
 
-    // ─── Row has R$. Parse columns: name | R$ | Qtd | %Aloc | ... ───
-    const isDoubleItem = row[rsIdx]?.str === 'R$' || row[rsIdx]?.str === 'R$ ';
-    const afterStart = rsIdx + (isDoubleItem ? 2 : 1);
-    const afterItems = row.slice(afterStart);
-
-    // afterItems[0] = Qtd (number or "-")
-    // afterItems[1] = %Aloc
-    const qtdStr = afterItems[0]?.str || '';
-    const pctStr = afterItems[1]?.str || '';
-    const pctMatch = pctStr.match(/^(\d{1,3}[,.]\d{2})%$/);
-    const pctAloc = pctMatch ? parseFloat(pctMatch[1].replace(',', '.')) : null;
-
-    // Name = items to the LEFT of R$
-    const nameItems = row.filter(r => r.x < rsX - 5);
+    // Name = all items to the LEFT of the R$ sign
+    const nameItems = row.filter(r => r.x < rsResult.x - 5);
     const namePart = nameItems.map(r => r.str).join(' ').trim();
     const fullName = (pendingName ? pendingName + (namePart ? ' ' + namePart : '') : namePart).trim();
     pendingName = '';
 
-    // Category row: Qtd is "-"
+    // afterItems = everything after the monetary value
+    const afterItems = row.slice(rsResult.nextIdx);
+
+    // Qtd is the first item after R$ value (single token: number or "-")
+    const qtdStr = afterItems[0]?.str || '';
+
     if (qtdStr === '-') {
+      // Category row
       const cat = detectCategory(fullName);
       if (cat) currentCat = cat;
       else if (fullName.length > 1) currentCat = fullName;
       continue;
     }
 
-    // Asset row: needs valid %Aloc and a meaningful name
-    if (fullName.length > 1 && pctAloc !== null && pctAloc > 0 && pctAloc <= 100) {
-      assets.push({ nome: fullName, categoria: currentCat || 'Outros', valor: monetaryValue, pct: pctAloc });
+    // %Aloc = first percentage after Qtd (index 1+)
+    const pctAloc = findPct(afterItems, 1);
+
+    if (fullName.length > 1 && pctAloc !== null) {
+      assets.push({ nome: fullName, categoria: currentCat || 'Outros', valor: rsResult.value, pct: pctAloc });
     }
   }
 

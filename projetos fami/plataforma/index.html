@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plataforma Fami &mdash; Clientes</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #0f1117;
+  --bg2: #161923;
+  --bg3: #1c2030;
+  --bg4: #232738;
+  --border: #2a2e40;
+  --text: #e2e8f0;
+  --text2: #8892a4;
+  --text3: #535a6e;
+  --accent: #6366f1;
+  --accent2: #818cf8;
+  --green: #22c55e;
+  --red: #ef4444;
+  --yellow: #f59e0b;
+  --sidebar-w: 280px;
+}
+
+body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', system-ui, sans-serif; font-size: 13px; line-height: 1.5; height: 100vh; overflow: hidden; }
+
+/* ===== SPLASH ===== */
+#splash { display: flex; align-items: center; justify-content: center; height: 100vh; flex-direction: column; gap: 24px; }
+.splash-logo { font-size: 48px; }
+.splash-title { font-size: 22px; font-weight: 700; color: var(--text); letter-spacing: -0.3px; }
+.splash-sub { color: var(--text2); font-size: 13px; text-align: center; max-width: 360px; line-height: 1.6; }
+.btn-connect {
+  background: var(--accent); color: #fff; border: none; padding: 12px 28px;
+  border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer;
+  transition: background .15s; margin-top: 8px;
+}
+.btn-connect:hover { background: var(--accent2); }
+.splash-hint { color: var(--text3); font-size: 11px; }
+
+/* ===== APP LAYOUT ===== */
+#app { display: none; height: 100vh; overflow: hidden; }
+.layout { display: flex; height: 100vh; overflow: hidden; }
+
+/* ===== SIDEBAR ===== */
+.sidebar {
+  width: var(--sidebar-w); min-width: var(--sidebar-w);
+  background: var(--bg2); border-right: 1px solid var(--border);
+  display: flex; flex-direction: column; overflow: hidden;
+}
+.sidebar-top { padding: 14px 16px 10px; border-bottom: 1px solid var(--border); flex-shrink: 0; }
+.sidebar-brand { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+.sidebar-brand-icon { font-size: 18px; }
+.sidebar-brand-name { font-size: 13px; font-weight: 700; color: var(--text); }
+.client-count { font-size: 10px; color: var(--text3); margin-left: auto; }
+.search-wrap { position: relative; }
+.search-input {
+  width: 100%; background: var(--bg3); border: 1px solid var(--border);
+  color: var(--text); padding: 7px 10px 7px 30px; border-radius: 6px; font-size: 12px;
+  outline: none; transition: border-color .15s;
+}
+.search-input:focus { border-color: var(--accent); }
+.search-icon { position: absolute; left: 9px; top: 50%; transform: translateY(-50%); color: var(--text3); font-size: 11px; pointer-events: none; }
+.sidebar-sort { display: flex; gap: 4px; margin-top: 8px; }
+.sort-btn { background: transparent; border: 1px solid var(--border); color: var(--text2); font-size: 10px; padding: 3px 8px; border-radius: 4px; cursor: pointer; transition: all .15s; }
+.sort-btn.active, .sort-btn:hover { background: var(--bg4); color: var(--text); border-color: var(--accent); }
+
+.client-list { flex: 1; overflow-y: auto; }
+.client-list::-webkit-scrollbar { width: 4px; }
+.client-list::-webkit-scrollbar-track { background: transparent; }
+.client-list::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+
+.client-item {
+  padding: 10px 16px; cursor: pointer; border-bottom: 1px solid var(--border);
+  transition: background .1s; user-select: none;
+}
+.client-item:hover { background: var(--bg3); }
+.client-item.selected { background: var(--bg4); border-left: 3px solid var(--accent); padding-left: 13px; }
+.ci-name { font-size: 12px; font-weight: 600; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.ci-code { font-size: 10px; color: var(--text3); margin-bottom: 3px; }
+.ci-bottom { display: flex; justify-content: space-between; align-items: center; }
+.ci-pat { font-size: 11px; color: var(--text2); font-weight: 500; }
+.ci-rent { font-size: 10px; }
+.positive { color: var(--green); }
+.negative { color: var(--red); }
+.neutral { color: var(--text2); }
+
+/* ===== MAIN PANEL ===== */
+.panel { flex: 1; display: flex; flex-direction: column; overflow: hidden; background: var(--bg); }
+
+#no-selection {
+  flex: 1; display: flex; align-items: center; justify-content: center;
+  color: var(--text3); font-size: 14px; flex-direction: column; gap: 12px;
+}
+#no-selection .ns-icon { font-size: 40px; }
+
+#client-view { flex: 1; display: none; flex-direction: column; overflow: hidden; }
+
+.client-header {
+  padding: 14px 24px 12px; border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; gap: 12px; flex-shrink: 0; background: var(--bg2);
+}
+.ch-avatar {
+  width: 36px; height: 36px; border-radius: 50%; background: var(--accent);
+  display: flex; align-items: center; justify-content: center; font-weight: 700;
+  font-size: 14px; color: #fff; flex-shrink: 0;
+}
+.ch-info { flex: 1; min-width: 0; }
+.ch-nome { font-size: 15px; font-weight: 700; color: var(--text); }
+.ch-codigo { font-size: 11px; color: var(--text3); }
+.ch-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+.ch-tag { font-size: 10px; padding: 2px 8px; border-radius: 20px; background: var(--bg4); color: var(--text2); border: 1px solid var(--border); }
+.ch-tag.tag-ff { background: #1a1f40; color: #818cf8; border-color: #3730a3; }
+.ch-tag.tag-mfo { background: #1a2a1f; color: #4ade80; border-color: #166534; }
+.ch-pat { text-align: right; flex-shrink: 0; }
+.ch-pat-val { font-size: 16px; font-weight: 700; color: var(--text); }
+.ch-pat-lbl { font-size: 10px; color: var(--text3); }
+
+/* ===== TABS ===== */
+.tabs { display: flex; border-bottom: 1px solid var(--border); background: var(--bg2); flex-shrink: 0; padding: 0 24px; }
+.tab-btn {
+  padding: 10px 16px; font-size: 12px; font-weight: 500; color: var(--text2);
+  background: transparent; border: none; cursor: pointer; border-bottom: 2px solid transparent;
+  margin-bottom: -1px; transition: color .15s, border-color .15s;
+}
+.tab-btn:hover { color: var(--text); }
+.tab-btn.active { color: var(--accent2); border-bottom-color: var(--accent); }
+
+.tab-body { flex: 1; overflow-y: auto; padding: 20px 24px; }
+.tab-body::-webkit-scrollbar { width: 4px; }
+.tab-body::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+
+/* ===== RESUMO TAB ===== */
+.perf-row { display: flex; gap: 12px; margin-bottom: 20px; flex-wrap: wrap; }
+.perf-card {
+  background: var(--bg2); border: 1px solid var(--border); border-radius: 10px;
+  padding: 14px 16px; min-width: 130px; flex: 1;
+}
+.pc-label { font-size: 10px; color: var(--text3); text-transform: uppercase; letter-spacing: .5px; margin-bottom: 6px; }
+.pc-val { font-size: 20px; font-weight: 700; margin-bottom: 2px; }
+.pc-cdi { font-size: 11px; }
+.pc-ganho { font-size: 11px; color: var(--text2); margin-top: 4px; border-top: 1px solid var(--border); padding-top: 4px; }
+.pc-pat { font-size: 13px; font-weight: 600; color: var(--text); }
+
+.resumo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+@media (max-width: 900px) { .resumo-grid { grid-template-columns: 1fr; } }
+
+.sec-box { background: var(--bg2); border: 1px solid var(--border); border-radius: 10px; padding: 16px; }
+.sec-box h3 { font-size: 11px; color: var(--text3); text-transform: uppercase; letter-spacing: .5px; margin-bottom: 12px; }
+.pf-row { display: flex; gap: 8px; margin-bottom: 8px; font-size: 12px; align-items: flex-start; }
+.pf-key { color: var(--text3); white-space: nowrap; min-width: 100px; flex-shrink: 0; }
+.pf-val { color: var(--text); line-height: 1.4; }
+.comm-item { margin-bottom: 10px; font-size: 12px; line-height: 1.5; }
+.comm-item strong { color: var(--text2); }
+
+/* ===== CARTEIRA TAB ===== */
+.carteira-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+.btn-upload {
+  background: var(--bg3); border: 1px solid var(--border); color: var(--text2);
+  padding: 7px 14px; border-radius: 6px; font-size: 12px; cursor: pointer;
+  transition: all .15s; display: flex; align-items: center; gap: 6px;
+}
+.btn-upload:hover { background: var(--bg4); color: var(--text); border-color: var(--accent); }
+.relatorio-nome { font-size: 10px; color: var(--text3); }
+
+.perf-table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+.perf-table th { background: var(--bg3); color: var(--text3); font-size: 10px; text-transform: uppercase; letter-spacing: .5px; padding: 8px 12px; text-align: left; border-bottom: 1px solid var(--border); }
+.perf-table td { padding: 9px 12px; border-bottom: 1px solid var(--border); font-size: 12px; }
+.perf-table tr:last-child td { border-bottom: none; }
+.perf-table tr:hover td { background: var(--bg2); }
+.nr { text-align: right; font-variant-numeric: tabular-nums; }
+
+.chart-wrap { background: var(--bg2); border: 1px solid var(--border); border-radius: 10px; padding: 16px; margin-bottom: 16px; position: relative; height: 240px; }
+.ganho-real-wrap { background: var(--bg2); border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px; }
+.ganho-real-wrap h4 { font-size: 11px; color: var(--text3); text-transform: uppercase; letter-spacing: .5px; margin-bottom: 10px; }
+.ganho-pills { display: flex; gap: 8px; flex-wrap: wrap; }
+.gpill { background: var(--bg3); border: 1px solid var(--border); border-radius: 6px; padding: 6px 12px; font-size: 12px; color: var(--text); }
+
+/* ===== MENSAGENS TAB ===== */
+.msgs-list { margin-bottom: 24px; display: flex; flex-direction: column; gap: 12px; }
+.msg-item { background: var(--bg2); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+.msg-header { padding: 10px 14px; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; background: var(--bg3); cursor: pointer; user-select: none; }
+.msg-nome { font-size: 12px; font-weight: 600; color: var(--text); }
+.msg-toggle { font-size: 11px; color: var(--text3); }
+.msg-body { padding: 14px; font-size: 12px; color: var(--text2); line-height: 1.7; white-space: pre-wrap; word-break: break-word; display: none; }
+.msg-body.open { display: block; }
+.msg-status { font-size: 11px; color: var(--text3); padding: 8px 14px; border-top: 1px solid var(--border); background: var(--bg3); }
+
+.nova-msg { background: var(--bg2); border: 1px solid var(--accent); border-radius: 10px; overflow: hidden; }
+.nova-msg-head { padding: 10px 14px; background: var(--bg3); border-bottom: 1px solid var(--border); }
+.nova-msg-head h4 { font-size: 11px; color: var(--text3); text-transform: uppercase; letter-spacing: .5px; }
+.nm-top { padding: 12px 14px 8px; display: flex; gap: 10px; align-items: center; }
+.nm-label { font-size: 11px; color: var(--text3); white-space: nowrap; }
+.nm-input {
+  background: var(--bg3); border: 1px solid var(--border); color: var(--text);
+  padding: 6px 10px; border-radius: 6px; font-size: 12px; flex: 1; outline: none;
+  font-family: inherit;
+}
+.nm-input:focus { border-color: var(--accent); }
+.nm-textarea {
+  width: 100%; background: transparent; border: none; border-top: 1px solid var(--border);
+  color: var(--text); padding: 14px; font-size: 12px; font-family: inherit; line-height: 1.7;
+  resize: vertical; min-height: 160px; outline: none;
+}
+.nm-footer { padding: 10px 14px; background: var(--bg3); border-top: 1px solid var(--border); display: flex; justify-content: flex-end; }
+.btn-save {
+  background: var(--accent); color: #fff; border: none; padding: 8px 18px;
+  border-radius: 6px; font-size: 12px; font-weight: 600; cursor: pointer;
+  transition: background .15s;
+}
+.btn-save:hover { background: var(--accent2); }
+
+.empty-state { color: var(--text3); font-size: 13px; padding: 20px 0; }
+
+/* ===== REUNIOES TAB ===== */
+.reunioes-empty { color: var(--text3); padding: 24px; font-size: 13px; }
+.nova-reuniao { background: var(--bg2); border: 1px solid var(--accent); border-radius: 10px; overflow: hidden; }
+
+/* ===== LOADING ===== */
+.loading-overlay {
+  position: fixed; inset: 0; background: rgba(15,17,23,.85);
+  display: flex; align-items: center; justify-content: center; z-index: 1000;
+  flex-direction: column; gap: 16px;
+}
+.loading-spin { width: 32px; height: 32px; border: 3px solid var(--border); border-top-color: var(--accent); border-radius: 50%; animation: spin .7s linear infinite; }
+.loading-text { color: var(--text2); font-size: 13px; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ===== TOAST ===== */
+#toast {
+  position: fixed; bottom: 24px; right: 24px; background: var(--bg4); color: var(--text);
+  border: 1px solid var(--border); border-radius: 8px; padding: 10px 16px; font-size: 12px;
+  z-index: 2000; opacity: 0; transform: translateY(8px); transition: all .2s;
+  pointer-events: none; max-width: 300px;
+}
+#toast.show { opacity: 1; transform: translateY(0); }
+#toast.toast-ok { border-color: var(--green); }
+#toast.toast-err { border-color: var(--red); }
+</style>
+</head>
+<body>
+
+<!-- SPLASH -->
+<div id="splash">
+  <div class="splash-logo">&#x1F4CA;</div>
+  <div class="splash-title">Plataforma Fami</div>
+  <div class="splash-sub">Conecte a pasta <strong>clientes/</strong> para carregar sua carteira de clientes com performance, mensagens e perfis.</div>
+  <button class="btn-connect" onclick="openFolder()">&#x1F4C2; Conectar pasta clientes</button>
+  <div class="splash-hint">Chrome ou Edge &middot; precisa selecionar uma vez por sess&atilde;o</div>
+</div>
+
+<!-- LOADING -->
+<div class="loading-overlay" id="loading" style="display:none">
+  <div class="loading-spin"></div>
+  <div class="loading-text" id="loading-text">Lendo clientes...</div>
+</div>
+
+<!-- APP -->
+<div id="app">
+  <div class="layout">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-top">
+        <div class="sidebar-brand">
+          <span class="sidebar-brand-icon">&#x1F4CA;</span>
+          <span class="sidebar-brand-name">FAMI Clientes</span>
+          <span class="client-count" id="client-count">—</span>
+        </div>
+        <div class="search-wrap">
+          <span class="search-icon">&#x1F50D;</span>
+          <input class="search-input" id="search-input" placeholder="Buscar nome ou c&oacute;digo..." oninput="searchClients(this.value)">
+        </div>
+        <div class="sidebar-sort">
+          <button class="sort-btn active" onclick="sortBy('patrimonio')">Patrim&ocirc;nio</button>
+          <button class="sort-btn" onclick="sortBy('rent_mes')">Rent. M&ecirc;s</button>
+          <button class="sort-btn" onclick="sortBy('pct_cdi_mes')">% CDI</button>
+          <button class="sort-btn" onclick="sortBy('nome')">Nome</button>
+        </div>
+      </div>
+      <div class="client-list" id="client-list"></div>
+    </aside>
+
+    <!-- Panel -->
+    <main class="panel">
+      <div id="no-selection">
+        <div class="ns-icon">&#x1F4CC;</div>
+        Selecione um cliente na lista
+      </div>
+      <div id="client-view">
+        <div class="client-header">
+          <div class="ch-avatar" id="ch-avatar">?</div>
+          <div class="ch-info">
+            <div class="ch-nome" id="ch-nome">—</div>
+            <div class="ch-codigo" id="ch-codigo">—</div>
+            <div class="ch-tags" id="ch-tags"></div>
+          </div>
+          <div class="ch-pat">
+            <div class="ch-pat-val" id="ch-pat-val">—</div>
+            <div class="ch-pat-lbl">Patrim&ocirc;nio (mai/2026)</div>
+          </div>
+        </div>
+        <nav class="tabs">
+          <button class="tab-btn active" data-tab="resumo" onclick="showTab('resumo')">Resumo</button>
+          <button class="tab-btn" data-tab="carteira" onclick="showTab('carteira')">Carteira</button>
+          <button class="tab-btn" data-tab="mensagens" onclick="showTab('mensagens')">Mensagens <span id="msg-count" style="font-size:10px;color:var(--text3)"></span></button>
+          <button class="tab-btn" data-tab="reunioes" onclick="showTab('reunioes')">Reuni&otilde;es</button>
+        </nav>
+        <div class="tab-body">
+          <div id="tab-resumo"></div>
+          <div id="tab-carteira" style="display:none"></div>
+          <div id="tab-mensagens" style="display:none"></div>
+          <div id="tab-reunioes" style="display:none"></div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<div id="toast"></div>
+
+<script>
+// ============================================================
+// STATE
+// ============================================================
+let allClients = [];
+let filteredClients = [];
+let selectedClient = null;
+let rootHandle = null;
+let tabelaData = {};
+let chartInst = null;
+let currentSort = 'patrimonio';
+
+// ============================================================
+// FOLDER ACCESS
+// ============================================================
+async function openFolder() {
+  if (!window.showDirectoryPicker) {
+    alert('Use o Chrome ou Edge para abrir esta plataforma.');
+    return;
+  }
+  try {
+    const h = await window.showDirectoryPicker({ mode: 'readwrite' });
+    rootHandle = h;
+    await persistHandle(h);
+    await loadData();
+  } catch(e) {
+    if (e.name !== 'AbortError') toast('Erro: ' + e.message, 'err');
+  }
+}
+
+async function persistHandle(h) {
+  try {
+    const db = await openDB();
+    const tx = db.transaction('handles', 'readwrite');
+    tx.objectStore('handles').put(h, 'root');
+    await new Promise((res, rej) => { tx.oncomplete = res; tx.onerror = rej; });
+    db.close();
+  } catch(e) {}
+}
+
+async function restoreHandle() {
+  try {
+    const db = await openDB();
+    const tx = db.transaction('handles', 'readonly');
+    const req = tx.objectStore('handles').get('root');
+    const h = await new Promise((res, rej) => { req.onsuccess = () => res(req.result); req.onerror = rej; });
+    db.close();
+    if (!h) return null;
+    const perm = await h.queryPermission({ mode: 'readwrite' });
+    if (perm === 'granted') return h;
+    const ask = await h.requestPermission({ mode: 'readwrite' });
+    return ask === 'granted' ? h : null;
+  } catch(e) { return null; }
+}
+
+function openDB() {
+  return new Promise((res, rej) => {
+    const req = indexedDB.open('fami-plataforma', 1);
+    req.onupgradeneeded = () => {
+      if (!req.result.objectStoreNames.contains('handles'))
+        req.result.createObjectStore('handles');
+    };
+    req.onsuccess = () => res(req.result);
+    req.onerror = rej;
+  });
+}
+
+// ============================================================
+// DATA LOADING
+// ============================================================
+async function loadData() {
+  showLoading('Lendo tabela de clientes...');
+  try {
+    const fh = await rootHandle.getFileHandle('tabela_clientes.md');
+    const txt = await (await fh.getFile()).text();
+    tabelaData = parseTabela(txt);
+  } catch(e) {
+    console.warn('tabela_clientes.md nao encontrada', e);
+  }
+
+  showLoading('Lendo pastas de clientes...');
+  allClients = [];
+  let count = 0;
+
+  for await (const [name, handle] of rootHandle.entries()) {
+    if (handle.kind !== 'directory') continue;
+    if (name.startsWith('_') || name.startsWith('.')) continue;
+
+    // Expect "Nome - Codigo" or "Nome - Codigo extra"
+    const match = name.match(/^(.+?)\s*-\s*(\d+)(\s*.*)?$/);
+    if (!match) continue;
+
+    const nome = match[1].trim();
+    const codigo = match[2].trim();
+
+    count++;
+    if (count % 10 === 0) showLoading(`Lendo clientes... (${count})`);
+
+    let perfil = {};
+    try {
+      const pfh = await handle.getFileHandle('perfil.md');
+      perfil = parsePerfil(await (await pfh.getFile()).text());
+    } catch(e) {}
+
+    const mensagens = [];
+    // Files directly in client folder (mensagem_*.md etc)
+    try {
+      for await (const [fname, fh] of handle.entries()) {
+        if (fh.kind !== 'file' || fname === 'perfil.md') continue;
+        if (!fname.toLowerCase().endsWith('.md')) continue;
+        try {
+          const txt = await (await fh.getFile()).text();
+          mensagens.push({ nome: fname, conteudo: txt, handle: fh });
+        } catch(e) {}
+      }
+    } catch(e) {}
+
+    // Files in mensagens/ subfolder
+    try {
+      const msgDir = await handle.getDirectoryHandle('mensagens');
+      for await (const [fname, fh] of msgDir.entries()) {
+        if (fh.kind !== 'file' || !fname.toLowerCase().endsWith('.md')) continue;
+        try {
+          const txt = await (await fh.getFile()).text();
+          mensagens.push({ nome: fname, conteudo: txt, handle: fh, subdir: 'mensagens' });
+        } catch(e) {}
+      }
+    } catch(e) {}
+
+    mensagens.sort((a, b) => b.nome.localeCompare(a.nome));
+
+    const relatorios = [];
+    try {
+      const relDir = await handle.getDirectoryHandle('relatorios');
+      for await (const [fname, fh] of relDir.entries()) {
+        if (fh.kind !== 'file') continue;
+        if (!fname.toLowerCase().endsWith('.pdf')) continue;
+        relatorios.push({ nome: fname, handle: fh });
+      }
+      relatorios.sort((a, b) => b.nome.localeCompare(a.nome));
+    } catch(e) {}
+
+    allClients.push({ pasta: name, nome, codigo, handle, perfil, mensagens, relatorios, perf: tabelaData[codigo] || null });
+  }
+
+  sortAndRender();
+  hideLoading();
+  document.getElementById('splash').style.display = 'none';
+  document.getElementById('app').style.display = 'block';
+}
+
+// ============================================================
+// PARSERS
+// ============================================================
+function parseTabela(text) {
+  const out = {};
+  const lines = text.split('\n');
+  let hdr = -1;
+  for (let i = 0; i < lines.length; i++) {
+    if (lines[i].includes('Cliente') && lines[i].includes('digo')) { hdr = i; break; }
+  }
+  if (hdr < 0) return out;
+  for (let i = hdr + 2; i < lines.length; i++) {
+    const cols = lines[i].split('|').map(c => c.trim()).filter(Boolean);
+    if (cols.length < 3) continue;
+    const codigo = cols[1];
+    if (!/^\d+$/.test(codigo)) continue;
+    out[codigo] = {
+      nome: cols[0], codigo,
+      patrimonio: parseMoney(cols[2]),
+      ganho_mes: parseMoney(cols[3]),
+      rent_mes: parsePct(cols[4]),
+      pct_cdi_mes: parsePct(cols[5]),
+      rent_ano: parsePct(cols[6]),
+      pct_cdi_ano: parsePct(cols[7]),
+      rent_12m: parsePct(cols[8]),
+      pct_cdi_12m: parsePct(cols[9]),
+      rent_24m: parsePct(cols[10]),
+      pct_cdi_24m: parsePct(cols[11]),
+      ipca_ano: parsePct(cols[12]),
+      ipca_12m: parsePct(cols[13]),
+      ipca_24m: parsePct(cols[14]),
+      ganho_real_ano: parsePct(cols[15]),
+      ganho_real_12m: parsePct(cols[16]),
+      ganho_real_24m: parsePct(cols[17]),
+    };
+  }
+  return out;
+}
+
+function parsePerfil(text) {
+  const obj = {};
+  let section = '';
+  for (const line of text.split('\n')) {
+    const t = line.trim();
+    if (t.startsWith('# ')) { obj._titulo = t.slice(2); }
+    else if (t.startsWith('## ')) { section = t.slice(3); }
+    else if (t.startsWith('- ')) {
+      const ci = t.indexOf(':');
+      if (ci > 1) {
+        const key = t.slice(2, ci).trim();
+        const val = t.slice(ci + 1).trim();
+        obj[key] = val;
+        obj['_s_' + key] = section;
+      }
+    }
+  }
+  return obj;
+}
+
+function parseMoney(s) {
+  if (!s || s === 'N/D' || s === '') return null;
+  const n = parseFloat(s.replace(/R\$\s*/g, '').replace(/\./g, '').replace(',', '.').trim());
+  return isNaN(n) ? null : n;
+}
+
+function parsePct(s) {
+  if (!s || s === 'N/D' || s === '') return null;
+  const n = parseFloat(s.replace('%', '').replace(',', '.'));
+  return isNaN(n) ? null : n;
+}
+
+// ============================================================
+// FORMATTING
+// ============================================================
+function fmMoney(v, compact) {
+  if (v === null || v === undefined) return '—';
+  if (compact) {
+    if (Math.abs(v) >= 1e6) return 'R$ ' + (v/1e6).toFixed(2).replace('.', ',') + 'M';
+    if (Math.abs(v) >= 1e3) return 'R$ ' + (v/1e3).toFixed(0) + 'K';
+    return 'R$ ' + v.toFixed(0);
+  }
+  return 'R$ ' + v.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+}
+function fmPct(v) {
+  if (v === null || v === undefined) return '—';
+  const s = v.toFixed(2).replace('.', ',') + '%';
+  return v > 0 ? '+' + s : s;
+}
+function fmPctPlain(v) {
+  if (v === null || v === undefined) return '—';
+  return v.toFixed(2).replace('.', ',') + '%';
+}
+function fmCDI(v) {
+  if (v === null || v === undefined) return '—';
+  return v.toFixed(0) + '% CDI';
+}
+function pclass(v) {
+  if (v === null || v === undefined) return '';
+  return v > 0 ? 'positive' : v < 0 ? 'negative' : 'neutral';
+}
+function initials(nome) {
+  return nome.split(' ').map(w => w[0]).slice(0, 2).join('').toUpperCase();
+}
+
+// ============================================================
+// SORTING + SIDEBAR
+// ============================================================
+function sortBy(key) {
+  currentSort = key;
+  document.querySelectorAll('.sort-btn').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+  sortAndRender();
+}
+
+function sortAndRender() {
+  const key = currentSort;
+  filteredClients.sort((a, b) => {
+    if (key === 'nome') return a.nome.localeCompare(b.nome, 'pt-BR');
+    const va = a.perf?.[key] ?? -Infinity;
+    const vb = b.perf?.[key] ?? -Infinity;
+    return vb - va;
+  });
+  renderSidebar();
+}
+
+function searchClients(q) {
+  const nq = q.toLowerCase().trim();
+  filteredClients = nq
+    ? allClients.filter(c =>
+        c.nome.toLowerCase().includes(nq) || c.codigo.includes(nq) || (c.perf?.nome || '').toLowerCase().includes(nq)
+      )
+    : [...allClients];
+  sortAndRender();
+}
+
+function renderSidebar() {
+  const list = document.getElementById('client-list');
+  list.innerHTML = '';
+  document.getElementById('client-count').textContent = filteredClients.length + ' clientes';
+
+  filteredClients.forEach(c => {
+    const p = c.perf;
+    const div = document.createElement('div');
+    div.className = 'client-item' + (selectedClient?.codigo === c.codigo ? ' selected' : '');
+    div.onclick = () => selectClient(c);
+    const rentCls = pclass(p?.rent_mes);
+    div.innerHTML =
+      '<div class="ci-name">' + esc(c.nome) + '</div>' +
+      '<div class="ci-code">' + c.codigo + '</div>' +
+      '<div class="ci-bottom">' +
+        '<span class="ci-pat">' + (p ? fmMoney(p.patrimonio, true) : '—') + '</span>' +
+        '<span class="ci-rent ' + rentCls + '">' + fmPct(p?.rent_mes) + ' · ' + fmCDI(p?.pct_cdi_mes) + '</span>' +
+      '</div>';
+    list.appendChild(div);
+  });
+}
+
+// ============================================================
+// SELECT CLIENT
+// ============================================================
+function selectClient(c) {
+  selectedClient = c;
+  renderSidebar();
+
+  document.getElementById('no-selection').style.display = 'none';
+  const cv = document.getElementById('client-view');
+  cv.style.display = 'flex';
+  cv.style.flexDirection = 'column';
+
+  // Header
+  document.getElementById('ch-avatar').textContent = initials(c.nome);
+  document.getElementById('ch-nome').textContent = c.nome;
+  document.getElementById('ch-codigo').textContent = c.codigo + (c.perfil.conta ? '' : '');
+  document.getElementById('ch-pat-val').textContent = c.perf ? fmMoney(c.perf.patrimonio) : '—';
+
+  // Tags from perfil
+  const tags = [];
+  if (c.perfil['canal_preferido']) tags.push({ text: c.perfil['canal_preferido'], cls: '' });
+  if (c.perfil['perfil_risco']) tags.push({ text: c.perfil['perfil_risco'], cls: '' });
+  // Fee Fixo indicator — check mensagens or perfil
+  const pf = c.perfil;
+  if (pf.fee_fixo === 'sim' || pf['fee fixo'] === 'sim') tags.push({ text: 'Fee Fixo', cls: 'tag-ff' });
+  if (pf.mfo === 'sim' || pf.MFO === 'sim') tags.push({ text: 'MFO', cls: 'tag-mfo' });
+  document.getElementById('ch-tags').innerHTML = tags.map(t => `<span class="ch-tag ${t.cls}">${esc(t.text)}</span>`).join('');
+
+  const mc = c.mensagens.length;
+  document.getElementById('msg-count').textContent = mc ? '(' + mc + ')' : '';
+
+  showTab('resumo');
+}
+
+// ============================================================
+// TABS
+// ============================================================
+function showTab(tab) {
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('#tab-resumo, #tab-carteira, #tab-mensagens, #tab-reunioes').forEach(el => el.style.display = 'none');
+  document.querySelector('[data-tab="' + tab + '"]').classList.add('active');
+  document.getElementById('tab-' + tab).style.display = 'block';
+  if (tab === 'resumo') renderResumo();
+  if (tab === 'carteira') renderCarteira();
+  if (tab === 'mensagens') renderMensagens();
+  if (tab === 'reunioes') renderReunioes();
+}
+
+// ============================================================
+// RESUMO TAB
+// ============================================================
+function renderResumo() {
+  const c = selectedClient;
+  const p = c.perf;
+  const pf = c.perfil;
+
+  const periods = [
+    { label: 'Mês (mai)', rent: p?.rent_mes, pct: p?.pct_cdi_mes, ganho: p?.ganho_mes },
+    { label: 'No Ano', rent: p?.rent_ano, pct: p?.pct_cdi_ano, ganho: null },
+    { label: '12 Meses', rent: p?.rent_12m, pct: p?.pct_cdi_12m, ganho: null },
+    { label: '24 Meses', rent: p?.rent_24m, pct: p?.pct_cdi_24m, ganho: null },
+  ];
+
+  const periodos_html = periods.map(per => {
+    const cls = pclass(per.rent);
+    const cdic = per.pct === null ? 'neutral' : per.pct >= 100 ? 'positive' : per.pct >= 80 ? 'neutral' : 'negative';
+    return '<div class="perf-card">' +
+      '<div class="pc-label">' + per.label + '</div>' +
+      '<div class="pc-val ' + cls + '">' + fmPct(per.rent) + '</div>' +
+      '<div class="pc-cdi ' + cdic + '">' + fmCDI(per.pct) + '</div>' +
+      (per.ganho !== null ? '<div class="pc-ganho">Ganho: ' + fmMoney(per.ganho) + '</div>' : '') +
+      '</div>';
+  }).join('');
+
+  // Profile fields
+  const pfMap = [
+    { key: 'canal_preferido', label: 'Canal' },
+    { key: 'tom_preferido', label: 'Tom' },
+    { key: 'perfil_risco', label: 'Risco' },
+    { key: 'objetivo_principal', label: 'Objetivo' },
+    { key: 'horizonte', label: 'Horizonte' },
+    { key: 'tolerancia_volatilidade', label: 'Tolerância' },
+  ];
+  const famMap = [
+    { key: 'estado_civil', label: 'Estado civil' },
+    { key: 'mae', label: 'Mãe' },
+    { key: 'pai', label: 'Pai' },
+    { key: 'irma', label: 'Irmã' },
+    { key: 'irmao', label: 'Irmão' },
+    { key: 'conjuge', label: 'Cônjuge' },
+    { key: 'observacao', label: 'Obs.' },
+  ];
+  const wealthMap = [
+    { key: 'xp', label: 'XP' },
+    { key: 'banco', label: 'Banco' },
+    { key: 'previdencia_bb', label: 'Previdência' },
+    { key: 'exterior', label: 'Exterior' },
+    { key: 'imoveis', label: 'Imóveis' },
+  ];
+  const commMap = [
+    { key: 'destacar', label: 'Destacar' },
+    { key: 'evitar', label: 'Evitar' },
+    { key: 'oportunidades_futuras', label: 'Oportunidades' },
+  ];
+
+  function buildRows(map) {
+    return map.filter(r => pf[r.key]).map(r =>
+      '<div class="pf-row"><span class="pf-key">' + r.label + '</span><span class="pf-val">' + esc(pf[r.key]) + '</span></div>'
+    ).join('');
+  }
+
+  const pf_html = buildRows(pfMap);
+  const fam_html = buildRows(famMap);
+  const wealth_html = buildRows(wealthMap);
+  const comm_html = buildRows(commMap);
+
+  const has_pat = p?.patrimonio !== null;
+  const has_ganho_real = (p?.ganho_real_ano !== null || p?.ganho_real_12m !== null);
+
+  document.getElementById('tab-resumo').innerHTML =
+    '<div class="perf-row">' + periodos_html + '</div>' +
+    '<div class="resumo-grid">' +
+      '<div>' +
+        (pf_html ? '<div class="sec-box" style="margin-bottom:12px"><h3>Perfil do Investidor</h3>' + pf_html + '</div>' : '') +
+        (fam_html ? '<div class="sec-box"><h3>Família &amp; Relacionamento</h3>' + fam_html + '</div>' : '') +
+      '</div>' +
+      '<div>' +
+        (wealth_html ? '<div class="sec-box" style="margin-bottom:12px"><h3>Patrimônio Consolidado</h3>' + wealth_html + '</div>' : '') +
+        (comm_html ? '<div class="sec-box" style="margin-bottom:12px"><h3>Notas de Comunicação</h3>' + comm_html + '</div>' : '') +
+        (has_ganho_real ? ganhoRealBox(p) : '') +
+      '</div>' +
+    '</div>';
+}
+
+function ganhoRealBox(p) {
+  const items = [
+    { label: 'No Ano', val: p.ganho_real_ano, ref_ipca: p.ipca_ano },
+    { label: '12M', val: p.ganho_real_12m, ref_ipca: p.ipca_12m },
+    { label: '24M', val: p.ganho_real_24m, ref_ipca: p.ipca_24m },
+  ].filter(r => r.val !== null);
+  if (!items.length) return '';
+  return '<div class="sec-box"><h3>Ganho Real (acima do IPCA)</h3>' +
+    items.map(r => '<div class="pf-row"><span class="pf-key">' + r.label + '</span>' +
+      '<span class="pf-val ' + pclass(r.val) + '">' + fmPct(r.val) + '</span></div>').join('') +
+    '</div>';
+}
+
+// ============================================================
+// CARTEIRA TAB
+// ============================================================
+function renderCarteira() {
+  const c = selectedClient;
+  const p = c.perf;
+
+  function cdiEst(rent, pct) {
+    if (rent === null || pct === null || pct === 0) return null;
+    return rent / (pct / 100);
+  }
+
+  const periodos = [
+    { label: 'Mês (mai)', port: p?.rent_mes, cdi: cdiEst(p?.rent_mes, p?.pct_cdi_mes), pct: p?.pct_cdi_mes },
+    { label: 'No Ano', port: p?.rent_ano, cdi: cdiEst(p?.rent_ano, p?.pct_cdi_ano), pct: p?.pct_cdi_ano },
+    { label: '12M', port: p?.rent_12m, cdi: cdiEst(p?.rent_12m, p?.pct_cdi_12m), pct: p?.pct_cdi_12m },
+    { label: '24M', port: p?.rent_24m, cdi: cdiEst(p?.rent_24m, p?.pct_cdi_24m), pct: p?.pct_cdi_24m },
+  ].filter(r => r.port !== null);
+
+  const relNome = c.relatorios.length ? c.relatorios[0].nome : 'Nenhum relatório na pasta';
+  const relCount = c.relatorios.length > 1 ? ' (+' + (c.relatorios.length - 1) + ')' : '';
+
+  const tbl_rows = periodos.map(r => {
+    const pcls = pclass(r.port);
+    const ccls = r.pct !== null && r.pct >= 100 ? 'positive' : 'neutral';
+    return '<tr><td>' + r.label + '</td>' +
+      '<td class="nr ' + pcls + '">' + fmPct(r.port) + '</td>' +
+      '<td class="nr neutral">' + (r.cdi !== null ? fmPctPlain(r.cdi) + '%' : '—') + '</td>' +
+      '<td class="nr ' + ccls + '">' + fmCDI(r.pct) + '</td></tr>';
+  }).join('');
+
+  document.getElementById('tab-carteira').innerHTML =
+    '<div class="carteira-top">' +
+      '<button class="btn-upload" onclick="uploadPDF()">&#x1F4C4; Upload XPerformance PDF</button>' +
+      '<span class="relatorio-nome">' + esc(relNome) + esc(relCount) + '</span>' +
+    '</div>' +
+    '<table class="perf-table">' +
+      '<thead><tr><th>Período</th><th class="nr">Portfólio</th><th class="nr">CDI (est.)</th><th class="nr">% CDI</th></tr></thead>' +
+      '<tbody>' + (tbl_rows || '<tr><td colspan="4" class="empty-state">Sem dados de performance</td></tr>') + '</tbody>' +
+    '</table>' +
+    '<div class="chart-wrap"><canvas id="cart-chart"></canvas></div>' +
+    '<div class="ganho-real-wrap">' +
+      '<h4>Ganho Real (acima do IPCA)</h4>' +
+      '<div class="ganho-pills">' +
+        (p?.ganho_real_ano !== null && p?.ganho_real_ano !== undefined ? '<div class="gpill">No ano: <span class="' + pclass(p.ganho_real_ano) + '">' + fmPct(p.ganho_real_ano) + '</span></div>' : '') +
+        (p?.ganho_real_12m !== null && p?.ganho_real_12m !== undefined ? '<div class="gpill">12M: <span class="' + pclass(p.ganho_real_12m) + '">' + fmPct(p.ganho_real_12m) + '</span></div>' : '') +
+        (p?.ganho_real_24m !== null && p?.ganho_real_24m !== undefined ? '<div class="gpill">24M: <span class="' + pclass(p.ganho_real_24m) + '">' + fmPct(p.ganho_real_24m) + '</span></div>' : '') +
+      '</div>' +
+    '</div>';
+
+  if (chartInst) { chartInst.destroy(); chartInst = null; }
+  if (periodos.length > 0) {
+    const ctx = document.getElementById('cart-chart').getContext('2d');
+    chartInst = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: periodos.map(r => r.label),
+        datasets: [
+          { label: 'Portfólio', data: periodos.map(r => r.port), backgroundColor: '#6366f1aa', borderColor: '#6366f1', borderWidth: 2, borderRadius: 5 },
+          { label: 'CDI (est.)', data: periodos.map(r => r.cdi), backgroundColor: '#22c55e33', borderColor: '#22c55e', borderWidth: 2, borderRadius: 5 },
+        ]
+      },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        plugins: {
+          legend: { display: true, labels: { color: '#8892a4', font: { size: 11 }, boxWidth: 12 } },
+          tooltip: { callbacks: { label: ctx => ctx.dataset.label + ': ' + fmPctPlain(ctx.parsed.y) + '%' } }
+        },
+        scales: {
+          y: { grid: { color: '#2a2d3e' }, ticks: { color: '#8892a4', callback: v => v.toFixed(1) + '%' } },
+          x: { grid: { display: false }, ticks: { color: '#8892a4' } }
+        }
+      }
+    });
+  }
+}
+
+function uploadPDF() {
+  const input = document.createElement('input');
+  input.type = 'file';
+  input.accept = '.pdf';
+  input.onchange = async () => {
+    const file = input.files[0];
+    if (!file) return;
+    toast('PDF recebido: ' + file.name + ' — extracção automática em breve!', 'ok');
+  };
+  input.click();
+}
+
+// ============================================================
+// MENSAGENS TAB
+// ============================================================
+function renderMensagens() {
+  const c = selectedClient;
+
+  const msgs_html = c.mensagens.length
+    ? c.mensagens.map((m, i) => {
+        const statusLine = extractStatus(m.conteudo);
+        return '<div class="msg-item">' +
+          '<div class="msg-header" onclick="toggleMsg(' + i + ')">' +
+            '<span class="msg-nome">&#x1F4AC; ' + esc(m.nome.replace(/\.md$/i, '')) + '</span>' +
+            '<span class="msg-toggle" id="msg-toggle-' + i + '">&#x25BC;</span>' +
+          '</div>' +
+          '<div class="msg-body" id="msg-body-' + i + '">' + esc(m.conteudo) + '</div>' +
+          (statusLine ? '<div class="msg-status">' + esc(statusLine) + '</div>' : '') +
+          '</div>';
+      }).join('')
+    : '<div class="empty-state">Nenhuma mensagem registrada ainda</div>';
+
+  const slug = monthSlug();
+  document.getElementById('tab-mensagens').innerHTML =
+    '<div class="msgs-list">' + msgs_html + '</div>' +
+    '<div class="nova-msg">' +
+      '<div class="nova-msg-head"><h4>&#x270F; Nova Mensagem</h4></div>' +
+      '<div class="nm-top">' +
+        '<span class="nm-label">Arquivo:</span>' +
+        '<input class="nm-input" id="nm-nome" value="mensagem_' + slug + '" placeholder="nome_do_arquivo">' +
+        '<span class="nm-label" style="margin-left:4px">.md</span>' +
+      '</div>' +
+      '<textarea class="nm-textarea" id="nm-texto" placeholder="Cole ou digite a mensagem aqui..."></textarea>' +
+      '<div class="nm-footer"><button class="btn-save" onclick="salvarMensagem()">&#x1F4BE; Salvar na pasta do cliente</button></div>' +
+    '</div>';
+}
+
+function toggleMsg(i) {
+  const body = document.getElementById('msg-body-' + i);
+  const toggle = document.getElementById('msg-toggle-' + i);
+  const open = body.classList.toggle('open');
+  toggle.innerHTML = open ? '&#x25B2;' : '&#x25BC;';
+}
+
+function extractStatus(text) {
+  const m = text.match(/\*\*Status:\*\*(.*)/);
+  return m ? 'Status:' + m[1] : '';
+}
+
+async function salvarMensagem() {
+  const nome = document.getElementById('nm-nome').value.trim();
+  const texto = document.getElementById('nm-texto').value.trim();
+  if (!nome) { toast('Preencha o nome do arquivo', 'err'); return; }
+  if (!texto) { toast('Mensagem vazia', 'err'); return; }
+  const fileName = nome.endsWith('.md') ? nome : nome + '.md';
+  try {
+    const fh = await selectedClient.handle.getFileHandle(fileName, { create: true });
+    const w = await fh.createWritable();
+    await w.write(texto);
+    await w.close();
+    selectedClient.mensagens.unshift({ nome: fileName, conteudo: texto, handle: fh });
+    document.getElementById('msg-count').textContent = '(' + selectedClient.mensagens.length + ')';
+    toast('Salvo: ' + fileName, 'ok');
+    renderMensagens();
+  } catch(e) {
+    toast('Erro ao salvar: ' + e.message, 'err');
+  }
+}
+
+function monthSlug() {
+  const meses = ['janeiro','fevereiro','marco','abril','maio','junho','julho','agosto','setembro','outubro','novembro','dezembro'];
+  const d = new Date();
+  return meses[d.getMonth()] + '_' + d.getFullYear();
+}
+
+// ============================================================
+// REUNIOES TAB
+// ============================================================
+function renderReunioes() {
+  document.getElementById('tab-reunioes').innerHTML =
+    '<div class="reunioes-empty">Registro de reuniões em breve. Por enquanto, anote no CRM interno da Fami.</div>';
+}
+
+// ============================================================
+// UI HELPERS
+// ============================================================
+function showLoading(text) {
+  document.getElementById('loading').style.display = 'flex';
+  document.getElementById('loading-text').textContent = text;
+}
+function hideLoading() {
+  document.getElementById('loading').style.display = 'none';
+}
+
+function toast(msg, type) {
+  const el = document.getElementById('toast');
+  el.textContent = msg;
+  el.className = 'show' + (type === 'ok' ? ' toast-ok' : type === 'err' ? ' toast-err' : '');
+  clearTimeout(el._t);
+  el._t = setTimeout(() => { el.className = ''; }, 3500);
+}
+
+function esc(s) {
+  if (!s) return '';
+  return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
+
+// ============================================================
+// INIT — try to restore previous folder
+// ============================================================
+(async () => {
+  if (!window.showDirectoryPicker) return;
+  try {
+    const h = await restoreHandle();
+    if (h) {
+      rootHandle = h;
+      await loadData();
+    }
+  } catch(e) {
+    console.warn('Restore failed:', e);
+  }
+})();
+</script>
+</body>
+</html>

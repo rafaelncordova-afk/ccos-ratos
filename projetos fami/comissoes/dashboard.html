@@ -1,26 +1,44 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Dashboard Comissoes â€” Fami Capital</title>
+<title>Dashboard Comissoes &ndash; Fami Capital</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 <style>
-:root{--bg:#0f1117;--card:#1a1d27;--bdr:#2a2d3e;--text:#e2e8f0;--mu:#8892a4;--gr:#22c55e;--ye:#eab308;--re:#ef4444;--bl:#3b82f6;--ac:#6366f1}
+:root{--bg:#0f1117;--card:#1a1d27;--bdr:#2a2d3e;--text:#e2e8f0;--mu:#8892a4;--gr:#22c55e;--ye:#eab308;--re:#ef4444;--bl:#3b82f6;--ac:#6366f1;--pu:#a855f7}
 *{box-sizing:border-box;margin:0;padding:0}
 body{background:var(--bg);color:var(--text);font-family:system-ui,sans-serif;font-size:14px}
-header{padding:20px 32px;border-bottom:1px solid var(--bdr);display:flex;justify-content:space-between;align-items:center}
+header{padding:18px 32px;border-bottom:1px solid var(--bdr);display:flex;justify-content:space-between;align-items:center}
 h1{font-size:17px;font-weight:600}
 .sub{font-size:11px;color:var(--mu);margin-top:3px}
+
+/* TABS */
+.tabs{padding:0 32px;border-bottom:1px solid var(--bdr);display:flex}
+.tabbt{padding:12px 22px;border:none;background:none;color:var(--mu);font-size:13px;font-weight:500;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;transition:color .15s,border-color .15s}
+.tabbt:hover{color:var(--text)}
+.tabbt.on{color:var(--ac);border-bottom-color:var(--ac)}
+.tabpanel{display:none}
+.tabpanel.on{display:block}
+
+/* LAYOUT */
 .wrap{max-width:1400px;margin:0 auto;padding:24px 32px}
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(165px,1fr));gap:14px;margin-bottom:26px}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+@media(max-width:800px){.g2{grid-template-columns:1fr}}
+
+/* CARDS */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;margin-bottom:26px}
 .card{background:var(--card);border:1px solid var(--bdr);border-radius:10px;padding:18px}
 .lbl{font-size:11px;color:var(--mu);text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px}
 .val{font-size:20px;font-weight:700}
-.dlt{font-size:11px;color:var(--mu);margin-top:3px}
-.cb .val{color:var(--bl)}.cg .val{color:var(--gr)}.cy .val{color:var(--ye)}
+.dlt{font-size:11px;color:var(--mu);margin-top:4px}
+.cb .val{color:var(--bl)}.cg .val{color:var(--gr)}.cy .val{color:var(--ye)}.cp .val{color:var(--pu)}
+
+/* SECTION */
 .sec{background:var(--card);border:1px solid var(--bdr);border-radius:10px;padding:22px;margin-bottom:22px}
 .sec h2{font-size:13px;font-weight:600;margin-bottom:16px}
+
+/* PILLS (historico) */
 .pills{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:18px}
 .pill{padding:5px 12px;border-radius:20px;font-size:11px;font-weight:500;cursor:pointer;border:1px solid var(--bdr);background:transparent;color:var(--mu);transition:all .12s}
 .pill:hover{border-color:var(--ac);color:var(--text)}
@@ -29,59 +47,201 @@ h1{font-size:17px;font-weight:600}
 .ga.on{background:var(--gr)!important;border-color:var(--gr)!important}
 .ya.on{background:var(--ye)!important;border-color:var(--ye)!important;color:#000!important}
 .ra.on{background:var(--re)!important;border-color:var(--re)!important}
+
+/* CHART */
 .ch{position:relative;height:270px}
+
+/* TABLE */
 table{width:100%;border-collapse:collapse;font-size:13px}
 th{text-align:left;color:var(--mu);font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.04em;padding:7px 10px;border-bottom:1px solid var(--bdr)}
 td{padding:9px 10px;border-bottom:1px solid var(--bdr)}
 tr:last-child td{border-bottom:none}
 tr:hover td{background:rgba(255,255,255,.02)}
 .nr{text-align:right;font-variant-numeric:tabular-nums}
-.tg{color:var(--gr)}.ty{color:var(--ye)}.tr{color:var(--re)}.tb{color:var(--bl)}.tm{color:var(--mu)}
-.g2{display:grid;grid-template-columns:1fr 1fr;gap:22px}
-@media(max-width:800px){.g2{grid-template-columns:1fr}}
+.tg{color:var(--gr)}.ty{color:var(--ye)}.tr{color:var(--re)}.tb{color:var(--bl)}.tm{color:var(--mu)}.tp{color:var(--pu)}
+
+/* UPLOAD */
+.upload-area{border:2px dashed var(--bdr);border-radius:12px;padding:52px 32px;text-align:center;cursor:pointer;transition:border-color .2s,background .2s;position:relative}
+.upload-area:hover,.upload-area.drag{border-color:var(--ac);background:rgba(99,102,241,.05)}
+.upload-area input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
+.upload-icon{font-size:40px;margin-bottom:14px;opacity:.45;display:block}
+.upload-title{font-size:15px;font-weight:600;margin-bottom:6px}
+.upload-sub{font-size:12px;color:var(--mu)}
+
+/* CONFIG */
+.cfg{display:flex;gap:14px;margin-bottom:22px;flex-wrap:wrap}
+.cfg-item{background:var(--card);border:1px solid var(--bdr);border-radius:10px;padding:14px 18px;flex:1;min-width:190px}
+.cfg-item label{display:block;font-size:11px;color:var(--mu);text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px}
+.cfg-item input{width:100%;background:var(--bg);border:1px solid var(--bdr);border-radius:6px;padding:8px 10px;color:var(--text);font-size:14px;font-family:inherit;transition:border-color .15s}
+.cfg-item input:focus{outline:none;border-color:var(--ac)}
+
+/* PROGRESS */
+.prog-wrap{margin-bottom:10px}
+.prog{height:5px;background:var(--bdr);border-radius:3px;overflow:hidden}
+.prog-bar{height:100%;background:var(--ac);border-radius:3px;transition:width .5s}
+.prog-meta{display:flex;justify-content:space-between;font-size:11px;color:var(--mu);margin-bottom:8px}
+
+/* BADGE */
+.badge{display:inline-block;padding:3px 9px;border-radius:12px;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.04em}
+.badge-ok{background:rgba(34,197,94,.15);color:var(--gr)}
+.badge-warn{background:rgba(234,179,8,.15);color:var(--ye)}
+
+/* MISC */
+.file-row{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.file-meta{font-size:12px;color:var(--mu);margin-left:10px}
+.btn-sm{border:1px solid var(--bdr);background:none;color:var(--mu);padding:5px 13px;border-radius:6px;cursor:pointer;font-size:12px;transition:border-color .15s,color .15s}
+.btn-sm:hover{border-color:var(--text);color:var(--text)}
+.warn-line{font-size:11px;color:var(--ye);margin-top:10px}
+.note{font-size:11px;color:var(--mu);margin-top:6px;font-style:italic}
 </style>
 </head>
-<body><header>
+<body>
+
+<header>
   <div>
     <h1>Dashboard Comissoes</h1>
-    <div class="sub">Fami Capital Â· 23/06/2026 16:37</div>
+    <div class="sub" id="hd-sub">Fami Capital</div>
   </div>
-</header><div class="wrap">
-<div class="cards" id="cr"></div>
-<div class="sec">
-  <h2>Evolucao Mensal</h2>
-  <div class="pills">
-    <button class="pill pa on" onclick="sf(this,'tl')">Total</button>
-    <button class="pill pa" onclick="sf(this,'tsc')">Sem Campanhas</button>
-    <button class="pill ga" onclick="sf(this,'rec')">Recorrente</button>
-    <button class="pill ga" onclick="sf(this,'ff')">Fee Fixo</button>
-    <button class="pill ga" onclick="sf(this,'mfo')">MFO Consult.</button>
-    <button class="pill ga" onclick="sf(this,'adm')">Carteira ADM</button>
-    <button class="pill ga" onclick="sf(this,'tx')">TX ADM</button>
-    <button class="pill ga" onclick="sf(this,'prev')">Previdencia</button>
-    <button class="pill ga" onclick="sf(this,'seg')">Seguros</button>
-    <button class="pill ya" onclick="sf(this,'rv')">RV</button>
-    <button class="pill ya" onclick="sf(this,'coe')">COE</button>
-    <button class="pill ya" onclick="sf(this,'rf')">RF</button>
-    <button class="pill ya" onclick="sf(this,'fiis')">FIIs</button>
-    <button class="pill ya" onclick="sf(this,'of')">Oferta Fundos</button>
-    <button class="pill ya" onclick="sf(this,'bank')">Banking</button>
-    <button class="pill ya" onclick="sf(this,'intl')">Internacional</button>
-    <button class="pill ra" onclick="sf(this,'camp')">Campanhas</button>
+</header>
+
+<nav class="tabs">
+  <button class="tabbt on" onclick="showTab(this,'historico')">Hist&oacute;rico</button>
+  <button class="tabbt" onclick="showTab(this,'corrente')">M&ecirc;s Corrente</button>
+</nav>
+
+<!-- ===== TAB: HISTORICO ===== -->
+<div id="tab-historico" class="tabpanel on">
+<div class="wrap">
+  <div class="cards" id="cr"></div>
+  <div class="sec">
+    <h2>Evolu&ccedil;&atilde;o Mensal</h2>
+    <div class="pills">
+      <button class="pill pa on" onclick="sf(this,'tl')">Total</button>
+      <button class="pill pa" onclick="sf(this,'tsc')">Sem Campanhas</button>
+      <button class="pill ga" onclick="sf(this,'rec')">Recorrente</button>
+      <button class="pill ga" onclick="sf(this,'ff')">Fee Fixo</button>
+      <button class="pill ga" onclick="sf(this,'mfo')">MFO Consult.</button>
+      <button class="pill ga" onclick="sf(this,'adm')">Carteira ADM</button>
+      <button class="pill ga" onclick="sf(this,'tx')">TX ADM</button>
+      <button class="pill ga" onclick="sf(this,'prev')">Previd&ecirc;ncia</button>
+      <button class="pill ga" onclick="sf(this,'seg')">Seguros</button>
+      <button class="pill ya" onclick="sf(this,'rv')">RV</button>
+      <button class="pill ya" onclick="sf(this,'coe')">COE</button>
+      <button class="pill ya" onclick="sf(this,'rf')">RF</button>
+      <button class="pill ya" onclick="sf(this,'fiis')">FIIs</button>
+      <button class="pill ya" onclick="sf(this,'of')">Oferta Fundos</button>
+      <button class="pill ya" onclick="sf(this,'bank')">Banking</button>
+      <button class="pill ya" onclick="sf(this,'intl')">Internacional</button>
+      <button class="pill ra" onclick="sf(this,'camp')">Campanhas</button>
+    </div>
+    <div class="ch"><canvas id="mc"></canvas></div>
   </div>
-  <div class="ch"><canvas id="mc"></canvas></div>
+  <div class="g2">
+    <div class="sec"><h2>Detalhamento &ndash; &Uacute;ltimo M&ecirc;s</h2><table id="bt"></table></div>
+    <div class="sec"><h2>Comparativo Mensal</h2><table id="mt"></table></div>
+  </div>
 </div>
-<div class="g2">
-  <div class="sec"><h2>Detalhamento â€” Ultimo Mes</h2><table id="bt"></table></div>
-  <div class="sec"><h2>Comparativo Mensal</h2><table id="mt"></table></div>
+</div>
+
+<!-- ===== TAB: MES CORRENTE ===== -->
+<div id="tab-corrente" class="tabpanel">
+<div class="wrap">
+
+  <!-- Config -->
+  <div class="cfg">
+    <div class="cfg-item">
+      <label>MFO Consultoria &mdash; Estimativa (m&ecirc;s anterior)</label>
+      <input type="text" id="cfg-mfo" value="2.447,00" placeholder="Ex: 2.447,00">
+    </div>
+    <div class="cfg-item">
+      <label>Carteira ADM &mdash; Estimativa (m&ecirc;s anterior)</label>
+      <input type="text" id="cfg-adm" value="1.714,00" placeholder="Ex: 1.714,00">
+    </div>
+    <div class="cfg-item" style="flex:0.6;min-width:140px">
+      <label>Desconto Fami</label>
+      <input type="text" value="19,5%" readonly style="opacity:.5;cursor:default">
+    </div>
+  </div>
+
+  <!-- Upload -->
+  <div id="upload-sec" class="sec">
+    <h2>Importar CSV do M&ecirc;s</h2>
+    <div class="upload-area" id="drop-area">
+      <input type="file" accept=".csv,.txt" id="csv-input" onchange="handleFile(this.files[0])">
+      <span class="upload-icon">&#128194;</span>
+      <div class="upload-title">Arraste o CSV aqui ou clique para selecionar</div>
+      <div class="upload-sub">Exportado direto do Hub XP &mdash; separado por ponto e v&iacute;rgula</div>
+    </div>
+  </div>
+
+  <!-- Resultado -->
+  <div id="result-area" style="display:none">
+
+    <!-- File info bar -->
+    <div class="sec" style="padding:14px 22px">
+      <div class="file-row">
+        <div>
+          <span class="badge badge-ok">CSV carregado</span>
+          <span class="file-meta" id="file-meta"></span>
+        </div>
+        <button class="btn-sm" onclick="resetUpload()">Trocar arquivo</button>
+      </div>
+    </div>
+
+    <!-- Progresso do mes -->
+    <div class="sec">
+      <h2 id="prog-title">Progresso do M&ecirc;s</h2>
+      <div class="prog-meta">
+        <span id="prog-days-txt"></span>
+        <span id="prog-pct-txt"></span>
+      </div>
+      <div class="prog"><div class="prog-bar" id="prog-bar" style="width:0%"></div></div>
+      <div class="warn-line" id="warn-unk" style="display:none">
+        &#9888; Algumas categorias n&atilde;o reconhecidas foram exclu&iacute;das do c&aacute;lculo. Veja a tabela abaixo.
+      </div>
+    </div>
+
+    <!-- Cards -->
+    <div class="cards" id="cc"></div>
+
+    <!-- Chart acumulado -->
+    <div class="sec">
+      <h2>Ac&uacute;mulo Di&aacute;rio &mdash; L&iacute;quido Estimado</h2>
+      <div class="ch"><canvas id="dc"></canvas></div>
+    </div>
+
+    <!-- Breakdown + Nao mapeados -->
+    <div class="g2">
+      <div class="sec">
+        <h2>Por Categoria</h2>
+        <table id="cat-table"></table>
+        <p class="note" id="ff-note" style="display:none">* Fee Fixo usa 50% de repasse como estimativa. Confirme o percentual correto.</p>
+      </div>
+      <div class="sec">
+        <h2>Linhas N&atilde;o Mapeadas</h2>
+        <table id="unk-table"></table>
+      </div>
+    </div>
+
+  </div><!-- /result-area -->
 </div>
 </div>
-<script>const DATA=[{mes:"Fev/2026",tl:20042,tsc:20042,rec:10402,pctRec:51.9,ff:4887,mfo:2323,adm:1775,tx:785,prev:600,seg:33,rv:3209,coe:0,rf:1300,fiis:25,of:4418,bank:1790,intl:1,camp:0,est:64},{mes:"Mar/2026",tl:20066,tsc:17601,rec:12240,pctRec:61,ff:6072,mfo:2342,adm:1884,tx:1003,prev:732,seg:206,rv:1268,coe:276,rf:989,fiis:1816,of:0,bank:2288,intl:178,camp:2465,est:65},{mes:"Abr/2026",tl:19769,tsc:18355,rec:11185,pctRec:56.6,ff:5593,mfo:2399,adm:1672,tx:790,prev:643,seg:88,rv:2943,coe:0,rf:1633,fiis:997,of:0,bank:1956,intl:610,camp:1414,est:61},{mes:"Mai/2026",tl:28460,tsc:20413,rec:11579,pctRec:40.7,ff:5649,mfo:2447,adm:1714,tx:967,prev:620,seg:181,rv:1214,coe:3657,rf:4024,fiis:25,of:274,bank:832,intl:174,camp:8047,est:23}];
+
+<script>
+// ============================================================
+// HISTORICO
+// ============================================================
+const DATA=[
+  {mes:"Fev/2026",tl:20042,tsc:20042,rec:10402,pctRec:51.9,ff:4887,mfo:2323,adm:1775,tx:785,prev:600,seg:33,rv:3209,coe:0,rf:1300,fiis:25,of:4418,bank:1790,intl:1,camp:0,est:64},
+  {mes:"Mar/2026",tl:20066,tsc:17601,rec:12240,pctRec:61,ff:6072,mfo:2342,adm:1884,tx:1003,prev:732,seg:206,rv:1268,coe:276,rf:989,fiis:1816,of:0,bank:2288,intl:178,camp:2465,est:65},
+  {mes:"Abr/2026",tl:19769,tsc:18355,rec:11185,pctRec:56.6,ff:5593,mfo:2399,adm:1672,tx:790,prev:643,seg:88,rv:2943,coe:0,rf:1633,fiis:997,of:0,bank:1956,intl:610,camp:1414,est:61},
+  {mes:"Mai/2026",tl:28460,tsc:20413,rec:11579,pctRec:40.7,ff:5649,mfo:2447,adm:1714,tx:967,prev:620,seg:181,rv:1214,coe:3657,rf:4024,fiis:25,of:274,bank:832,intl:174,camp:8047,est:23}
+];
 const FL={
-  tl:{l:'Total Liquido',b:null},tsc:{l:'Sem Campanhas',b:null},
+  tl:{l:'Total L\xedquido',b:null},tsc:{l:'Sem Campanhas',b:null},
   rec:{l:'Recorrente',b:'A'},ff:{l:'Fee Fixo',b:'A'},mfo:{l:'MFO Consult.',b:'A'},
-  adm:{l:'Carteira ADM',b:'A'},tx:{l:'TX ADM',b:'A'},prev:{l:'Previdencia',b:'A'},seg:{l:'Seguros',b:'A'},
-  rv:{l:'RV',b:'B'},coe:{l:'COE',b:'B'},rf:{l:'RF',b:'B'},fiis:{l:'FIIs Primario',b:'B'},
+  adm:{l:'Carteira ADM',b:'A'},tx:{l:'TX ADM',b:'A'},prev:{l:'Previd\xeancia',b:'A'},seg:{l:'Seguros',b:'A'},
+  rv:{l:'RV',b:'B'},coe:{l:'COE',b:'B'},rf:{l:'RF',b:'B'},fiis:{l:'FIIs Prim\xe1rio',b:'B'},
   of:{l:'Oferta Fundos',b:'B'},bank:{l:'Banking',b:'B'},intl:{l:'Internacional',b:'B'},
   camp:{l:'Campanhas',b:'C'},est:{l:'Estornos',b:'C'}
 };
@@ -89,11 +249,11 @@ const BC={A:'#22c55e',B:'#eab308',C:'#ef4444',null:'#6366f1'};
 const VD=DATA.filter(d=>d.tl!==null);
 const L=VD[VD.length-1],P=VD.length>1?VD[VD.length-2]:null;
 
-function fm(v){if(v===null||v===undefined)return'â€”';return'R$ '+Math.round(v).toLocaleString('pt-BR')}
-function fp(v){if(v===null||v===undefined)return'â€”';return v.toFixed(1)+'%'}
+function fm(v){if(v===null||v===undefined)return'—';return'R$ '+Math.round(v).toLocaleString('pt-BR');}
+function fp(v){if(v===null||v===undefined)return'—';return v.toFixed(1)+'%';}
 
 document.getElementById('cr').innerHTML=[
-  {l:'Total Liquido',k:'tl',c:'cb'},
+  {l:'Total L\xedquido',k:'tl',c:'cb'},
   {l:'Sem Campanhas',k:'tsc',c:''},
   {l:'Recorrente',k:'rec',c:'cg'},
   {l:'% Recorrente',k:'pctRec',c:'cg',pct:1},
@@ -102,16 +262,16 @@ document.getElementById('cr').innerHTML=[
 ].map(cd=>{
   const v=cd.calc?cd.calc(L):L[cd.k];
   const p=P?(cd.calc?cd.calc(P):P[cd.k]):null;
-  const d=p?((v-p)/p*100).toFixed(1):null;
+  const d=p!==null?((v-p)/p*100).toFixed(1):null;
   const ds=d?(+(d)>=0?'+'+d+'%':d+'%')+' vs '+P.mes:L.mes;
   return`<div class="card ${cd.c}"><div class="lbl">${cd.l}</div><div class="val">${cd.pct?fp(v):fm(v)}</div><div class="dlt">${ds}</div></div>`;
 }).join('');
 
-let ch;
+let histChart;
 function buildC(k,col){
   const pts=VD.filter(d=>d[k]!==null);
-  if(ch)ch.destroy();
-  ch=new Chart(document.getElementById('mc').getContext('2d'),{
+  if(histChart)histChart.destroy();
+  histChart=new Chart(document.getElementById('mc').getContext('2d'),{
     type:'bar',
     data:{labels:pts.map(d=>d.mes),datasets:[{label:FL[k]?FL[k].l:k,data:pts.map(d=>d[k]||0),
       backgroundColor:col+'44',borderColor:col,borderWidth:2,borderRadius:6}]},
@@ -122,19 +282,288 @@ function buildC(k,col){
   });
 }
 function sf(el,k){
-  document.querySelectorAll('.pill').forEach(p=>p.classList.remove('on'));
+  document.querySelectorAll('#tab-historico .pill').forEach(p=>p.classList.remove('on'));
   el.classList.add('on');
   buildC(k,BC[FL[k]?FL[k].b:null]);
 }
 buildC('tl','#6366f1');
 
 const bk=Object.entries(FL).filter(([k])=>k!=='tl'&&k!=='tsc');
-document.getElementById('bt').innerHTML='<thead><tr><th>Categoria</th><th>Bloco</th><th class="nr">'+(L?L.mes:'')+
+document.getElementById('bt').innerHTML=
+  '<thead><tr><th>Categoria</th><th>Bloco</th><th class="nr">'+(L?L.mes:'')+
   '</th>'+(P?'<th class="nr">'+P.mes+'</th>':'')+'</tr></thead><tbody>'+
   bk.map(([k,f])=>{const v=L?L[k]:null,p=P?P[k]:null,cl=f.b==='A'?'tg':f.b==='B'?'ty':f.b==='C'?'tr':'';
-    return`<tr><td>${f.l}</td><td class="${cl} tm">${f.b?'Bloco '+f.b:'â€”'}</td><td class="nr ${cl}">${fm(v)}</td>${P?`<td class="nr tm">${fm(p)}</td>`:''}</tr>`;
+    return`<tr><td>${f.l}</td><td class="${cl} tm">${f.b?'Bloco '+f.b:'—'}</td><td class="nr ${cl}">${fm(v)}</td>${P?`<td class="nr tm">${fm(p)}</td>`:''}</tr>`;
   }).join('')+'</tbody>';
 
-document.getElementById('mt').innerHTML='<thead><tr><th>Mes</th><th class="nr">Total</th><th class="nr">Recorr.</th><th class="nr">%</th><th class="nr">Fee Fixo</th></tr></thead><tbody>'+
-  [...VD].reverse().map(d=>`<tr><td>${d.mes}</td><td class="nr tb">${fm(d.tl)}</td><td class="nr tg">${fm(d.rec)}</td><td class="nr tm">${fp(d.pctRec)}</td><td class="nr">${fm(d.ff)}</td></tr>`).join('')+'</tbody>';
-</script></body></html>
+document.getElementById('mt').innerHTML=
+  '<thead><tr><th>M\xeas</th><th class="nr">Total</th><th class="nr">Recorr.</th><th class="nr">%</th><th class="nr">Fee Fixo</th></tr></thead><tbody>'+
+  [...VD].reverse().map(d=>`<tr><td>${d.mes}</td><td class="nr tb">${fm(d.tl)}</td><td class="nr tg">${fm(d.rec)}</td><td class="nr tm">${fp(d.pctRec)}</td><td class="nr">${fm(d.ff)}</td></tr>`).join('')+
+  '</tbody>';
+
+// ============================================================
+// TABS
+// ============================================================
+function showTab(el,id){
+  document.querySelectorAll('.tabbt').forEach(b=>b.classList.remove('on'));
+  document.querySelectorAll('.tabpanel').forEach(p=>p.classList.remove('on'));
+  el.classList.add('on');
+  document.getElementById('tab-'+id).classList.add('on');
+}
+
+// ============================================================
+// MES CORRENTE
+// ============================================================
+
+// Normaliza string para lookup (remove acentos, minusculo, trim)
+function norm(s){
+  return(s||'').normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase().trim();
+}
+
+// Tabela de repasse por Produto Categoria (normalizado)
+const REPASSE={
+  'bm&f':0.3375,'bm&f mini':0.45,'bm&f self service':0.3375,
+  'bovespa':0.3375,'bovespa empacotados':0.3375,'bovespa fiis':0.3375,
+  'bovespa fiis risco':0,'bovespa fiis self service':0.3375,'bovespa self service':0.3375,
+  'btc':0.20,
+  'clearthrough':0.40,
+  'clubes':0.4114,
+  'coe':0.4514,
+  'mercado internacional':0.40,'mercado internacional outros':0.40,
+  'oferta fiis':0.375,
+  'oferta fundos':0.50,
+  'oferta rf':0.3774,
+  'operacoes estruturadas':0.2703,'operacoes estruturadas - ficc':0.30,'operacoes estruturadas - swap':0.2503,
+  'swap':0.2503,'swap rf':0.2503,
+  'renda fixa':0.50,
+  'secundario fiis':0.50,'secundario fundos':0.50,
+  'financiamento imobiliario xp':0.25,
+  'tx adm':0.50,'tx perf':0.50,
+  'xp us':0.50,
+  // OUTROS
+  'fundos exclusivos':0.50,
+  'derivativos':0.30,
+  'cri mateus':0.375,
+  'previdencia':0.50,
+  'cambio':0.40,
+  'credito_pf':0.30,'credito_pj':0.30,
+  'consorcio':0.30,
+  'financiamento imobiliario':0.25,
+  'vida':0.30,
+  'seguros corporativos':0.25,
+  'previdencia empresarial':0.30,
+  'consultoria':0.25,
+  'mfo':0.25,
+  // Fee Fixo — estimativa 50% (confirmar percentual correto)
+  'fee fixo':0.50,
+};
+
+const FAMI=0.195;
+let dayChart=null;
+let currentRows=[];
+let currentFname='';
+
+// Parseia numero br (1.234,56 -> 1234.56)
+function parseBR(s){return parseFloat((s||'0').replace(/\./g,'').replace(',','.'))||0;}
+function getMFO(){return parseBR(document.getElementById('cfg-mfo').value);}
+function getADM(){return parseBR(document.getElementById('cfg-adm').value);}
+
+// Drag & drop
+const dropEl=document.getElementById('drop-area');
+dropEl.addEventListener('dragover',e=>{e.preventDefault();dropEl.classList.add('drag');});
+dropEl.addEventListener('dragleave',()=>dropEl.classList.remove('drag'));
+dropEl.addEventListener('drop',e=>{
+  e.preventDefault();dropEl.classList.remove('drag');
+  const f=e.dataTransfer.files[0];if(f)handleFile(f);
+});
+
+function handleFile(file){
+  if(!file)return;
+  currentFname=file.name;
+  const r=new FileReader();
+  r.onload=e=>parseCSV(e.target.result);
+  r.readAsText(file,'UTF-8');
+}
+
+function parseCSV(text){
+  // Remove BOM se houver
+  if(text.charCodeAt(0)===0xFEFF)text=text.slice(1);
+
+  const lines=text.split(/\r?\n/);
+
+  // Localiza linha de cabecalho
+  let hi=-1;
+  for(let i=0;i<lines.length;i++){
+    if(lines[i].includes('Data')&&lines[i].includes('Faturamento')){hi=i;break;}
+  }
+  if(hi<0){alert('Formato n\xe3o reconhecido: cabe\xe7alho n\xe3o encontrado.');return;}
+
+  const hdrs=lines[hi].split(';').map(h=>h.replace(/"/g,'').trim());
+  const iData=hdrs.indexOf('Data');
+  const iFat=hdrs.indexOf('Faturamento');
+  const iProd=hdrs.findIndex(h=>h.includes('Produto'));
+  const iTR=hdrs.findIndex(h=>h.includes('Tipo Receita'));
+
+  const rows=[];
+  for(let i=hi+1;i<lines.length;i++){
+    const c=lines[i].split(';');
+    if(c.length<5)continue;
+    const fat=parseBR(c[iFat]);
+    if(fat===0)continue;
+    const dateRaw=(c[iData]||'').trim();
+    if(!dateRaw.match(/\d{2}\/\d{2}\/\d{4}/))continue;
+    const prodCat=(c[iProd]||'').trim();
+    const tipoRec=(c[iTR]||'').trim();
+    const rPct=REPASSE[norm(prodCat)];
+    rows.push({date:dateRaw,fat,prodCat,tipoRec,rPct});
+  }
+
+  currentRows=rows;
+  renderResult();
+}
+
+function renderResult(){
+  const rows=currentRows;
+  if(!rows.length)return;
+
+  document.getElementById('upload-sec').style.display='none';
+  document.getElementById('result-area').style.display='block';
+  document.getElementById('file-meta').textContent=currentFname+' — '+rows.length+' linhas com faturamento';
+
+  // Progresso do mes
+  const today=new Date();
+  const daysInMonth=new Date(today.getFullYear(),today.getMonth()+1,0).getDate();
+  const day=today.getDate();
+  const pct=Math.round(day/daysInMonth*100);
+  document.getElementById('prog-bar').style.width=pct+'%';
+  document.getElementById('prog-days-txt').textContent='Dia '+day+' de '+daysInMonth;
+  document.getElementById('prog-pct-txt').textContent=pct+'% do m\xeas';
+  document.getElementById('prog-title').textContent=
+    'Progresso do M\xeas — '+today.toLocaleString('pt-BR',{month:'long',year:'numeric'});
+
+  const mfoEst=getMFO(), admEst=getADM(), mfoAdm=mfoEst+admEst;
+
+  // Separa conhecidos e desconhecidos
+  const known=rows.filter(r=>r.rPct!==undefined&&r.rPct!==null);
+  const unknown=rows.filter(r=>r.rPct===undefined||r.rPct===null);
+
+  document.getElementById('warn-unk').style.display=unknown.length?'block':'none';
+
+  // Calculos principais
+  const fatTotal=known.reduce((s,r)=>s+r.fat,0);
+  const repBruto=known.reduce((s,r)=>s+r.fat*r.rPct,0);
+  const liqApurado=repBruto*(1-FAMI);
+  const liqTotal=liqApurado+mfoAdm;
+  const pctRepasse=fatTotal>0?(liqApurado/fatTotal*100):0;
+
+  // Cards
+  document.getElementById('cc').innerHTML=[
+    {l:'Faturamento Gerado',v:fatTotal,c:'cb',tip:''},
+    {l:'Repasse Bruto',v:repBruto,c:'',tip:''},
+    {l:'L\xedquido Apurado',v:liqApurado,c:'cg',tip:''},
+    {l:'MFO + ADM (est.)',v:mfoAdm,c:'cy',tip:''},
+    {l:'Total Projetado',v:liqTotal,c:'cp',tip:''},
+    {l:'% Repasse s/ Fat.',v:null,pct:pctRepasse,c:'',tip:''},
+  ].map(cd=>
+    `<div class="card ${cd.c}"><div class="lbl">${cd.l}</div><div class="val">${cd.pct!==undefined&&cd.v===null?cd.pct.toFixed(1)+'%':fm(cd.v)}</div></div>`
+  ).join('');
+
+  // Acumulo diario
+  const byDate={};
+  known.forEach(r=>{
+    if(!byDate[r.date])byDate[r.date]=0;
+    byDate[r.date]+=r.fat*r.rPct*(1-FAMI);
+  });
+  const dates=Object.keys(byDate).sort((a,b)=>{
+    const pa=a.split('/'),pb=b.split('/');
+    return new Date(+pa[2],+pa[1]-1,+pa[0])-new Date(+pb[2],+pb[1]-1,+pb[0]);
+  });
+  let cum=0;
+  const cumLiq=dates.map(d=>{cum+=byDate[d];return Math.round(cum);});
+  const cumProj=cumLiq.map(v=>Math.round(v+mfoAdm));
+
+  if(dayChart)dayChart.destroy();
+  dayChart=new Chart(document.getElementById('dc').getContext('2d'),{
+    type:'line',
+    data:{
+      labels:dates,
+      datasets:[
+        {label:'Apurado (sem MFO/ADM)',data:cumLiq,
+          borderColor:'#6366f1',backgroundColor:'#6366f122',fill:true,tension:.35,
+          pointRadius:5,pointHoverRadius:7,pointBackgroundColor:'#6366f1'},
+        {label:'Projetado (com MFO+ADM)',data:cumProj,
+          borderColor:'#22c55e',backgroundColor:'transparent',
+          borderDash:[6,4],tension:.35,pointRadius:0,borderWidth:2},
+      ]
+    },
+    options:{responsive:true,maintainAspectRatio:false,
+      plugins:{
+        legend:{display:true,labels:{color:'#8892a4',font:{size:11},boxWidth:14}},
+        tooltip:{callbacks:{label:c=>c.dataset.label+': '+fm(c.parsed.y)}}
+      },
+      scales:{
+        y:{grid:{color:'#2a2d3e'},ticks:{color:'#8892a4',callback:v=>'R$ '+(v/1000).toFixed(1)+'k'}},
+        x:{grid:{display:false},ticks:{color:'#8892a4'}}
+      }
+    }
+  });
+
+  // Breakdown por categoria
+  const bycat={};
+  known.forEach(r=>{
+    if(!bycat[r.prodCat])bycat[r.prodCat]={fat:0,liq:0,pct:r.rPct};
+    bycat[r.prodCat].fat+=r.fat;
+    bycat[r.prodCat].liq+=r.fat*r.rPct*(1-FAMI);
+  });
+  const sortedCat=Object.entries(bycat).sort((a,b)=>b[1].liq-a[1].liq);
+  const hasFeeFixo=sortedCat.some(([k])=>norm(k)==='fee fixo');
+  document.getElementById('ff-note').style.display=hasFeeFixo?'block':'none';
+
+  document.getElementById('cat-table').innerHTML=
+    '<thead><tr><th>Categoria</th><th class="nr">Repasse</th><th class="nr">Faturamento</th><th class="nr">L\xedquido</th></tr></thead><tbody>'+
+    sortedCat.map(([cat,d])=>{
+      const isFF=norm(cat)==='fee fixo';
+      return`<tr><td>${cat}${isFF?' <span style="color:var(--ye);font-size:10px">*</span>':''}</td><td class="nr tm">${(d.pct*100).toFixed(2)}%</td><td class="nr ty">${fm(d.fat)}</td><td class="nr tg">${fm(d.liq)}</td></tr>`;
+    }).join('')+
+    '</tbody>';
+
+  // Linhas nao mapeadas
+  if(unknown.length>0){
+    const byunk={};
+    unknown.forEach(r=>{
+      const k=r.prodCat||'(sem categoria)';
+      if(!byunk[k])byunk[k]={fat:0,n:0};
+      byunk[k].fat+=r.fat;byunk[k].n++;
+    });
+    document.getElementById('unk-table').innerHTML=
+      '<thead><tr><th>Categoria</th><th class="nr">Linhas</th><th class="nr">Faturamento</th></tr></thead><tbody>'+
+      Object.entries(byunk).sort((a,b)=>b[1].fat-a[1].fat).map(([cat,d])=>
+        `<tr><td class="ty">${cat}</td><td class="nr tm">${d.n}</td><td class="nr ty">${fm(d.fat)}</td></tr>`
+      ).join('')+'</tbody>';
+  } else {
+    document.getElementById('unk-table').innerHTML=
+      '<tbody><tr><td colspan="3" class="tg" style="text-align:center;padding:20px">Todas as categorias mapeadas</td></tr></tbody>';
+  }
+}
+
+function resetUpload(){
+  document.getElementById('upload-sec').style.display='block';
+  document.getElementById('result-area').style.display='none';
+  document.getElementById('csv-input').value='';
+  currentRows=[];currentFname='';
+  if(dayChart){dayChart.destroy();dayChart=null;}
+}
+
+// Re-renderiza quando MFO/ADM muda
+['cfg-mfo','cfg-adm'].forEach(id=>{
+  document.getElementById(id).addEventListener('change',()=>{
+    if(currentRows.length)renderResult();
+  });
+});
+
+// Data no header
+document.getElementById('hd-sub').textContent=
+  'Fami Capital · '+new Date().toLocaleDateString('pt-BR');
+</script>
+</body>
+</html>

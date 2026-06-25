@@ -1,0 +1,36 @@
+{
+  "contas": [
+    {
+      "id": "1",
+      "nome": "Aluguel",
+      "valor": 0,
+      "vencimento": 5,
+      "categoria": "Moradia",
+      "ativo": true
+    },
+    {
+      "id": "2",
+      "nome": "Condomínio",
+      "valor": 0,
+      "vencimento": 10,
+      "categoria": "Moradia",
+      "ativo": true
+    },
+    {
+      "id": "3",
+      "nome": "Escola",
+      "valor": 0,
+      "vencimento": 10,
+      "categoria": "Educação",
+      "ativo": true
+    },
+    {
+      "id": "4",
+      "nome": "Guitarra",
+      "valor": 0,
+      "vencimento": 15,
+      "categoria": "Educação",
+      "ativo": true
+    }
+  ]
+}

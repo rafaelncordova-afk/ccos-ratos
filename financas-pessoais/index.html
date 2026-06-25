@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Finanças Pessoais</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div id="app">
+
+  <!-- ── Header ──────────────────────────────────────────────────────────── -->
+  <header class="app-header">
+    <div class="header-top">
+      <span class="app-title">Finanças Pessoais</span>
+      <div class="nav-mes">
+        <button class="btn-nav" id="btn-ant">‹</button>
+        <span class="mes-label" id="mes-label">—</span>
+        <button class="btn-nav" id="btn-prox">›</button>
+      </div>
+    </div>
+    <nav class="tabs">
+      <button class="tab active" data-tab="visao">Visão Geral</button>
+      <button class="tab" data-tab="contas">Contas Fixas</button>
+      <button class="tab" data-tab="fatura">Fatura</button>
+    </nav>
+  </header>
+
+  <!-- ── Main ────────────────────────────────────────────────────────────── -->
+  <main class="app-main">
+
+    <!-- Visão Geral -------------------------------------------------------- -->
+    <section id="tab-visao" class="tab-pane active">
+
+      <div class="summary-grid">
+        <div class="scard scard-receita clickable" id="card-receita" title="Clique para editar a receita">
+          <div class="scard-label">Receita do Mês</div>
+          <div class="scard-value" id="val-receita">R$ —</div>
+          <div class="scard-sub" id="sub-receita">clique para informar</div>
+        </div>
+        <div class="scard scard-gastos">
+          <div class="scard-label">Gastos Totais</div>
+          <div class="scard-value" id="val-gastos">R$ —</div>
+          <div class="scard-sub">fixas + fatura</div>
+        </div>
+        <div class="scard scard-sobra">
+          <div class="scard-label">Sobra do Mês</div>
+          <div class="scard-value" id="val-sobra">R$ —</div>
+          <div class="scard-sub" id="sub-sobra"></div>
+        </div>
+      </div>
+
+      <div class="bars-section">
+        <div class="bar-row">
+          <span class="bar-label">Contas Fixas</span>
+          <div class="bar-track">
+            <div class="bar-fill bar-pago"    id="bar-contas-pago"    style="width:0%"></div>
+            <div class="bar-fill bar-pendente" id="bar-contas-pend"   style="width:0%"></div>
+          </div>
+          <span class="bar-val" id="val-contas-bar">R$ 0 / R$ 0</span>
+        </div>
+        <div class="bar-row">
+          <span class="bar-label">Fatura Cartão</span>
+          <div class="bar-track">
+            <div class="bar-fill bar-fatura" id="bar-fatura" style="width:0%"></div>
+          </div>
+          <span class="bar-val" id="val-fatura-bar">R$ 0</span>
+        </div>
+      </div>
+
+      <div class="chart-section">
+        <div class="section-title">Gastos por Categoria</div>
+        <div class="chart-wrap">
+          <div class="chart-canvas-wrap">
+            <canvas id="chart-cat" width="220" height="220"></canvas>
+          </div>
+          <div id="chart-legend" class="chart-legend"></div>
+        </div>
+        <div id="no-data-msg" class="no-data">Nenhum gasto registrado ainda.</div>
+      </div>
+
+    </section>
+
+    <!-- Contas Fixas ------------------------------------------------------- -->
+    <section id="tab-contas" class="tab-pane hidden">
+
+      <div class="pane-header">
+        <div class="section-title">Contas Fixas</div>
+        <button class="btn-primary" id="btn-nova-conta">+ Nova Conta</button>
+      </div>
+
+      <div id="lista-contas" class="contas-lista"></div>
+
+      <div class="contas-footer" id="contas-footer">
+        <span>Pago: <strong id="fp-pago">R$ 0</strong></span>
+        <span>Pendente: <strong id="fp-pend">R$ 0</strong></span>
+        <span>Total: <strong id="fp-total">R$ 0</strong></span>
+      </div>
+
+    </section>
+
+    <!-- Fatura ------------------------------------------------------------- -->
+    <section id="tab-fatura" class="tab-pane hidden">
+
+      <div class="pane-header">
+        <div class="section-title">Fatura do Cartão</div>
+        <button class="btn-secondary hidden" id="btn-limpar-fatura">Limpar fatura</button>
+      </div>
+
+      <div id="upload-zone-wrap">
+        <div class="upload-zone" id="upload-zone">
+          <div class="upload-icon">📄</div>
+          <p class="upload-text">Arraste a fatura PDF ou CSV aqui</p>
+          <p class="upload-sub">ou</p>
+          <label class="btn-primary">
+            Escolher Arquivo
+            <input type="file" id="file-input" accept=".pdf,.csv" multiple>
+          </label>
+          <p class="upload-hint">PDF (XP / Bradesco) ou CSV de qualquer banco</p>
+        </div>
+        <div id="upload-status" class="upload-status hidden"></div>
+      </div>
+
+      <div id="fatura-view" class="hidden">
+        <div class="fatura-controls">
+          <div class="fatura-total-display">
+            Total: <strong id="val-fat-total">R$ 0</strong>
+            <span class="tx-count" id="tx-count"></span>
+          </div>
+          <div class="fatura-filters">
+            <input type="text" id="busca-tx" placeholder="Buscar transação...">
+            <select id="filtro-cat">
+              <option value="">Todas as categorias</option>
+            </select>
+          </div>
+        </div>
+        <div id="lista-tx" class="tx-lista"></div>
+      </div>
+
+    </section>
+
+  </main>
+</div>
+
+<!-- ── Modal: Receita ──────────────────────────────────────────────────────── -->
+<div id="modal-receita" class="modal hidden">
+  <div class="modal-backdrop"></div>
+  <div class="modal-box">
+    <div class="modal-title">Receita do Mês</div>
+    <div id="receita-comissoes-info" class="info-box hidden"></div>
+    <div class="form-row">
+      <label>Valor (R$)</label>
+      <input type="number" id="input-receita" step="0.01" min="0" placeholder="0,00">
+    </div>
+    <div class="modal-actions">
+      <button class="btn-secondary" id="btn-cancel-receita">Cancelar</button>
+      <button class="btn-primary"   id="btn-save-receita">Salvar</button>
+    </div>
+  </div>
+</div>
+
+<!-- ── Modal: Nova / Editar Conta ──────────────────────────────────────────── -->
+<div id="modal-conta" class="modal hidden">
+  <div class="modal-backdrop"></div>
+  <div class="modal-box">
+    <div class="modal-title" id="modal-conta-titulo">Nova Conta</div>
+    <input type="hidden" id="input-conta-id">
+    <div class="form-row">
+      <label>Nome</label>
+      <input type="text" id="input-conta-nome" placeholder="ex: Aluguel">
+    </div>
+    <div class="form-row">
+      <label>Valor (R$)</label>
+      <input type="number" id="input-conta-valor" step="0.01" min="0" placeholder="0,00">
+    </div>
+    <div class="form-row">
+      <label>Vencimento (dia)</label>
+      <input type="number" id="input-conta-venc" min="1" max="31" placeholder="10">
+    </div>
+    <div class="form-row">
+      <label>Categoria</label>
+      <select id="input-conta-cat">
+        <option value="Moradia">Moradia</option>
+        <option value="Educação">Educação</option>
+        <option value="Saúde">Saúde</option>
+        <option value="Lazer">Lazer</option>
+        <option value="Serviços">Serviços</option>
+        <option value="Transporte">Transporte</option>
+        <option value="Alimentação">Alimentação</option>
+        <option value="Outros">Outros</option>
+      </select>
+    </div>
+    <div class="modal-actions">
+      <button class="btn-danger  hidden" id="btn-delete-conta">Excluir</button>
+      <button class="btn-secondary" id="btn-cancel-conta">Cancelar</button>
+      <button class="btn-primary"   id="btn-save-conta">Salvar</button>
+    </div>
+  </div>
+</div>
+
+<!-- ── Modal: Categoria da Transação ───────────────────────────────────────── -->
+<div id="modal-cat-tx" class="modal hidden">
+  <div class="modal-backdrop"></div>
+  <div class="modal-box">
+    <div class="modal-title">Alterar Categoria</div>
+    <div class="modal-sub" id="modal-cat-tx-desc"></div>
+    <div class="form-row">
+      <label>Categoria</label>
+      <select id="input-cat-tx">
+        <option value="Alimentação">Alimentação</option>
+        <option value="Transporte">Transporte</option>
+        <option value="Moradia">Moradia</option>
+        <option value="Saúde">Saúde</option>
+        <option value="Educação">Educação</option>
+        <option value="Lazer">Lazer</option>
+        <option value="Serviços">Serviços</option>
+        <option value="Compras">Compras</option>
+        <option value="Vestuário">Vestuário</option>
+        <option value="Viagem">Viagem</option>
+        <option value="Outros">Outros</option>
+      </select>
+    </div>
+    <div class="modal-actions">
+      <button class="btn-secondary" id="btn-cancel-cat-tx">Cancelar</button>
+      <button class="btn-primary"   id="btn-save-cat-tx">Salvar</button>
+    </div>
+  </div>
+</div>
+
+<script src="/static/app.js"></script>
+</body>
+</html>

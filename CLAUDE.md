@@ -66,9 +66,27 @@ Usar essas informações como base pra qualquer resposta ou decisão. Ao sugerir
 
 Para qualquer tarefa visual (carrossel, proposta, slide, landing page), consultar `marca/design-guide.md` como referência de estilo.
 
-**Para qualquer tarefa relacionada a um cliente específico** (mensagem, reunião, análise, apresentação), ler primeiro o `perfil.md` do cliente em `clientes/[Nome - código]/perfil.md`. O campo `anotacoes_comunicacao` e outros campos de notas contêm instruções importantes sobre o que destacar, o que evitar e contexto de relacionamento que deve ser considerado.
+**Para qualquer tarefa relacionada a um cliente específico** (mensagem, reunião, análise, apresentação), ler primeiro o `perfil.md` do cliente em `clientes/[Nome - código]/perfil.md`. Os campos de notas contêm informações preenchidas na plataforma que devem ser usadas.
 
 Não é necessário listar o que foi lido nem confirmar a leitura. Apenas usar o contexto naturalmente.
+
+---
+
+## Sincronização com a plataforma de clientes
+
+A plataforma (`projetos fami/plataforma/index.html`) e os arquivos `perfil.md` compartilham os mesmos dados — a plataforma lê e escreve nesses arquivos diretamente, e Claude faz o mesmo. O `perfil.md` de cada cliente é o ponto único de sincronização.
+
+**Plataforma → Claude:** Tudo que o Rafa preenche na plataforma (perfil de risco, objetivos, anotações, flags) fica salvo no `perfil.md` e estará disponível na próxima vez que Claude ler o arquivo. Não há nada extra a fazer.
+
+**Claude → Plataforma:** Sempre que uma conversa gerar informação nova e relevante sobre um cliente — perfil de risco, objeções levantadas, interesse em produto, contexto familiar, preocupações, combinados — salvar no `perfil.md` correspondente, no campo adequado, sem precisar ser solicitado. Se a informação tem valor futuro, já salvar. Confirmar o que foi registrado após cada atualização.
+
+**Campos de notas no `perfil.md`** (formato que a plataforma consegue ler):
+- `- notas:` → observações gerais de relacionamento
+- `- anotacoes_perfil:` → comportamento, histórico, perfil de risco detalhado
+- `- anotacoes_comunicacao:` → o que destacar nas mensagens, o que evitar, abordagem
+- `- anotacoes_reuniao:` → pontos de atenção de reuniões passadas
+
+Para adicionar ou atualizar um campo, usar o Edit tool diretamente no arquivo `perfil.md` do cliente. Manter o formato `- campo: valor` dentro da seção correspondente.
 
 ---
 

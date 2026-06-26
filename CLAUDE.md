@@ -66,6 +66,8 @@ Usar essas informações como base pra qualquer resposta ou decisão. Ao sugerir
 
 Para qualquer tarefa visual (carrossel, proposta, slide, landing page), consultar `marca/design-guide.md` como referência de estilo.
 
+**Para qualquer tarefa relacionada a um cliente específico** (mensagem, reunião, análise, apresentação), ler primeiro o `perfil.md` do cliente em `clientes/[Nome - código]/perfil.md`. O campo `anotacoes_comunicacao` e outros campos de notas contêm instruções importantes sobre o que destacar, o que evitar e contexto de relacionamento que deve ser considerado.
+
 Não é necessário listar o que foi lido nem confirmar a leitura. Apenas usar o contexto naturalmente.
 
 ---

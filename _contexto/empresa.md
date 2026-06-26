@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Contexto da Empresa — Rafa Córdova
 
 **Nome:** Rafael Nascimento de Córdova (Rafa)
@@ -33,3 +34,19 @@ Rafa tem duas certificações: CEA e CFP. O CFP é o foco estratégico — abre 
 O projeto do Instagram de educação financeira é recente e sem formato definido — apenas o desejo de criar algo relevante, preferencialmente mantendo o anonimato.
 
 O relacionamento com clientes é o núcleo do trabalho: quanto mais presente e próximo, melhor o resultado. Muito do dia a dia é garantir que o cliente sinta que Rafa está sempre cuidando de tudo.
+=======
+# Contexto da Empresa — DobraLabs
+
+**Nome:** Eduardo
+**Negócio:** DobraLabs
+**O que faz:** Presta serviços de desenvolvimento de software e consultoria pra clientes, e produz conteúdo próprio (canal Ratos de IA no YouTube).
+**Perfil:** freelancer (atende clientes) + criador (conteúdo próprio)
+**Atende clientes:** sim (dev de software + consultoria) e também usa o sistema pra gerir o próprio negócio
+**Equipe:** solo (toca tudo sozinho)
+**Ferramentas:** Google Drive, Canva, Gmail, Meta Ads, Google Ads
+**Principais entregas:** conteúdo pra redes sociais, propostas comerciais, apresentações comerciais, relatórios e análises. Faz bastante reunião.
+
+## Contexto adicional
+- Canal do YouTube se chama Ratos de IA.
+- Trabalha solo, então o sistema serve tanto pra produção quanto pra gestão.
+>>>>>>> 44485851051933a4d4f16c1a24c43c6a50cd25e5

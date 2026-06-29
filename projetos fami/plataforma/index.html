@@ -25,7 +25,10 @@ body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', syste
 .splash-sub { color: var(--text2); font-size: 13px; text-align: center; max-width: 360px; line-height: 1.6; }
 .btn-connect { background: var(--accent); color: #fff; border: none; padding: 12px 28px; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; transition: background .15s; margin-top: 4px; }
 .btn-connect:hover { background: var(--accent2); }
+.btn-connect-alt { background: transparent; color: var(--text2); border: 1px solid var(--border); padding: 10px 24px; border-radius: 8px; font-size: 13px; font-weight: 500; cursor: pointer; transition: all .15s; margin-top: 2px; }
+.btn-connect-alt:hover { background: var(--bg3); color: var(--text); border-color: var(--accent); }
 .splash-hint { color: var(--text3); font-size: 11px; }
+.reconnect-icon { font-size: 32px; }
 
 /* ===== APP ===== */
 #app { display: none; height: 100vh; }
@@ -256,9 +259,20 @@ body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', syste
 <div id="splash">
   <div class="splash-logo">&#x1F4CA;</div>
   <div class="splash-title">Plataforma Fami</div>
-  <div class="splash-sub">Conecte a pasta <strong>clientes/</strong> para carregar sua carteira com performance, mensagens e perfis.</div>
-  <button class="btn-connect" onclick="openFolder()">&#x1F4C2; Conectar pasta clientes</button>
-  <div class="splash-hint">Chrome ou Edge &mdash; requer permiss&atilde;o de leitura e escrita</div>
+
+  <div id="splash-new">
+    <div class="splash-sub">Conecte a pasta <strong>clientes/</strong> para carregar sua carteira com performance, mensagens e perfis.</div>
+    <button class="btn-connect" onclick="openFolder()">&#x1F4C2; Conectar pasta clientes</button>
+    <div class="splash-hint">Chrome ou Edge &mdash; requer permiss&atilde;o de leitura e escrita</div>
+  </div>
+
+  <div id="splash-reconnect" style="display:none;flex-direction:column;align-items:center;gap:12px">
+    <div class="reconnect-icon">&#x1F512;</div>
+    <div class="splash-sub">A sess&atilde;o expirou. O Chrome exige nova autoriza&ccedil;&atilde;o depois de fechar o navegador. Clique abaixo para reconectar sem precisar navegar at&eacute; a pasta novamente.</div>
+    <button class="btn-connect" onclick="reconnectFolder()">&#x1F504; Reconectar</button>
+    <button class="btn-connect-alt" onclick="openFolder()">&#x1F4C2; Escolher outra pasta</button>
+    <div class="splash-hint">A pasta e todos os dados continuam intactos</div>
+  </div>
 </div>
 
 <div class="loading-overlay" id="loading" style="display:none">
@@ -370,7 +384,7 @@ const FEE_FIXO_CODES = new Set([
 // STATE
 // ================================================================
 let allClients = [], filteredClients = [], selectedClient = null;
-let rootHandle = null, tabelaData = {}, chartInst = null, currentSort = 'patrimonio';
+let rootHandle = null, storedHandle = null, tabelaData = {}, chartInst = null, currentSort = 'patrimonio';
 let activeFilters = new Set(); // flag keys being filtered
 
 // ================================================================
@@ -392,18 +406,38 @@ async function persistHandle(h) {
     await txDone(tx); db.close();
   } catch(e) {}
 }
-async function restoreHandle() {
+async function getStoredHandle() {
   try {
     const db = await openDB();
     const tx = db.transaction('handles', 'readonly');
     const req = tx.objectStore('handles').get('root');
     const h = await new Promise((res, rej) => { req.onsuccess = () => res(req.result); req.onerror = rej; });
     db.close();
-    if (!h) return null;
-    const perm = await h.queryPermission({ mode: 'readwrite' });
-    if (perm === 'granted') return h;
-    return (await h.requestPermission({ mode: 'readwrite' })) === 'granted' ? h : null;
+    return h || null;
   } catch(e) { return null; }
+}
+
+async function restoreHandle() {
+  const h = await getStoredHandle();
+  if (!h) return null;
+  const perm = await h.queryPermission({ mode: 'readwrite' });
+  if (perm === 'granted') return h;
+  return (await h.requestPermission({ mode: 'readwrite' })) === 'granted' ? h : null;
+}
+
+async function reconnectFolder() {
+  const h = storedHandle || await getStoredHandle();
+  if (!h) { openFolder(); return; }
+  try {
+    const granted = await h.requestPermission({ mode: 'readwrite' });
+    if (granted === 'granted') {
+      rootHandle = h;
+      await persistHandle(h);
+      await loadData();
+    } else {
+      openFolder();
+    }
+  } catch(e) { openFolder(); }
 }
 function openDB() {
   return new Promise((res, rej) => {
@@ -1635,8 +1669,20 @@ function toast(msg, type) {
 (async () => {
   if (!window.showDirectoryPicker) return;
   try {
-    const h = await restoreHandle();
-    if (h) { rootHandle = h; await loadData(); }
+    const h = await getStoredHandle();
+    if (!h) return; // nenhuma pasta salva: mostra splash padrão
+
+    const perm = await h.queryPermission({ mode: 'readwrite' });
+    if (perm === 'granted') {
+      rootHandle = h;
+      await loadData();
+    } else {
+      // Pasta salva mas permissão expirou: mostra botão de reconectar
+      storedHandle = h;
+      document.getElementById('splash-new').style.display = 'none';
+      const sr = document.getElementById('splash-reconnect');
+      sr.style.display = 'flex';
+    }
   } catch(e) { console.warn('Restore:', e); }
 })();
 </script>

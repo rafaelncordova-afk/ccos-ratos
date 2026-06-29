@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Rafa Córdova — Claude Code OS
 
 ## O que é esse workspace
@@ -8,7 +7,7 @@ Aqui ficam os clientes, conteúdo, apresentações e ferramentas de trabalho do 
 
 **Estrutura de pastas:**
 - `_contexto/` — memória do sistema (não apagar)
-- `clientes/` — histórico de reuniões e comunicações por cliente
+- `projetos fami/clientes/` — perfil e histórico de cada cliente
 - `linkedin/` — artigos, pílulas e anotações para conteúdo no LinkedIn
 - `apresentacoes/` — decks de reuniões e apresentações
 - `instagram/` — projeto de educação financeira anônimo
@@ -41,7 +40,7 @@ Rafa tem autonomia sobre sua própria carteira e construção de marca pessoal c
 
 ## Tom de voz
 
-**Comigo (Claude):** direto e informal — trata como amigo e auxiliar.
+**Comigo (Claude):** direto e informal — trata como sócio e assistente. Postura ativa: antecipar, sugerir, resolver.
 
 **Com clientes:** técnico mas claro. Certificação CFP exige precisão técnica, mas a comunicação precisa ser acessível. O texto precisa soar como se o próprio Rafa tivesse escrito — ele escreve bem, acima da média. Nunca usar travessão (—) nos textos para clientes. Sem frases genéricas de IA.
 
@@ -52,49 +51,6 @@ Rafa tem autonomia sobre sua própria carteira e construção de marca pessoal c
 - CRM (interno Fami) — anotações de reunião e agendamentos
 - WhatsApp — comunicação principal com clientes
 - HUB da XP — visualização de carteiras
-=======
-# DobraLabs — Claude Code OS
-
-## O que é esse workspace
-Workspace de trabalho do Eduardo (DobraLabs). Aqui ficam os projetos de clientes (dev de software e consultoria), a produção de conteúdo do canal Ratos de IA, propostas, reuniões e relatórios.
-
-**Estrutura de pastas:**
-- `_contexto/` — memória do sistema (não apagar)
-- `marca/` — identidade visual e logos da DobraLabs
-- `clientes/` — uma pasta por cliente (dev e consultoria); `_modelo-cliente/` é o template
-- `conteudo/` — produção do Ratos de IA (`roteiros/`, `carrosseis/`, `ideias/`)
-- `propostas/` — propostas avulsas antes de virar cliente
-- `reunioes/` — atas e anotações de reunião
-- `relatorios/` — relatórios e análises
-- `dados/` — drop zone pra arquivos analisar (CSV, XLSX, TXT, PDF)
-- `templates/skills/` — templates de skills prontos pra personalizar com /mapear
-- `templates/ferramentas/catalogo.md` — APIs e ferramentas disponíveis pra usar em skills
-- `tarefas.md` — lista de tarefas corrente
-
-## Sobre o negócio
-DobraLabs presta serviços de desenvolvimento de software e consultoria pra clientes, e mantém o canal Ratos de IA no YouTube. Operação solo: o Eduardo toca tudo.
-
-## O que mais fazemos aqui
-- Conteúdo pra redes sociais (foco no YouTube Ratos de IA)
-- Propostas comerciais e apresentações comerciais
-- Relatórios e análises
-- Muitas reuniões (atas e follow-ups)
-
-## Clientes e contexto
-Atende clientes externos de dev de software e consultoria, e usa o sistema também pra gerir o próprio negócio. Cada cliente tem sua pasta em `clientes/[nome-cliente]/`.
-
-## Tom de voz
-Informal e direto, como quem fala. Evitar travessão (—), frases-fragmento curtas em série, e dicotomias do tipo "não é isso, é aquilo". Detalhes em `_contexto/preferencias.md`.
-
-## Ferramentas conectadas
-- [ ] Google Drive
-- [ ] Gmail
-- [ ] Canva
-- [ ] Meta Ads (skill /meta-ads-ratos)
-- [ ] Google Ads (skill /google-ads-ratos)
-
-*(Marcar conforme for instalando os MCPs)*
->>>>>>> 44485851051933a4d4f16c1a24c43c6a50cd25e5
 
 ---
 
@@ -146,11 +102,12 @@ Ao concluir uma tarefa que não tinha skill mas parece repetível, perguntar se 
 
 ## Regras do sistema
 
-- Cada cliente tem sua pasta em `clientes/[nome-cliente]/` (briefing.md + proposta.html)
-- Propostas de cliente salvar em `clientes/[nome-cliente]/proposta.html`
-- Conteúdo do Ratos de IA vai em `conteudo/`
+- Cada cliente tem sua pasta em `projetos fami/clientes/[Nome - código]/` com `perfil.md` como arquivo principal
+- Relatórios do XPerformance ficam em `projetos fami/clientes/[Nome - código]/relatorios/`
+- Mensagens mensais ficam em `projetos fami/clientes/[Nome - código]/mensagem_[mes]_[ano].md`
 - Atas de reunião vão em `reunioes/`
-- Relatórios e análises vão em `relatorios/`
+- Relatórios e análises gerais vão em `relatorios/`
+- Apresentações vão em `apresentacoes/`
 
 ---
 

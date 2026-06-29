@@ -462,55 +462,59 @@ async function loadData() {
   allClients = [];
   let count = 0;
 
-  for await (const [name, handle] of rootHandle.entries()) {
-    if (handle.kind !== 'directory') continue;
-    if (name.startsWith('_') || name.startsWith('.')) continue;
-    const match = name.match(/^(.+?)\s*-\s*(\d+)(\s*.*)?$/);
-    if (!match) continue;
+  try {
+    for await (const [name, handle] of rootHandle.entries()) {
+      if (handle.kind !== 'directory') continue;
+      if (name.startsWith('_') || name.startsWith('.')) continue;
+      const match = name.match(/^(.+?)\s*-\s*(\d+)(\s*.*)?$/);
+      if (!match) continue;
 
-    const nome = match[1].trim(), codigo = match[2].trim();
-    count++;
-    if (count % 10 === 0) showLoading('Lendo clientes... (' + count + ')');
+      const nome = match[1].trim(), codigo = match[2].trim();
+      count++;
+      if (count % 10 === 0) showLoading('Lendo clientes... (' + count + ')');
 
-    let perfil = {}, perfilRaw = '';
-    try {
-      const pfh = await handle.getFileHandle('perfil.md');
-      perfilRaw = await (await pfh.getFile()).text();
-      perfil = parsePerfil(perfilRaw);
-    } catch(e) {}
+      let perfil = {}, perfilRaw = '';
+      try {
+        const pfh = await handle.getFileHandle('perfil.md');
+        perfilRaw = await (await pfh.getFile()).text();
+        perfil = parsePerfil(perfilRaw);
+      } catch(e) {}
 
-    // Auto-detect fee_fixo from known list (add to flags if not already there)
-    if (FEE_FIXO_CODES.has(codigo)) {
-      const flags = new Set((perfil.flags || '').split(',').map(s => s.trim()).filter(Boolean));
-      if (!flags.has('fee_fixo')) { flags.add('fee_fixo'); perfil.flags = [...flags].join(','); }
+      // Auto-detect fee_fixo from known list (add to flags if not already there)
+      if (FEE_FIXO_CODES.has(codigo)) {
+        const flags = new Set((perfil.flags || '').split(',').map(s => s.trim()).filter(Boolean));
+        if (!flags.has('fee_fixo')) { flags.add('fee_fixo'); perfil.flags = [...flags].join(','); }
+      }
+
+      const mensagens = [];
+      try {
+        for await (const [fname, fh] of handle.entries()) {
+          if (fh.kind !== 'file' || fname === 'perfil.md' || !fname.toLowerCase().endsWith('.md')) continue;
+          try { mensagens.push({ nome: fname, conteudo: await (await fh.getFile()).text(), handle: fh }); } catch(e) {}
+        }
+      } catch(e) {}
+      try {
+        const msgDir = await handle.getDirectoryHandle('mensagens');
+        for await (const [fname, fh] of msgDir.entries()) {
+          if (fh.kind !== 'file' || !fname.toLowerCase().endsWith('.md')) continue;
+          try { mensagens.push({ nome: fname, conteudo: await (await fh.getFile()).text(), handle: fh, sub: 'mensagens' }); } catch(e) {}
+        }
+      } catch(e) {}
+      mensagens.sort((a, b) => b.nome.localeCompare(a.nome));
+
+      const relatorios = [];
+      try {
+        const relDir = await handle.getDirectoryHandle('relatorios');
+        for await (const [fname, fh] of relDir.entries()) {
+          if (fh.kind === 'file' && fname.toLowerCase().endsWith('.pdf')) relatorios.push({ nome: fname, handle: fh });
+        }
+        relatorios.sort((a, b) => b.nome.localeCompare(a.nome));
+      } catch(e) {}
+
+      allClients.push({ pasta: name, nome, codigo, handle, perfil, perfilRaw, mensagens, relatorios, perf: tabelaData[codigo] || null });
     }
-
-    const mensagens = [];
-    try {
-      for await (const [fname, fh] of handle.entries()) {
-        if (fh.kind !== 'file' || fname === 'perfil.md' || !fname.toLowerCase().endsWith('.md')) continue;
-        try { mensagens.push({ nome: fname, conteudo: await (await fh.getFile()).text(), handle: fh }); } catch(e) {}
-      }
-    } catch(e) {}
-    try {
-      const msgDir = await handle.getDirectoryHandle('mensagens');
-      for await (const [fname, fh] of msgDir.entries()) {
-        if (fh.kind !== 'file' || !fname.toLowerCase().endsWith('.md')) continue;
-        try { mensagens.push({ nome: fname, conteudo: await (await fh.getFile()).text(), handle: fh, sub: 'mensagens' }); } catch(e) {}
-      }
-    } catch(e) {}
-    mensagens.sort((a, b) => b.nome.localeCompare(a.nome));
-
-    const relatorios = [];
-    try {
-      const relDir = await handle.getDirectoryHandle('relatorios');
-      for await (const [fname, fh] of relDir.entries()) {
-        if (fh.kind === 'file' && fname.toLowerCase().endsWith('.pdf')) relatorios.push({ nome: fname, handle: fh });
-      }
-      relatorios.sort((a, b) => b.nome.localeCompare(a.nome));
-    } catch(e) {}
-
-    allClients.push({ pasta: name, nome, codigo, handle, perfil, perfilRaw, mensagens, relatorios, perf: tabelaData[codigo] || null });
+  } catch(e) {
+    console.error('Erro ao ler pastas de clientes:', e);
   }
 
   filteredClients = [...allClients];
@@ -518,6 +522,10 @@ async function loadData() {
   hideLoading();
   document.getElementById('splash').style.display = 'none';
   document.getElementById('app').style.display = 'block';
+
+  if (allClients.length === 0) {
+    toast('Pasta "' + rootHandle.name + '" não tem clientes. Conecte à pasta projetos fami/clientes/', 'err');
+  }
 }
 
 // ================================================================

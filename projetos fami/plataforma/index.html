@@ -461,13 +461,18 @@ async function loadData() {
   showLoading('Lendo pastas de clientes...');
   allClients = [];
   let count = 0;
+  let _dbg = { total: 0, dirs: 0, nonUnder: 0, matched: 0, err: null };
 
   try {
     for await (const [name, handle] of rootHandle.entries()) {
+      _dbg.total++;
       if (handle.kind !== 'directory') continue;
+      _dbg.dirs++;
       if (name.startsWith('_') || name.startsWith('.')) continue;
+      _dbg.nonUnder++;
       const match = name.match(/^(.+?)\s*-\s*(\d+)(\s*.*)?$/);
       if (!match) continue;
+      _dbg.matched++;
 
       const nome = match[1].trim(), codigo = match[2].trim();
       count++;
@@ -514,6 +519,7 @@ async function loadData() {
       allClients.push({ pasta: name, nome, codigo, handle, perfil, perfilRaw, mensagens, relatorios, perf: tabelaData[codigo] || null });
     }
   } catch(e) {
+    _dbg.err = e.message;
     console.error('Erro ao ler pastas de clientes:', e);
   }
 
@@ -524,7 +530,10 @@ async function loadData() {
   document.getElementById('app').style.display = 'block';
 
   if (allClients.length === 0) {
-    toast('Pasta "' + rootHandle.name + '" não tem clientes. Conecte à pasta projetos fami/clientes/', 'err');
+    const info = _dbg.err
+      ? 'Erro: ' + _dbg.err
+      : 'total=' + _dbg.total + ' dirs=' + _dbg.dirs + ' semUnder=' + _dbg.nonUnder + ' padrão=' + _dbg.matched;
+    toast('Pasta "' + rootHandle.name + '" · ' + info, 'err');
   }
 }
 

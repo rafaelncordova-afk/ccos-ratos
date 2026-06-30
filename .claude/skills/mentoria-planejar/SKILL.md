@@ -1,6 +1,6 @@
 # Skill: mentoria-planejar
 
-Apoia as mentorias voluntárias de planejamento financeiro do Rafa como CFP® nos programas sociais da Planejar (ex: Boogie Week). Ajuda a registrar encontros, gerar mensagens de resumo para o mentorado e planejar a pauta dos próximos encontros com foco em resultado.
+Apoia as mentorias voluntárias de planejamento financeiro do Rafa como CFP® em todos os programas sociais da Planejar. Ajuda a registrar encontros, gerar mensagens de resumo para o mentorado e planejar a pauta dos próximos encontros com foco em resultado.
 
 ## Quando usar
 
@@ -8,12 +8,18 @@ Apoia as mentorias voluntárias de planejamento financeiro do Rafa como CFP® no
 - Antes de um encontro: para revisar o histórico e sugerir uma pauta focada
 - Quando o usuário chamar `/mentoria-planejar` ou pedir "registra o encontro", "prepara a pauta", "o que abordamos com [nome]"
 
-## Fontes de dados
+## Estrutura de pastas
 
-Para cada mentorado, ler o arquivo:
-`educação financeira/planejar/[programa]/[Nome do Mentorado]/encontros.md`
+Todos os programas da Planejar ficam em:
+`educação financeira/planejar/[nome do programa]/[Nome do Mentorado]/encontros.md`
 
-Esse arquivo contém: perfil consolidado, histórico de todos os encontros, mensagens enviadas e tarefas em aberto.
+Exemplos:
+- `educação financeira/planejar/boogie week 2026/Arlete Kelly/encontros.md`
+- `educação financeira/planejar/[próximo programa]/[Nome]/encontros.md`
+
+O arquivo `encontros.md` de cada mentorado contém: perfil consolidado, histórico de todos os encontros, mensagens enviadas e tarefas em aberto.
+
+Se o Rafa não informar o programa, perguntar ou listar os disponíveis em `educação financeira/planejar/`.
 
 ## Modo 1 — Pós-encontro (registrar + mensagem)
 
@@ -89,4 +95,6 @@ Lembrar o Rafa de:
 
 ## Referência
 
-Guia completo do programa: `educação financeira/planejar/boogie week 2026/materiais/Guia do Planejador - Boogie Week.pdf`
+Cada programa pode ter um guia próprio da Planejar em sua pasta `materiais/`. Ler antes do primeiro encontro de um programa novo, se disponível.
+
+Exemplo: `educação financeira/planejar/boogie week 2026/materiais/Guia do Planejador - Boogie Week.pdf`

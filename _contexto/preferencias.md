@@ -31,11 +31,7 @@ Informal, fluido, sem enrolação. Texto corrido em vez de bullet quando der.
 Nunca plagiar conteúdo. Todo texto produzido precisa ser original — especialmente artigos, pílulas e qualquer conteúdo de publicação. Rafa é porta-voz da Planejar e CFP certificado: plágio compromete credibilidade profissional e ética. Quando usar referências externas, sempre reescrever com voz própria e citar a fonte se necessário.
 
 ## Preferências adicionais
-<<<<<<< HEAD
 
 - Nos resumos de reunião: estrutura clara com o que foi discutido e os próximos passos separados
 - Nas mensagens para clientes via WhatsApp: curtas, diretas, tom próximo mas profissional
 - Nos artigos de LinkedIn: voz de especialista acessível — sem jargão excessivo, com profundidade técnica quando necessário
-=======
-[Adicione aqui conforme novas preferências aparecerem.]
->>>>>>> 44485851051933a4d4f16c1a24c43c6a50cd25e5

@@ -56,8 +56,30 @@ Arlete reconhece o potencial das redes sociais mas não gosta e tem resistência
 Levantamos a possibilidade de que, caso retorne a São Paulo, ela possa retomar os cursos de gastronomia como fonte de renda complementar.
 
 **Tarefas da Arlete para o próximo encontro:**
-1. Verificar se a dívida de cartão pode ser renegociada pelo Desenrola ou diretamente com a instituição
-2. Pensar em formas concretas de dar publicidade ao trabalho (Instagram, boca a boca, promoção na igreja)
+1. Verificar se as dívidas de cartão de loja podem ser renegociadas pelo Novo Desenrola Brasil Famílias (serasa.com.br/limpa-nome-online/desenrola-brasil ou buscar na internet)
+2. Pensar em formas de dar mais visibilidade ao trabalho em Lucélia (promoção na igreja da mãe, criação de Instagram)
+
+**Mensagem enviada após o encontro:**
+
+Arlete, tudo bem?
+
+Foi muito bom conversar com você hoje. Quero deixar registrado um resumo do que abordamos, para a gente alinhar o caminho que vamos percorrer juntos nessas próximas semanas.
+
+Você me contou um pouco da sua trajetória: o negócio de gastronomia construído em São Paulo, a mudança recente para Lucélia para ficar perto dos seus pais, e as dificuldades que essa transição trouxe para as vendas e para a renda. Entendo que não é uma situação fácil, especialmente porque o negócio é sua única fonte de renda e a cidade pequena ainda não te conhece como em São Paulo te conhecia.
+
+Falamos também sobre as dívidas, em torno de R$ 10.000, distribuídas entre a reforma da casa, custos do CNPJ e cartões de lojas. Sei que isso pesa, e o nosso trabalho vai ser justamente organizar esse quadro para que ele fique mais claro e manejável.
+
+Para o nosso próximo encontro, combinamos duas tarefas:
+
+1) Verificar se as dívidas de cartão de loja podem ser renegociadas pelo Novo Desenrola Brasil Famílias. Dá uma conferida se você se enquadra e podemos abordar posteriormente. O site é o da Serasa (fácil de localizar na internet).
+
+2) Pensar em formas de dar mais visibilidade ao seu trabalho em Lucélia. Conversamos sobre a possibilidade de fazer uma apresentação dos seus produtos na igreja, onde as pessoas já te conhecem um pouco pelo vínculo com sua mãe, e sobre a criação de um Instagram para divulgação. Não precisa ser nada elaborado agora, só quero que você vá pensando no que seria mais viável para você.
+
+Próximos encontros: 07 e 09 de julho.
+
+Qualquer dúvida até lá, pode me chamar.
+
+Rafael Córdova, CFP®
 
 ---
 

@@ -22,6 +22,20 @@ _(perto do aniversário dela em março, vale considerar uma edição especial/ca
 ## Quero ler
 _(candidatos extras pra ir alimentando o plano mensal)_
 
+**Curadoria: coragem, empatia e sentimentos**
+_(o selo "Indicações dos Professores" existe mesmo na Amazon — vale filtrar por ele na loja infantil; vários destes títulos costumam aparecer lá)_
+
+1. **O Monstro das Cores** — Anna Llenas — um monstrinho confuso aprende a reconhecer alegria, tristeza, raiva, medo e calma associando cada sentimento a uma cor. ~R$ 41,60 na Amazon
+2. **Tenho Monstros na Barriga** — Tonia Casarin — Marcelo descobre 8 "monstrinhos" dentro dele: alegria, tristeza, raiva, medo, coragem, curiosidade, orgulho e ciúme
+3. **Guilherme Augusto Araújo Fernandes** — Mem Fox — amizade entre um menino e uma senhora de 96 anos que está perdendo a memória; empatia e delicadeza com um tema difícil. R$ 36,33 na Amazon
+4. **Dino e Saura** — Fernando Vilela (autor premiado, 5x Jabuti) — um filhote de dinossauro vermelho nasce numa família de azuis e não é bem aceito; amizade e aceitação das diferenças
+5. **Menina Bonita do Laço de Fita** — Ana Maria Machado — *(já está no plano mensal, item 3 — cabe direitinho aqui também por causa da empatia/diversidade)*
+6. **A Árvore Generosa** — Shel Silverstein — clássico sobre generosidade e amor incondicional
+7. **O Corajoso Pinguim** — *(já está no plano mensal, item 7)* — coragem e autoestima
+8. **Adivinha o Quanto Eu Te Amo** — Sam McBratney — *(já está no plano mensal, item 4)* — vínculo afetivo
+9. **O Mundo no Black Power de Tayó** — Kiusam de Oliveira — autoestima e representatividade, escrito por doutora em Educação, vencedor do Prêmio ProAC Cultura Negra
+10. **Tenho Mais Monstros na Barriga** — Tonia Casarin — sequência do nº2, com mais 8 sentimentos: amor, solidão, inveja, vergonha, saudade, ansiedade, culpa e frustração
+
 ## Lendo agora
 
 ## Lido

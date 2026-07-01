@@ -14,6 +14,7 @@ Aqui ficam os clientes, conteúdo, apresentações e ferramentas de trabalho do 
 - `relatorios/` — relatórios de ativos e análises
 - `dados/` — arquivos brutos para análise (PDFs, CSVs, planilhas)
 - `marca/` — identidade visual e design guide
+- `livros/rafael/` e `livros/laura/` — listas de leitura, avaliações e promoções de livros (Rafael e filha)
 - `templates/skills/` — templates de skills prontos para personalizar com /mapear
 - `templates/ferramentas/catalogo.md` — APIs e ferramentas disponíveis para usar em skills
 

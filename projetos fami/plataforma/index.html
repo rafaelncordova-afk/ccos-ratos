@@ -230,6 +230,12 @@ body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', syste
 .asi-match { font-size: 11px; color: var(--text2); padding: 2px 0; }
 .asi-match strong { color: var(--accent2); }
 
+/* ===== VENCIMENTOS SIDEBAR ===== */
+.maturity-wrap { padding-top: 8px; margin-top: 4px; border-top: 1px solid var(--border); }
+.btn-maturity { width: 100%; background: var(--bg3); border: 1px solid var(--border); color: var(--text2); padding: 7px 10px; border-radius: 6px; font-size: 11px; font-weight: 600; cursor: pointer; transition: all .15s; text-align: left; }
+.btn-maturity:hover { background: var(--bg4); color: var(--text); border-color: var(--accent); }
+.maturity-month-header { font-size: 10px; text-transform: uppercase; letter-spacing: .4px; color: var(--text3); padding: 10px 14px 4px; display: flex; justify-content: space-between; }
+
 /* ===== ATIVOS TAB ===== */
 .ativos-toolbar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
 .ativos-status { font-size: 12px; color: var(--text2); }
@@ -313,10 +319,14 @@ body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', syste
           </div>
           <input class="asset-search-input" id="asset-query" placeholder="Ex: KNJT11, BTG, Tesouro..." oninput="searchByAsset(this.value)">
         </div>
+        <div class="maturity-wrap">
+          <button class="btn-maturity" id="maturity-btn" onclick="showMaturities()">&#x1F4C5; Vencimentos (m&ecirc;s atual + pr&oacute;ximo)</button>
+        </div>
         </div>
       </div>
       <div class="client-list" id="client-list"></div>
       <div id="asset-results" style="display:none;flex:1;overflow-y:auto"></div>
+      <div id="maturity-results" style="display:none;flex:1;overflow-y:auto"></div>
     </aside>
 
     <main class="panel">
@@ -1274,6 +1284,7 @@ function monthSlug() {
 // ================================================================
 let assetGlobalIndex = new Map(); // normalizedKey → [{codigo, nome, valor, pct, nome_ativo}]
 let assetQuery = '';
+let maturityGlobalIndex = []; // [{codigo, nome, nome_ativo, valor, mes, ano, date}]
 
 function normalizeAsset(s) {
   return s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').trim();
@@ -1284,6 +1295,20 @@ function normalizeAsset(s) {
 function isCoeLike(nome) {
   return /\d+y\d*m?\s*[-–]\s*\d{2}\.\d{2}\.\d{4}/i.test(nome) ||
          /retorno\s+otimizado|taxa\s+fixa.*alta|taxa\s+fixa.*retorno|\bcoe\b/i.test(nome);
+}
+
+// Vencimento de renda fixa: nomes da XP trazem "- MES/AAAA" (ex: "CDB BMG - JUN/2026").
+// COEs ficam de fora — a data que aparece no nome deles é a de aplicação, não a de vencimento.
+const MESES_ABREV = { JAN:0, FEV:1, MAR:2, ABR:3, MAI:4, JUN:5, JUL:6, AGO:7, SET:8, OUT:9, NOV:10, DEZ:11 };
+const MESES_NOMES = ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
+
+function extractMaturity(nome) {
+  if (isCoeLike(nome)) return null;
+  const m = nome.match(/-\s*(JAN|FEV|MAR|ABR|MAI|JUN|JUL|AGO|SET|OUT|NOV|DEZ)\/(\d{4})\b/i);
+  if (!m) return null;
+  const mes = MESES_ABREV[m[1].toUpperCase()];
+  const ano = parseInt(m[2], 10);
+  return { mes, ano, date: new Date(ano, mes, 1) };
 }
 
 async function ensurePDFjs() {
@@ -1475,6 +1500,11 @@ async function loadClientAssets(c) {
       if (!existing.some(e => e.codigo === c.codigo)) {
         existing.push({ codigo: c.codigo, nome: c.nome, valor: a.valor, pct: a.pct, nome_ativo: a.nome });
       }
+
+      const venc = extractMaturity(a.nome);
+      if (venc) {
+        maturityGlobalIndex.push({ codigo: c.codigo, nome: c.nome, nome_ativo: a.nome, valor: a.valor, mes: venc.mes, ano: venc.ano, date: venc.date });
+      }
     }
 
     // Auto-estimate COE % from parsed assets (isCoeLike catches all XP COE naming patterns)
@@ -1588,6 +1618,8 @@ function searchByAsset(q) {
 
   if (!assetQuery) { exitAssetSearch(); return; }
 
+  maturityActive = false;
+  document.getElementById('maturity-results').style.display = 'none';
   if (clearBtn) clearBtn.style.display = 'inline';
   document.getElementById('client-list').style.display = 'none';
   const resultsEl = document.getElementById('asset-results');
@@ -1657,6 +1689,76 @@ async function loadAllAssets() {
   }
   toast('Todos os PDFs carregados!', 'ok');
   if (assetQuery) searchByAsset(assetQuery);
+  if (maturityActive) renderMaturities();
+}
+
+// ============ VENCIMENTOS (RENDA FIXA) — MÊS ATUAL + PRÓXIMO ============
+let maturityActive = false;
+
+function showMaturities() {
+  maturityActive = true;
+  assetQuery = '';
+  const inp = document.getElementById('asset-query');
+  if (inp) inp.value = '';
+  const clearBtn = document.getElementById('asset-clear-btn');
+  if (clearBtn) clearBtn.style.display = 'none';
+
+  document.getElementById('client-list').style.display = 'none';
+  document.getElementById('asset-results').style.display = 'none';
+  document.getElementById('maturity-results').style.display = 'block';
+
+  if (maturityGlobalIndex.length === 0 && assetGlobalIndex.size < allClients.length) {
+    document.getElementById('maturity-results').innerHTML =
+      '<div class="asi-header">Índice parcial (' + assetGlobalIndex.size + ' clientes carregados)</div>' +
+      '<div style="padding:10px 14px"><button class="btn-save" style="font-size:11px;padding:6px 14px" onclick="loadAllAssets()">&#x23F3; Carregar todos os PDFs</button></div>';
+    return;
+  }
+
+  renderMaturities();
+}
+
+function renderMaturities() {
+  const resultsEl = document.getElementById('maturity-results');
+  if (!resultsEl) return;
+
+  const now = new Date();
+  const curMes = now.getMonth(), curAno = now.getFullYear();
+  const nextMes = (curMes + 1) % 12, nextAno = curMes === 11 ? curAno + 1 : curAno;
+
+  const filtered = maturityGlobalIndex
+    .filter(e => (e.mes === curMes && e.ano === curAno) || (e.mes === nextMes && e.ano === nextAno))
+    .sort((a, b) => a.date - b.date || a.nome.localeCompare(b.nome));
+
+  const header = '<div class="asi-header"><span style="cursor:pointer;color:var(--accent2)" onclick="exitMaturities()">&#8592; Voltar</span> &middot; ' +
+    MESES_NOMES[curMes] + '/' + curAno + ' + ' + MESES_NOMES[nextMes] + '/' + nextAno + '</div>';
+
+  if (!filtered.length) {
+    resultsEl.innerHTML = header + '<div class="asi-header">Nenhum vencimento de renda fixa no per&iacute;odo.</div>';
+    return;
+  }
+
+  const groups = new Map();
+  for (const e of filtered) {
+    const key = e.ano + '-' + e.mes;
+    if (!groups.has(key)) groups.set(key, []);
+    groups.get(key).push(e);
+  }
+
+  resultsEl.innerHTML = header + [...groups.entries()].map(([key, items]) => {
+    const [ano, mes] = key.split('-').map(Number);
+    const total = items.reduce((s, e) => s + (e.valor || 0), 0);
+    return '<div class="maturity-month-header"><span>' + MESES_NOMES[mes] + '/' + ano + ' (' + items.length + ')</span><span>' + fmMoney(total, true) + '</span></div>' +
+      items.map(e => '<div class="asi-client" onclick="selectClientByCodigo(\'' + e.codigo + '\')">' +
+        '<div class="asi-nome">' + esc(e.nome) + ' <span style="color:var(--text3);font-weight:400">' + e.codigo + '</span></div>' +
+        '<div class="asi-match">' + esc(e.nome_ativo) + (e.valor ? ' &middot; ' + fmMoney(e.valor, true) : '') + '</div></div>'
+      ).join('');
+  }).join('');
+}
+
+function exitMaturities() {
+  maturityActive = false;
+  document.getElementById('client-list').style.display = 'block';
+  document.getElementById('maturity-results').style.display = 'none';
 }
 
 // ================================================================

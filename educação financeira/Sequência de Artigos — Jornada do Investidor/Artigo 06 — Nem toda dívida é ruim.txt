@@ -1,6 +1,6 @@
-Nem toda dívida é ruim: crédito colateral, home equity e outras ferramentas
+Nem toda dívida é ruim
 
-"Não faça dívida" é um dos conselhos financeiros mais repetidos e um dos mais incompletos. No planejamento patrimonial, a pergunta certa não é se a dívida é boa ou ruim, mas o que ela financia e a que custo. Entender essa diferença muda decisões concretas: vender um investimento pra cobrir uma necessidade pontual ou tomar um crédito mais barato pra preservar aquele investimento.
+"Não faça dívida" é um dos conselhos financeiros mais repetidos e um dos mais incompletos. No planejamento patrimonial, a pergunta certa não é se a dívida é boa ou ruim, mas o que ela financia e a que custo. Entender essa diferença é fundamental.
 
 Existe dívida que consome renda e compromete o futuro. E existe dívida que constrói patrimônio e viabiliza oportunidades, custando uma fração do que o senso comum imagina. Tratar as duas como se fossem a mesma coisa é o erro mais comum que vejo no dia a dia.
 
@@ -26,13 +26,4 @@ Isso não é um convite a se endividar. É um convite a qualificar a dívida ant
 
 O problema nunca foi pedir dinheiro emprestado. Foi pedir sem entender pra quê, a que custo e com qual garantia.
 
-#planejamentofinanceiro #educacaofinanceira #investimentos #cfp #financaspessoais #planejar
-
----
-**Sugestão de imagem**
-
-- **Tipo de visual:** gráfico de barras horizontais comparando taxas médias de juros por modalidade de crédito
-- **O que mostrar:** taxa média anual de cartão de crédito rotativo, cheque especial, crédito pessoal não consignado, consignado e crédito com garantia de imóvel (home equity), lado a lado, pra evidenciar visualmente a diferença de custo entre dívida sem garantia e dívida com garantia
-- **Recorte temporal recomendado:** dado mais recente disponível (mês corrente)
-- **Fonte sugerida:** Banco Central do Brasil, série de Taxas de Juros das Operações de Crédito (SGS/BCB), disponível em https://www.bcb.gov.br/estatisticas/txjuros
-- **Por que essa imagem:** o texto argumenta que o custo do dinheiro é o principal critério pra distinguir dívida boa de dívida ruim; um gráfico com números reais do Banco Central torna esse argumento tangível e reforça a autoridade técnica do post
+#planejamentofinanceiro #cfp #planejar

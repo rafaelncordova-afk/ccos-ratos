@@ -333,7 +333,7 @@ const REPASSE={
   'clearthrough':0.40,
   'clubes':0.4114,
   'coe':0.4514,
-  'mercado internacional':0.40,'mercado internacional outros':0.40,
+  'mercado internacional':0.40,'mercado internacional outros':0.40,'mercado internacional equity':0.40,
   'oferta fiis':0.375,
   'oferta fundos':0.50,
   'oferta rf':0.3774,
@@ -386,8 +386,13 @@ function handleFile(file){
   if(!file)return;
   currentFname=file.name;
   const r=new FileReader();
-  r.onload=e=>parseCSV(e.target.result);
-  r.readAsText(file,'UTF-8');
+  r.onload=e=>{
+    let text=new TextDecoder('utf-8').decode(e.target.result);
+    // Hub XP as vezes exporta em Windows-1252; UTF-8 quebrado gera caracteres de substituicao
+    if(text.includes('�'))text=new TextDecoder('windows-1252').decode(e.target.result);
+    parseCSV(text);
+  };
+  r.readAsArrayBuffer(file);
 }
 
 function parseCSV(text){

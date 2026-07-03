@@ -1,7 +1,8 @@
 # Filtro de Carteiras — Controle Institucional de Alocação
 
-Última atualização: 16/06/2026
+Última atualização: 03/07/2026
 Fonte: HUB > Gestão > Cross-sell e Diversificação > Controle Institucional de Alocações (D-2)
+Novos gatilhos (vigência agosto/2026): ver [resumo das regras de alocação controlada](resumo_controle_alocacao.md#novos-gatilhos--vigência-a-partir-de-agosto2026)
 
 > Preencher mensalmente ou antes de qualquer operação relevante nas áreas monitoradas.
 > Campos marcados com (HUB) devem ser consultados diretamente no dashboard.
@@ -91,13 +92,70 @@ Clientes com RF de longo prazo (maior risco de tentação de rolagem em cenário
 
 ---
 
+## 6. Crédito Privado — Risco: Concentração por Emissor (novo, vigência ago/2026)
+
+**Regra:** concentração em único emissor de crédito privado ≥ 5% do AUC (AUC XP todas marcas/contas + OPIN, na data da alocação).
+Aplica-se apenas a alocações a partir de agosto/2026 — sem retroativo. Justificável via Gopliance!, prazo 5 dias.
+
+| Cliente | Código | Emissor | Valor no emissor | AUC total (HUB) | % concentração | Observação |
+|---|---|---|---|---|---|---|
+| _(preencher via HUB antes de qualquer nova alocação em CP)_ | | | | | | |
+
+---
+
+## 7. Clientes 80+ — Risco: Vencimento Longo (novo, vigência ago/2026)
+
+**Regra:** alocação com vencimento ≥ 5 anos para cliente com 80 anos ou mais.
+Aplica-se apenas a alocações a partir de agosto/2026 — sem retroativo. Justificável via Gopliance!, prazo 5 dias.
+
+| Cliente | Código | Idade | Ativo proposto | Vencimento | Observação |
+|---|---|---|---|---|---|
+| _(mapear clientes 80+ na carteira antes de sugerir ativos longos)_ | | | | | |
+
+---
+
+## 8. Fundos Fechados — Risco: Concentração por Veículo (novo, vigência ago/2026)
+
+**Regra:** concentração em único veículo de fundo fechado ≥ 10% do AUC.
+Aplica-se apenas a alocações a partir de agosto/2026 — sem retroativo. Justificável via Gopliance!, prazo 5 dias.
+
+| Cliente | Código | Fundo Fechado | Valor alocado | AUC total (HUB) | % concentração | Observação |
+|---|---|---|---|---|---|---|
+| _(preencher via HUB antes de qualquer nova alocação em fundo fechado)_ | | | | | | |
+
+---
+
+## 9. COE — Risco: Concentração por Emissor de Veículo (novo, vigência ago/2026)
+
+**Regra:** concentração em único veículo de COE ≥ 10% do AUC (além da trava geral de 25% da classe COE, já vigente desde 2025 — sem justificativa).
+Aplica-se apenas a alocações a partir de agosto/2026 — sem retroativo. Justificável via Gopliance!, prazo 5 dias.
+
+| Cliente | Código | Veículo COE | Valor alocado | AUC total (HUB) | % concentração | Observação |
+|---|---|---|---|---|---|---|
+| _(preencher via HUB antes de qualquer nova alocação em COE)_ | | | | | | |
+
+---
+
+## 10. NTN-B — Risco: Concentração em Vencimentos Longos (novo, vigência ago/2026)
+
+**Regra:** concentração ≥ 15% do AUC em NTN-B com vencimento ≥ 2040.
+Aplica-se apenas a alocações a partir de agosto/2026 — sem retroativo. Justificável via Gopliance!, prazo 5 dias.
+
+| Cliente | Código | NTN-B (vencimento) | Valor alocado | AUC total (HUB) | % concentração | Observação |
+|---|---|---|---|---|---|---|
+| _(preencher via HUB antes de qualquer nova alocação em NTN-B ≥2040)_ | | | | | | |
+
+---
+
 ## Checklist Rápido — Antes de Executar uma Operação
 
 - [ ] Cliente é PJ? → verificar gross-up antes de qualquer ativo incentivado
 - [ ] Operação envolve fundo? → verificar data de aquisição (carência B3: 1 mês / Balcão: 6 meses)
-- [ ] Operação envolve COE? → verificar % do PL e idade do cliente
+- [ ] Operação envolve COE? → verificar % do PL, % do AUC no veículo específico e idade do cliente
 - [ ] Operação envolve realocação de RF? → comparar com taxa de VENDA (não de compra)
 - [ ] Cliente vai resgatar previdência? → confirmar alíquota, regime e se é "Retratável"
+- [ ] Operação a partir de ago/2026 envolve CP, fundo fechado ou NTN-B ≥2040? → verificar % de concentração no AUC
+- [ ] Cliente tem 80 anos ou mais? → checar vencimento do ativo antes de alocar (limite 5 anos)
 
 ---
 

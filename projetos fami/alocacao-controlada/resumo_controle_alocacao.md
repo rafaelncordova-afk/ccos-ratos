@@ -1,9 +1,10 @@
 # Controle Institucional de Alocação (XP)
 
-Fonte: material interno B2B XP — Governança de Assessores
-Última atualização: 16/06/2026
+Fonte: material interno B2B XP — Governança de Assessores + comunicado "Evolução do Controle Institucional de Alocação" (recebido 03/07/2026)
+Última atualização: 03/07/2026
 Dashboard: `HUB > Menu > Gestão > Cross-sell e Diversificação > Controle Institucional de Alocações`
 Atualização do dashboard: D-2 (dados do dia anterior disponíveis às 19h do dia seguinte)
+Dashboard repaginado (acompanhamento histórico e status das notificações) — em implementação pela XP, ainda sem data confirmada.
 
 ---
 
@@ -29,6 +30,33 @@ A área de Compliance monitora continuamente alocações que fujam dos padrões 
 | **Previdência VGBL** | PF | Mesma regra acima | 2% do volume resgatado indevidamente |
 
 > Multa é **por cliente** — cada justificativa recusada gera penalidade individual.
+
+---
+
+## Novos Gatilhos — Vigência a partir de Agosto/2026
+
+Comunicado da XP (03/07/2026): evolução do Controle Institucional de Alocação, com novos gatilhos monitorados. **Sem efeito retroativo** — aplica-se somente a alocações realizadas a partir de agosto/2026.
+
+| Controle | Público-Alvo | Gatilho | Penalidade |
+|---|---|---|---|
+| **Crédito Privado (CP)** | PF e PJ | Concentração em único emissor de crédito ≥ 5% do AUC | Ver Playbook B2B |
+| **Clientes 80+** | PF ≥ 80 anos | Alocação com vencimento ≥ 5 anos | Ver Playbook B2B |
+| **Fundos Fechados** | PF e PJ | Concentração em único veículo de fundo fechado ≥ 10% do AUC | Ver Playbook B2B |
+| **COE Emissor** | PF e PJ | Concentração em único veículo de COE ≥ 10% do AUC | Ver Playbook B2B |
+| **NTN-B** | PF e PJ | Concentração ≥ 15% do AUC em vencimentos ≥ 2040 | Ver Playbook B2B |
+| **COE Classe** | PF e PJ | Limite de 25% do AUC (classe COE) — trava vigente no HUB desde 2025 | Bloqueio automático — sem justificativa |
+| **Emissões Bancárias** | PF e PJ | Limite de R$ 180K por emissor high yield — trava vigente no HUB desde 2025 | Bloqueio automático — sem justificativa |
+
+### Regras dos novos gatilhos
+
+- **Justificativa:** possível para todos, exceto as travas (COE Classe e Emissões Bancárias), via **Gopliance!**, prazo de **5 dias** após a notificação.
+- **AUC considerado (gatilhos com justificativa):** soma do AUC XP (todas as marcas e contas) + OPIN, na data da alocação/liquidação.
+- **AUC considerado (travas — COE Classe e Emissões Bancárias):** AUC XP Brasil, **sem exceção**.
+- **Treinamento obrigatório** na Gopliance!, prazo de **60 dias** com aceite registrado. Após o prazo, possível bloqueio de acesso.
+- **Descumprimento:** penalidade ao escritório (mesmo modelo do Regulamento de Auditoria de AI). Pode gerar inelegibilidade em rankings, campanhas, missões e Selos.
+- **Referência completa:** Playbook B2B (acesso via e-mail de domínio agentinvest) — traz fundamentação técnica, modelos de auditoria aceitos e procedimentos operacionais.
+- **Dúvidas:** gov-ass-qualidade@xpi.com.br
+- Reforço contínuo previsto em: Kickoffs mensais, Investor Monday, Conselho de Compliance com gestores.
 
 ---
 
@@ -100,7 +128,9 @@ Mesma lógica: fundos de renda precisam de tempo para carregar; a permanência p
 | PL considerado | PL XP + Open Finance + XP Internacional (posição final do mês) |
 | Multa por notificação ou por cliente? | Por **cliente** — cada justificativa recusada = penalidade individual |
 | Cliente > 70 anos e COE? | Operação automaticamente bloqueada pré-trade |
-| Dúvidas | HUB > Chat > Atendimento B2B |
+| Dúvidas | HUB > Chat > Atendimento B2B (geral) / gov-ass-qualidade@xpi.com.br (novos gatilhos) |
+| Novos gatilhos valem para operações já feitas? | Não — só alocações a partir de agosto/2026 |
+| Onde estão as regras completas dos novos gatilhos? | Playbook B2B (acesso via e-mail domínio agentinvest) |
 
 ---
 

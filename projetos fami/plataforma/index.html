@@ -356,6 +356,7 @@ body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', syste
           <button class="tab-btn" data-tab="carteira" onclick="showTab('carteira')">Carteira</button>
           <button class="tab-btn" data-tab="mensagens" onclick="showTab('mensagens')">Mensagens <span id="msg-count" style="font-size:10px;color:var(--text3)"></span></button>
           <button class="tab-btn" data-tab="ativos" onclick="showTab('ativos')">Ativos</button>
+          <button class="tab-btn" data-tab="alocacao" onclick="showTab('alocacao')">Aloca&ccedil;&atilde;o</button>
           <button class="tab-btn" data-tab="reunioes" onclick="showTab('reunioes')">Reuni&otilde;es</button>
         </nav>
         <div class="tab-body">
@@ -363,6 +364,7 @@ body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', syste
           <div id="tab-carteira" style="display:none"></div>
           <div id="tab-mensagens" style="display:none"></div>
           <div id="tab-ativos" style="display:none"></div>
+          <div id="tab-alocacao" style="display:none"></div>
           <div id="tab-reunioes" style="display:none"></div>
         </div>
       </div>
@@ -767,13 +769,14 @@ function selectClient(c) {
 // ================================================================
 function showTab(tab) {
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-  ['tab-resumo','tab-carteira','tab-mensagens','tab-ativos','tab-reunioes'].forEach(id => document.getElementById(id).style.display = 'none');
+  ['tab-resumo','tab-carteira','tab-mensagens','tab-ativos','tab-alocacao','tab-reunioes'].forEach(id => document.getElementById(id).style.display = 'none');
   document.querySelector('[data-tab="' + tab + '"]').classList.add('active');
   document.getElementById('tab-' + tab).style.display = 'block';
   if (tab === 'resumo') renderResumo();
   if (tab === 'carteira') renderCarteira();
   if (tab === 'mensagens') renderMensagens();
   if (tab === 'ativos') renderAtivos();
+  if (tab === 'alocacao') renderAlocacao();
   if (tab === 'reunioes') renderReunioes();
 }
 
@@ -1759,6 +1762,122 @@ function exitMaturities() {
   maturityActive = false;
   document.getElementById('client-list').style.display = 'block';
   document.getElementById('maturity-results').style.display = 'none';
+}
+
+// ================================================================
+// ALOCAÇÃO — CONTROLE INSTITUCIONAL (concentração por emissor/classe)
+// ================================================================
+// Emissor de RF (CDB/LCA/LCI/CRA/CRI/Debênture): "TIPO EMISSOR - VENC - TAXA"
+// → emissor é o texto entre o tipo e o primeiro " - ".
+function extractEmissorRF(nome) {
+  const seg = nome.split(' - ')[0].trim();
+  return seg.replace(/^(CDB|LCA|LCI|CRA|CRI|DEB[ÊE]NTURE)\s+/i, '').trim() || seg;
+}
+
+// COE: nome costuma começar com o emissor (XP, MS/Morgan Stanley, BTG, BB, Itaú, Santander...)
+// seguido da descrição do produto. Lista fechada — ajustar conforme formatos reais aparecerem.
+const COE_EMISSORES_CONHECIDOS = ['XP','MS','BTG','BB','ITA[UÚ]','SANTANDER','BRADESCO','SAFRA','UBS','CREDIT SUISSE','JPMORGAN','J\\.P\\. MORGAN','GOLDMAN SACHS','DAYCOVAL','CAIXA'];
+const COE_EMISSOR_RE = new RegExp('^(' + COE_EMISSORES_CONHECIDOS.join('|') + ')\\b', 'i');
+function extractEmissorCOE(nome) {
+  const m = nome.match(COE_EMISSOR_RE);
+  return m ? m[1].toUpperCase() : 'Não identificado';
+}
+
+function isCDBAsset(a) { return /^CDB\b/i.test(a.nome); }
+// Melhor esforço inicial — refinar conforme os relatórios reais trouxerem CRA/CRI/Debênture.
+function isCreditoPrivadoAsset(a) { return /^(CRA|CRI|DEB[ÊE]NTURE)\b/i.test(a.nome); }
+function isCoeAsset(a) { return isCoeLike(a.nome); }
+// Fundos fechados (FIP, FIDC, FII não listado) — hoje mapeados para "Alternativo" pelo parser.
+// Melhor esforço inicial — refinar conforme surgirem casos reais.
+function isFundoFechadoAsset(a) { return a.categoria === 'Alternativo'; }
+
+function extractNTNBYear(nome) {
+  const m = nome.match(/NTN-?B[^\d]*(\d{4})/i) || nome.match(/IPCA\+?\s*(\d{4})/i);
+  return m ? parseInt(m[1], 10) : null;
+}
+
+function groupByEmissor(list, extractor) {
+  const map = new Map();
+  for (const a of list) {
+    const key = extractor(a.nome);
+    if (!map.has(key)) map.set(key, { emissor: key, valor: 0, pct: 0 });
+    const g = map.get(key);
+    g.valor += (a.valor || 0);
+    g.pct += (a.pct || 0);
+  }
+  return [...map.values()].sort((a, b) => b.pct - a.pct);
+}
+
+function buildControleSection(title, groups, limitPct) {
+  const limitLabel = limitPct != null
+    ? '<span style="font-size:10px;color:var(--text3)">limite ' + limitPct + '% por emissor</span>' : '';
+  if (!groups.length) {
+    return '<div class="sec-box"><div class="sec-header"><h3>' + title + '</h3>' + limitLabel + '</div>' +
+      '<div class="empty-state">Nenhum ativo dessa classe identificado na carteira.</div></div>';
+  }
+  const total = groups.reduce((s, g) => s + g.pct, 0);
+  const rows = groups.map(g => {
+    const over = limitPct != null && g.pct >= limitPct;
+    return '<div class="pf-row"><span class="pf-key">' + esc(g.emissor) + '</span>' +
+      '<span class="pf-val' + (over ? ' negative' : '') + '">' + fmMoney(g.valor, true) + ' &middot; ' + fmPctPlain(g.pct) + '%' + (over ? ' &#9888;' : '') + '</span></div>';
+  }).join('');
+  return '<div class="sec-box"><div class="sec-header"><h3>' + title + '</h3>' + limitLabel + '</div>' +
+    '<div class="pf-row"><span class="pf-key">Total na classe</span><span class="pf-val">' + fmPctPlain(total) + '%</span></div>' +
+    rows + '</div>';
+}
+
+function buildNTNBSection(ativos) {
+  const items = ativos.filter(a => /NTN-?B/i.test(a.nome));
+  const longos = items.filter(a => { const y = extractNTNBYear(a.nome); return y && y >= 2040; });
+  const pctLongo = longos.reduce((s, a) => s + (a.pct || 0), 0);
+  const over = pctLongo >= 15;
+  const rows = longos.map(a =>
+    '<div class="pf-row"><span class="pf-key">' + esc(a.nome) + '</span><span class="pf-val">' + fmMoney(a.valor, true) + ' &middot; ' + fmPctPlain(a.pct) + '%</span></div>'
+  ).join('');
+  return '<div class="sec-box"><div class="sec-header"><h3>NTN-B &mdash; Vencimentos &ge;2040</h3><span style="font-size:10px;color:var(--text3)">limite 15% do AUC</span></div>' +
+    '<div class="pf-row"><span class="pf-key">Total &ge;2040</span><span class="pf-val' + (over ? ' negative' : '') + '">' + fmPctPlain(pctLongo) + '%' + (over ? ' &#9888;' : '') + '</span></div>' +
+    (rows || '<div class="empty-state">Nenhuma NTN-B com vencimento &ge;2040 identificada.</div>') + '</div>';
+}
+
+function renderAlocacao() {
+  const c = selectedClient;
+  const el = document.getElementById('tab-alocacao');
+
+  if (!c.relatorios.length) {
+    el.innerHTML = '<div class="empty-state">Nenhum PDF em <code>relatorios/</code>.<br><span style="font-size:11px">Coloque o XPerformance mais recente ali e recarregue.</span></div>';
+    return;
+  }
+
+  el.innerHTML =
+    '<div class="ativos-toolbar"><span class="ativos-status" id="aloc-status">&#x23F3; Lendo PDF...</span>' +
+    '<span class="relatorio-nome">' + esc(c.relatorios[0].nome) + '</span></div>' +
+    '<div id="aloc-content"></div>';
+
+  loadClientAssets(c).then(ativos => {
+    const statusEl = document.getElementById('aloc-status');
+    const contentEl = document.getElementById('aloc-content');
+    if (!statusEl || !contentEl) return;
+
+    if (!ativos.length) {
+      statusEl.textContent = 'Nenhum ativo identificado';
+      contentEl.innerHTML = '<div class="empty-state">Não encontrei linhas de ativos no PDF.</div>';
+      return;
+    }
+
+    statusEl.textContent = ativos.length + ' ativos analisados';
+
+    contentEl.innerHTML =
+      buildControleSection('Concentração em COE por Emissor', groupByEmissor(ativos.filter(isCoeAsset), extractEmissorCOE), 10) +
+      buildControleSection('Crédito Privado por Emissor', groupByEmissor(ativos.filter(isCreditoPrivadoAsset), extractEmissorRF), 5) +
+      buildControleSection('Fundos Fechados por Veículo', groupByEmissor(ativos.filter(isFundoFechadoAsset), a => a.nome), 10) +
+      buildNTNBSection(ativos) +
+      buildControleSection('CDB por Emissor', groupByEmissor(ativos.filter(isCDBAsset), extractEmissorRF), null);
+  }).catch(e => {
+    const statusEl = document.getElementById('aloc-status');
+    if (statusEl) statusEl.textContent = 'Erro ao ler PDF';
+    const contentEl = document.getElementById('aloc-content');
+    if (contentEl) contentEl.innerHTML = '<div class="empty-state">Erro: ' + esc(e.message) + '</div>';
+  });
 }
 
 // ================================================================

@@ -46,8 +46,8 @@ Nunca esconder um resultado ruim com linguagem vaga. Se não há nada positivo e
 - Nunca usar travessão (—)
 - Sem frases genéricas de IA ("espero que esteja bem", "fico à disposição para quaisquer dúvidas")
 - O texto deve soar como se o Rafa tivesse escrito — ele escreve bem, acima da média
-- **Poucos números, priorizados:** escolher 1 ou no máximo 2 destaques (o mais forte da hierarquia de conteúdo) e construir a mensagem em torno deles. Evitar empilhar %CDI + rentabilidade + ganho real + ganho nominal na mesma mensagem — isso deixa o texto com cara de relatório, não de conversa.
-- Priorizar proximidade sobre dado: abrir com algo pessoal quando fizer sentido (perguntar como a pessoa está, referenciar contexto de vida já registrado no perfil — mudança, reunião marcada, objetivo pessoal), não só "resumo da carteira"
+- **Números certos, não números demais:** escolher os destaques que realmente merecem ênfase (o mais forte da hierarquia de conteúdo, geralmente 2-3 números concretos) e apresentá-los com clareza — mas dentro de uma mensagem que soa como conversa, não como relatório. O problema não é ter número, é ter número solto sem calor humano em volta.
+- Priorizar proximidade JUNTO com o dado: abrir com algo pessoal quando fizer sentido (perguntar como a pessoa está, referenciar contexto de vida já registrado no perfil — mudança, reunião marcada, objetivo pessoal), e ainda assim entregar os números concretos que sustentam a boa notícia. Uma mensagem calorosa sem nenhum dado soa vaga; o objetivo é ter as duas coisas.
 - Assinar sempre: `Rafael Córdova, CFP®`
 
 ## Grupo 1 — Fee Fixo (prioridade e tom especial)

@@ -85,13 +85,68 @@ Rafael Córdova, CFP®
 
 ## Encontro 2 — 07/07/2026
 
-*(a registrar)*
+**Checklist de pauta:**
+
+Retomar tarefas do encontro 1:
+- [ ] Desenrola Brasil Famílias — ela pesquisou? Se enquadra em algum cartão de loja?
+- [ ] Visibilidade em Lucélia — pensou em promoção na igreja e/ou Instagram? Decidiu algo (fazer ela mesma, pedir ao filho, contratar)?
+
+Organização financeira mínima (prioridade do encontro):
+- [ ] Levantar, mesmo que grosseiro, quanto entra e quanto sai por mês — separando o que é dela (pessoal) do que é do negócio
+- [ ] Identificar se hoje ela sabe dizer sequer um número aproximado de custo de vida mensal
+- [ ] Propor um jeito simples de começar a separar PF de PJ dali pra frente (ex: uma conta ou "caixinha" só do negócio)
+
+Mapeamento das dívidas (~R$10.000):
+- [ ] Fechar valor exato e credor de cada uma: reforma da casa, custos do CNPJ, cartões de loja
+- [ ] Taxa de juros de cada dívida, se ela souber ou conseguir puxar
+- [ ] Combinar ordem de prioridade de pagamento/negociação
+
+Decisão Lucélia x São Paulo:
+- [ ] Perguntar como ela está se sentindo hoje em relação a ficar ou voltar — o emocional pesa muito aqui
+- [ ] Combinar levantar, para o próximo encontro, uma estimativa de renda possível em cada cenário (negócio em Lucélia vs. negócio + cursos em SP)
+
+Fechamento do encontro:
+- [ ] Definir 1-2 tarefas objetivas para ela até o encontro de 09/07
+- [ ] Enviar mensagem-resumo depois, como no encontro 1
+
+**Resultados do encontro:**
+
+Arlete fez o levantamento das dívidas: as maiores não se enquadram no Desenrola Brasil Famílias (programa cobre principalmente dívidas menores/específicas).
+
+Decisão importante que surgiu: ela deve retornar a São Paulo após o encerramento do ano letivo dos filhos. Isso muda o horizonte de planejamento — o trabalho agora é de transição, não de fixação em Lucélia.
+
+Direção combinada: estimar quanto ela ganharia em SP somando negócio de gastronomia + aulas, para a partir daí montar um orçamento (quanto ganha x quanto gasta).
+
+**Tarefas da Arlete para o encontro 3:**
+1. Levantar estimativa de renda em SP (negócio + aulas)
+2. Pensar em uma estimativa de gastos mensais em SP (custo de vida)
 
 ---
 
 ## Encontro 3 — 09/07/2026
 
-*(a registrar)*
+**Checklist de pauta:**
+
+Retomar tarefas do encontro 2:
+- [ ] Estimativa de renda em SP (negócio + aulas) — o que ela levantou?
+- [ ] Estimativa de gastos mensais em SP — o que ela levantou?
+
+1. Meio de controlar orçamento:
+- [ ] Ajudar a montar uma forma simples de ela acompanhar quanto ganha por trabalho (venda/curso) e quanto gasta — pode ser uma planilha básica ou até um caderno, o importante é o hábito
+- [ ] Definir junto com ela qual ferramenta ela realmente vai usar (evitar propor algo sofisticado demais que ela abandone)
+
+2. Aumentar renda com aulas (curto/médio prazo):
+- [ ] Verificar viabilidade de retomar aulas de gastronomia em SP, nem que seja por um período determinado
+- [ ] Alinhar que o objetivo desse aumento de renda é duplo: quitar as dívidas e montar uma reserva de emergência
+- [ ] Reforçar o "porquê" da reserva: dar tranquilidade em momentos de instabilidade (ela já viveu isso — ex. período de dengue em que ficou impossibilitada de trabalhar)
+
+3. Depois das dívidas quitadas — horizonte mais longo:
+- [ ] Introduzir a ideia de um plano futuro para aumentar a cozinha/estrutura do negócio, deixando claro que isso vem só depois de dívidas quitadas e reserva formada (sequência: organizar → quitar → reserva → crescer)
+
+Fechamento do encontro:
+- [ ] Consolidar um rascunho de orçamento (mesmo que preliminar) com os números que ela trouxer
+- [ ] Definir tarefas objetivas até o próximo encontro
+- [ ] Enviar mensagem-resumo depois
 
 ---
 

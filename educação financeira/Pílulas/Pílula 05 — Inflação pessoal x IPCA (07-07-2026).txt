@@ -1,0 +1,18 @@
+Pílula 05 — Sua inflação não é a do IBGE
+Publicada em: 07/07/2026
+
+Todo mês sai a notícia: o IPCA fechou em tanto por cento. E uma boa parte das pessoas lê o número e pensa "não foi bem isso que eu senti no mercado".
+
+Faz sentido. O IPCA é uma média nacional, calculada pelo IBGE com base na Pesquisa de Orçamentos Familiares. Ele reflete o consumo médio do brasileiro, não o seu consumo. E a composição desse índice pesa muito mais em alguns itens do que em outros: hoje, Alimentação e Bebidas responde por cerca de 21% do índice e Transportes por outros 20%. Juntos, praticamente metade do peso total do IPCA está concentrada nesses dois grupos.
+
+O problema é que ninguém gasta exatamente nessa proporção. Quem tem renda menor gasta uma fatia maior do orçamento com alimentação e uma fatia menor com itens que só entram na conta de quem tem renda mais alta, como viagem, streaming ou plano de saúde premium. Quando o preço da carne ou do arroz sobe mais que o resto, essa parte da população sente uma inflação bem mais alta do que a divulgada, mesmo com o índice geral parecendo sob controle.
+
+Isso tem nome: inflação percebida. E ela costuma ficar acima do IPCA justamente porque o que pesa no seu bolso não pesa igual no índice.
+
+Para o investidor, o recado é prático: bater o IPCA não é garantia de nada se o seu padrão de consumo é diferente da média nacional. Antes de considerar um retorno "acima da inflação" como preservação de poder de compra, vale olhar para os seus próprios gastos.
+
+#CFP #Planejar #planejamentofinanceiro #investimentos
+
+---
+Fonte: composição do IPCA (IBGE, Pesquisa de Orçamentos Familiares) e explicação oficial do IBGE sobre inflação percebida
+Ver: educação financeira/Pílulas/fontes.md

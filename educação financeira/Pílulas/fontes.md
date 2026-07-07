@@ -35,3 +35,18 @@
 - Simulador: https://simuladordesenrola.fazenda.gov.br
 - Fonte oficial: https://www.gov.br/pt-br/servicos/novo-desenrola-brasil-familias
 - Usado no contexto da mentoria Boogie Week — Arlete Kelly (encontro 30/06/2026)
+
+---
+
+## Composição do IPCA e inflação percebida
+
+- Estrutura do IPCA dividida em 9 grupos de despesa (Alimentação, Habitação, Transportes, Saúde, etc.), com pesos definidos pela Pesquisa de Orçamentos Familiares (POF) do IBGE
+- Pesos atuais: Transportes 20,61% e Alimentação e Bebidas 21,45% — juntos, quase metade do peso total do índice
+- IBGE reconhece oficialmente que a inflação não é sentida igual por todos, já que cada família tem um hábito de consumo diferente
+- Famílias de renda mais baixa sentem mais o peso da alimentação, que consome fatia maior do orçamento — por isso a "inflação percebida" tende a ficar acima do IPCA divulgado
+- INPC (correlato do IPCA) mede especificamente famílias com renda de 1 a 5 salários mínimos
+- Usado na Pílula 05 (07/07/2026)
+- Fontes:
+  - https://www.ibge.gov.br/explica/inflacao.php
+  - https://www.ibge.gov.br/estatisticas/economicas/precos-e-custos/9256-indice-nacional-de-precos-ao-consumidor-amplo.html
+  - https://agenciadenoticias.ibge.gov.br/media/com_mediaibge/arquivos/1f5dbccaa0109901cc7d3ffc7a4675d7.pdf

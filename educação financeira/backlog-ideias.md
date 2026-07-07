@@ -2,7 +2,7 @@
 
 ## Pílulas
 
-- [ ] **Inflação pessoal vs. IPCA** — por que a inflação que o brasileiro sente no bolso costuma ser maior do que o índice oficial. Abordar composição do IPCA, peso de alimentação e serviços na vida real, e o que o investidor pode fazer com isso.
+- [x] **Inflação pessoal vs. IPCA** — publicada como Pílula 05 (07/07/2026).
 
 ## Artigos
 

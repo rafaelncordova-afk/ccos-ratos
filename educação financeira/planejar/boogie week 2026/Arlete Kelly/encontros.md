@@ -120,6 +120,33 @@ Direção combinada: estimar quanto ela ganharia em SP somando negócio de gastr
 **Tarefas da Arlete para o encontro 3:**
 1. Levantar estimativa de renda em SP (negócio + aulas)
 2. Pensar em uma estimativa de gastos mensais em SP (custo de vida)
+3. Pensar em uma forma simples de controlar o orçamento
+
+**Mensagem enviada após o encontro:**
+
+Arlete, tudo bem?
+
+Foi bom conversar de novo hoje. Deixando registrado o resumo, como fizemos da primeira vez.
+
+Você trouxe o levantamento das dívidas que combinamos. As maiores não se enquadram no Desenrola Brasil Famílias, que cobre principalmente dívidas menores e de perfil específico. Isso não fecha a porta pra negociação, só significa que vamos precisar de outro caminho pra elas.
+
+Também conversamos sobre algo importante: a possibilidade de você voltar pra São Paulo depois que os filhos encerrarem o ano letivo. Entendo que isso muda o foco do nosso trabalho daqui pra frente. Em vez de pensar em como fortalecer o negócio em Lucélia, vamos direcionar energia pra te ajudar a se organizar pra essa transição.
+
+Pra isso, combinamos uma tarefa pro próximo encontro: pensar em quanto você acredita que conseguiria ganhar em São Paulo, somando o negócio de gastronomia e as aulas. Com esse número em mãos, começamos a montar um orçamento de verdade, comparando o que entra com o que sai.
+
+Para o nosso próximo encontro, combinamos duas tarefas:
+
+1) Estimar sua renda possível em São Paulo, juntando negócio e aulas.
+2) Pensar numa estimativa de quanto você gastaria por mês morando lá.
+3) Pensar numa forma simples de controlar o orçamento.
+
+Lembrando que aqui são estimativas. Apenas para termos uma base de planejamento.
+
+Próximo encontro: 09 de julho.
+
+Qualquer coisa até lá, me chama.
+
+Rafael Córdova, CFP®
 
 ---
 

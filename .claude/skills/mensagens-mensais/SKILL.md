@@ -54,6 +54,15 @@ Nunca esconder um resultado ruim com linguagem vaga. Se não há nada positivo e
 - Emoji ocasional é aceitável quando bate com o tom do cliente e o momento (ex: 🙏🏻 em um check-in pessoal mais delicado) — usar com moderação, não em toda mensagem.
 - Assinar sempre: `Rafael Córdova, CFP®`
 
+## Clientes que precisam de mais cuidado
+
+Alguns clientes têm no `anotacoes_comunicacao` do perfil.md um pedido explícito de mensagem mais robusta (ex: "gastar um pouco mais de texto", "fazer janelas positivas de análise"). Nesses casos — e sempre que o cliente estiver sendo cortejado por concorrência (ex: "o banco está melhor") ou tiver perfil mais ansioso/exigente — aplicar o mesmo padrão que funcionou muito bem com a Maristela (jul/2026, aprovada com elogio explícito do Rafa):
+- Olhar pra janela mais longa disponível, inclusive "desde o início da carteira" (coluna Acum. da tabela de rentabilidade histórica por ano do XPerformance), não só 12/24 meses.
+- Quantificar quanto o capital cresceu em termos absolutos (R$) nas janelas mais longas, não só em %.
+- Honrar rigorosamente o que o perfil pede pra destacar/evitar (ex: só mencionar %CDI se estiver acima de 100%; sempre mencionar ausência de default/RJ se for ponto de segurança da cliente).
+- Mensagem mais longa e construída com mais cuidado do que o padrão — o objetivo é passar a sensação de que a carteira está sendo acompanhada de perto, não que é um resumo genérico.
+- Se o cliente for parente de outro (mãe/filho, etc.), garantir que a estrutura da mensagem seja visivelmente diferente da do parente, pra não parecer copia e cola.
+
 ## Grupo 1 — Fee Fixo (prioridade e tom especial)
 
 - Ênfase em proximidade e relacionamento com a família do investidor

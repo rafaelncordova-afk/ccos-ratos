@@ -1767,11 +1767,12 @@ function exitMaturities() {
 // ================================================================
 // ALOCAÇÃO — CONTROLE INSTITUCIONAL (concentração por emissor/classe)
 // ================================================================
-// Emissor de RF (CDB/LCA/LCI/CRA/CRI/Debênture): "TIPO EMISSOR - VENC - TAXA"
+// Emissor de RF (CDB/LCA/LCI/CRA/CRI/DEB/LF): "TIPO EMISSOR - VENC - TAXA"
 // → emissor é o texto entre o tipo e o primeiro " - ".
+// Confirmado com dado real (Integrasul, jul/2026): debênture aparece como "DEB", não "DEBÊNTURE" por extenso.
 function extractEmissorRF(nome) {
   const seg = nome.split(' - ')[0].trim();
-  return seg.replace(/^(CDB|LCA|LCI|CRA|CRI|DEB[ÊE]NTURE)\s+/i, '').trim() || seg;
+  return seg.replace(/^(CDB|LCA|LCI|CRA|CRI|DEB|LF)\s+/i, '').trim() || seg;
 }
 
 // COE: nome costuma começar com o emissor (XP, MS/Morgan Stanley, BTG, BB, Itaú, Santander...)
@@ -1784,8 +1785,9 @@ function extractEmissorCOE(nome) {
 }
 
 function isCDBAsset(a) { return /^CDB\b/i.test(a.nome); }
-// Melhor esforço inicial — refinar conforme os relatórios reais trouxerem CRA/CRI/Debênture.
-function isCreditoPrivadoAsset(a) { return /^(CRA|CRI|DEB[ÊE]NTURE)\b/i.test(a.nome); }
+// Confirmado com dado real (Integrasul, jul/2026): CRA/CRI/DEB são os prefixos reais usados pela XP.
+// LF (Letra Financeira) é obrigação bancária, não é crédito privado — fica de fora de propósito.
+function isCreditoPrivadoAsset(a) { return /^(CRA|CRI|DEB)\b/i.test(a.nome); }
 function isCoeAsset(a) { return isCoeLike(a.nome); }
 // Fundos fechados (FIP, FIDC, FII não listado) — hoje mapeados para "Alternativo" pelo parser.
 // Melhor esforço inicial — refinar conforme surgirem casos reais.

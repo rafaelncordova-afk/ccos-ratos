@@ -1297,7 +1297,8 @@ function normalizeAsset(s) {
 // também captura "Taxa Fixa ou Retorno Otimizado", "Retorno Otimizado", etc.
 function isCoeLike(nome) {
   return /\d+y\d*m?\s*[-–]\s*\d{2}\.\d{2}\.\d{4}/i.test(nome) ||
-         /retorno\s+otimizado|taxa\s+fixa.*alta|taxa\s+fixa.*retorno|\bcoe\b/i.test(nome);
+         /\d+,\d+\s*anos?\s*[-–]\s*(\d{2}\.\d{2}\.\d{4}|Obs\.)/i.test(nome) ||
+         /retorno\s+otimizado|taxa\s+fixa.*alta|taxa\s+fixa.*retorno|\bautocall\b|\bcoe\b/i.test(nome);
 }
 
 // Vencimento de renda fixa: nomes da XP trazem "- MES/AAAA" (ex: "CDB BMG - JUN/2026").
@@ -1777,7 +1778,7 @@ function extractEmissorRF(nome) {
 
 // COE: nome costuma começar com o emissor (XP, MS/Morgan Stanley, BTG, BB, Itaú, Santander...)
 // seguido da descrição do produto. Lista fechada — ajustar conforme formatos reais aparecerem.
-const COE_EMISSORES_CONHECIDOS = ['XP','MS','BTG','BB','ITA[UÚ]','SANTANDER','BRADESCO','SAFRA','UBS','CREDIT SUISSE','JPMORGAN','J\\.P\\. MORGAN','GOLDMAN SACHS','DAYCOVAL','CAIXA'];
+const COE_EMISSORES_CONHECIDOS = ['XP','MS','CS','BTG','BB','ITA[UÚ]','SANTANDER','BRADESCO','SAFRA','UBS','CREDIT SUISSE','JPMORGAN','J\\.P\\. MORGAN','GOLDMAN SACHS','DAYCOVAL','CAIXA'];
 const COE_EMISSOR_RE = new RegExp('^(' + COE_EMISSORES_CONHECIDOS.join('|') + ')\\b', 'i');
 function extractEmissorCOE(nome) {
   const m = nome.match(COE_EMISSOR_RE);
@@ -1789,9 +1790,11 @@ function isCDBAsset(a) { return /^CDB\b/i.test(a.nome); }
 // LF (Letra Financeira) é obrigação bancária, não é crédito privado — fica de fora de propósito.
 function isCreditoPrivadoAsset(a) { return /^(CRA|CRI|DEB)\b/i.test(a.nome); }
 function isCoeAsset(a) { return isCoeLike(a.nome); }
-// Fundos fechados (FIP, FIDC, FII não listado) — hoje mapeados para "Alternativo" pelo parser.
-// Melhor esforço inicial — refinar conforme surgirem casos reais.
-function isFundoFechadoAsset(a) { return a.categoria === 'Alternativo'; }
+// Fundos fechados: confirmado com dado real (Integrasul, jul/2026) que o nome sempre traz a sigla
+// da estrutura — FIP (Fundo de Investimento em Participações) ou FIDC (Fundo de Investimento em
+// Direitos Creditórios). A categoria "Alternativo" do parser mistura fundos fechados de verdade
+// com FIC FIRF/FIM líquidos (ex: "Trend PE II FIC FIRF Simples") — usar o nome é mais preciso que a categoria.
+function isFundoFechadoAsset(a) { return /\bFIP\b|\bFIDC\b/i.test(a.nome); }
 
 function extractNTNBYear(nome) {
   const m = nome.match(/NTN-?B[^\d]*(\d{4})/i) || nome.match(/IPCA\+?\s*(\d{4})/i);

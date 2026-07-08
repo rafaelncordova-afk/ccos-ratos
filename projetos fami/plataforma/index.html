@@ -1778,7 +1778,7 @@ function extractEmissorRF(nome) {
 
 // COE: nome costuma começar com o emissor (XP, MS/Morgan Stanley, BTG, BB, Itaú, Santander...)
 // seguido da descrição do produto. Lista fechada — ajustar conforme formatos reais aparecerem.
-const COE_EMISSORES_CONHECIDOS = ['XP','MS','CS','BTG','BB','ITA[UÚ]','SANTANDER','BRADESCO','SAFRA','UBS','CREDIT SUISSE','JPMORGAN','J\\.P\\. MORGAN','GOLDMAN SACHS','DAYCOVAL','CAIXA'];
+const COE_EMISSORES_CONHECIDOS = ['XP','MS','CS','BNP','BTG','BB','ITA[UÚ]','SANTANDER','BRADESCO','SAFRA','UBS','CREDIT SUISSE','JPMORGAN','J\\.P\\. MORGAN','GOLDMAN SACHS','DAYCOVAL','CAIXA'];
 const COE_EMISSOR_RE = new RegExp('^(' + COE_EMISSORES_CONHECIDOS.join('|') + ')\\b', 'i');
 function extractEmissorCOE(nome) {
   const m = nome.match(COE_EMISSOR_RE);

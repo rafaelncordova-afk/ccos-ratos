@@ -1297,8 +1297,8 @@ function normalizeAsset(s) {
 // também captura "Taxa Fixa ou Retorno Otimizado", "Retorno Otimizado", etc.
 function isCoeLike(nome) {
   return /\d+y\d*m?\s*[-–]\s*\d{2}\.\d{2}\.\d{4}/i.test(nome) ||
-         /\d+,\d+\s*anos?\s*[-–]\s*(\d{2}\.\d{2}\.\d{4}|Obs\.)/i.test(nome) ||
-         /retorno\s+otimizado|taxa\s+fixa.*alta|taxa\s+fixa.*retorno|\bautocall\b|\bcoe\b/i.test(nome);
+         /\d+(?:,\d+)?\s*anos?\s*[-–]\s*(\d{2}\.\d{2}\.\d{4}|Obs\.)/i.test(nome) ||
+         /retorno\s+otimizado|taxa\s+fixa.*alta|taxa\s+fixa.*retorno|\bautocall\b|\bilimitada\b|\balavancad[oa]\b|\bcoe\b/i.test(nome);
 }
 
 // Vencimento de renda fixa: nomes da XP trazem "- MES/AAAA" (ex: "CDB BMG - JUN/2026").

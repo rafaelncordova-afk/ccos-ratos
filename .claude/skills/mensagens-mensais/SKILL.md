@@ -48,6 +48,10 @@ Nunca esconder um resultado ruim com linguagem vaga. Se não há nada positivo e
 - O texto deve soar como se o Rafa tivesse escrito — ele escreve bem, acima da média
 - **Números certos, não números demais:** escolher os destaques que realmente merecem ênfase (o mais forte da hierarquia de conteúdo, geralmente 2-3 números concretos) e apresentá-los com clareza — mas dentro de uma mensagem que soa como conversa, não como relatório. O problema não é ter número, é ter número solto sem calor humano em volta.
 - Priorizar proximidade JUNTO com o dado: abrir com algo pessoal quando fizer sentido (perguntar como a pessoa está, referenciar contexto de vida já registrado no perfil — mudança, reunião marcada, objetivo pessoal), e ainda assim entregar os números concretos que sustentam a boa notícia. Uma mensagem calorosa sem nenhum dado soa vaga; o objetivo é ter as duas coisas.
+- **Frase de fechamento curta e motivacional** depois dos números: "Seguimos bem!", "Seguimos em frente!", "Seguimos fortes e sem sustos.", "Bora lá!". Presente do plural ("seguimos") passa parceria, não relatório.
+- **Saudação varia por cliente**: a maioria usa "Oi [Nome], tudo bem?", mas alguns clientes têm um tom mais caloroso e pessoal (ex: "Bom dia, meu caro, tudo bem?") — checar `tom_preferido` no perfil.md antes de escrever.
+- **Referenciar alinhamentos e conversas anteriores** quando o perfil tiver essa nota (ex: "sem correr riscos desnecessários, conforme alinhamos") — mostra que o Rafa lembra do que já foi combinado, não trata cada mês como zerado.
+- Emoji ocasional é aceitável quando bate com o tom do cliente e o momento (ex: 🙏🏻 em um check-in pessoal mais delicado) — usar com moderação, não em toda mensagem.
 - Assinar sempre: `Rafael Córdova, CFP®`
 
 ## Grupo 1 — Fee Fixo (prioridade e tom especial)

@@ -1790,11 +1790,11 @@ function isCDBAsset(a) { return /^CDB\b/i.test(a.nome); }
 // LF (Letra Financeira) é obrigação bancária, não é crédito privado — fica de fora de propósito.
 function isCreditoPrivadoAsset(a) { return /^(CRA|CRI|DEB)\b/i.test(a.nome); }
 function isCoeAsset(a) { return isCoeLike(a.nome); }
-// Fundos fechados: confirmado com dado real (Integrasul, jul/2026) que o nome sempre traz a sigla
-// da estrutura — FIP (Fundo de Investimento em Participações) ou FIDC (Fundo de Investimento em
-// Direitos Creditórios). A categoria "Alternativo" do parser mistura fundos fechados de verdade
-// com FIC FIRF/FIM líquidos (ex: "Trend PE II FIC FIRF Simples") — usar o nome é mais preciso que a categoria.
-function isFundoFechadoAsset(a) { return /\bFIP\b|\bFIDC\b/i.test(a.nome); }
+// Fundos fechados: confirmado com print do HUB (Integrasul, jul/2026) — a categoria "Fundos
+// Alternativos" do HUB bate 1:1 com a categoria "Alternativo" do XPerformance PDF, e a XP trata
+// todo esse grupo como fundo fechado pra fins de controle (inclusive os FIC FIRF/FIM "Trend PE",
+// não só os FIP/FIDC nominais). Voltar pra categoria é mais fiel ao agrupamento oficial da XP.
+function isFundoFechadoAsset(a) { return a.categoria === 'Alternativo'; }
 
 function extractNTNBYear(nome) {
   const m = nome.match(/NTN-?B[^\d]*(\d{4})/i) || nome.match(/IPCA\+?\s*(\d{4})/i);

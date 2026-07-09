@@ -10,7 +10,7 @@ Publicação semanal, quinta-feira. Fonte: roadmap definido pelo Rafa (12 itens 
 | 4 | Curto, médio e longo prazo: organize seus objetivos antes de escolher ativos | Planejamento | Sem horizonte claro, qualquer ativo serve — e nenhum serve de verdade | Publicado |
 | 5 | O melhor ativo do mundo pode não ser para você (sobre perfil e suitability) | Perfil | NTN-B longa é ótima — mas não para quem não tolera volatilidade; cripto idem | Publicado |
 | 6 | Nem toda dívida é ruim: crédito colateral, home equity e outras ferramentas | Alavancagem | Dívida boa alavanca patrimônio; dívida ruim consome renda | Publicado |
-| 7 | Proteção cambial: faz sentido dolarizar parte do patrimônio? | Diversificação Geográfica | Proteção contra risco Brasil e exposição global | Pronto |
+| 7 | Proteção cambial: faz sentido dolarizar parte do patrimônio? | Diversificação Geográfica | Proteção contra risco Brasil e exposição global | Publicado |
 | 8 | O Leão também é sócio: otimização tributária em investimentos | Eficiência | Ativos isentos, PGBL, holding — quanto você está deixando na mesa? | A desenvolver |
 | 9 | Além da renda fixa e variável: aluguel, estratégias e fontes alternativas | Estratégias | Diversificação real de fontes de retorno | A desenvolver |
 | 10 | Proteção patrimonial: quando o seguro vale a pena (e quando não) | Proteção | Seguro não é despesa — é transferência de risco | A desenvolver |

@@ -38,17 +38,18 @@
 
 ---
 
-## MP 1.303/2025 — Unificação da tributação de renda fixa e FIIs
+## MP 1.303/2025 — caducou, NÃO usar como tema de "mudança em tramitação"
 
-- Fim da isenção de IR para LCI, LCA, CRI, CRA, debêntures incentivadas e FIIs para a maioria dos investidores
-- Alíquota única proposta: 17,5% (hoje varia de 0% a 22,5% conforme produto e prazo)
-- Também altera tributação de renda variável (apuração trimestral), criptoativos (fim da isenção de R$ 35 mil/mês, alíquota única de 17,5%) e JCP (de 15% para 20%)
-- Efeito imediato desde a publicação; MP tem prazo inicial de vigência de 60 dias, prorrogável por mais 60, e depende de aprovação do Congresso para virar lei definitiva
-- Usado na Pílula 06 (15/07/2026)
+- Texto original (jun/2025) previa alíquota única de 17,5% e tributação de 5% sobre LCI, LCA, CRI, CRA, debêntures incentivadas, além de fim da isenção de dividendos de FIIs/Fiagros
+- Durante a tramitação o relator recuou quase tudo: LCI/LCA voltaram a isenção total, CRI/CRA mantiveram isenção, alíquota geral subiu de 17,5% para 18% (versão final da comissão)
+- Comissão mista aprovou essa versão diluída em 07/10/2025 (13 a 12)
+- Câmara retirou a MP de pauta em 08/10/2025 e o texto caducou à meia-noite (art. 62 da Constituição) — desfecho definitivo, não uma questão em aberto
+- Situação atual (verificada em 15/07/2026): nada mudou. LCI, LCA, CRI, CRA e FII seguem isentos; aplicações financeiras seguem na tabela regressiva de 22,5% a 15%
+- Se o tema voltar, será via novo Projeto de Lei, não reativação dessa MP
 - Fontes:
-  - https://www.blog.itcnet.com.br/post/novas-regras-do-imposto-de-renda-para-quem-investe-na-bolsa-a-partir-de-2026
-  - https://borainvestir.b3.com.br/noticias/imposto-de-renda/taxacao-de-fii-lci-lca-cdb-e-outros-veja-como-ficam-os-impostos-sobre-investimentos/
-  - https://riconnect.rico.com.vc/analises/imposto-de-renda-2026-entenda-as-mudancas/
+  - https://www.infomoney.com.br/minhas-financas/mp-1-303-cai-no-congresso-veja-como-fica-a-tributacao-dos-investimentos-agora/
+  - https://www.camara.leg.br/noticias/1209479-MP-SOBRE-TRIBUTACAO-DE-INVESTIMENTOS-E-RETIRADA-DE-PAUTA-E-PERDE-A-VALIDADE
+  - https://www.contabeis.com.br/artigos/73399/a-queda-da-mp-1303-2025-o-que-muda-na-tributacao-de-investimentos-e-criptoativos/
 
 ---
 

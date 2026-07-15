@@ -2,7 +2,7 @@
 
 **Planejador:** Rafael Córdova, CFP®
 **Programa:** Boogie Week / Planejar
-**Próximos encontros:** 07/07/2026 e 09/07/2026
+**Próximo encontro:** 21/07/2026, às 9h
 **Encerramento do ciclo:** 27/07/2026
 
 ---
@@ -177,9 +177,48 @@ Fechamento do encontro:
 
 ---
 
-## Encontro 4 — *(data a definir)*
+## Encontro 4 — 14/07/2026
 
-*(a registrar)*
+**Resultados do encontro:**
+
+Conversamos sobre se ela já tinha pensado, mesmo que por cima, em valores de receitas e despesas para quando retomar as atividades. Sugeri que comece anotando o orçamento em caderno, partindo das despesas fixas (luz, gás, etc.), aquelas que estarão lá todos os meses. Também falamos da possibilidade de renda extra com as aulas. Ajustes provavelmente serão necessários nos primeiros meses; a prioridade segue sendo quitar as dívidas o quanto antes. Arlete já iniciou contato com alguns credores para entender opções de pagamento.
+
+Retomamos estratégias para fidelizar clientela: a ideia de vender lanches na estação de trem em São Paulo. Sugeri que ela procure ficar sempre no mesmo ponto, para ir fidelizando quem passa por ali com frequência, e usar gestos simples que cativam sem custo adicional, como um bilhete escrito no guardanapo ou no copinho com o perfil dela no Instagram. Assim ela aproveita um material que já usa no dia a dia, sem precisar investir em cartões ou material extra.
+
+Ficou combinado que eu enviaria opções de conteúdo sobre controle de orçamento, já que a prioridade agora é a quitação das dívidas, para que ela tenha tranquilidade para recomeçar e, depois, começar a formar uma reserva.
+
+**Tarefas da Arlete para o encontro 5:**
+1. Começar a anotar em caderno as despesas fixas mensais (luz, gás, etc.)
+2. Seguir o contato com credores para entender opções de pagamento das dívidas
+3. Pensar no ponto fixo na estação de trem e no bilhete/guardanapo com o Instagram
+
+**Mensagem enviada após o encontro:**
+
+Arlete, tudo bem?
+
+Foi bom conversar de novo ontem. Deixando registrado o resumo, como sempre fazemos.
+
+Conversamos sobre começar a pensar, mesmo que por cima, em quanto você teria de receitas e de despesas quando retomar as atividades. Minha sugestão é começar anotando em um caderno, partindo das despesas fixas: aquelas que vão estar lá todo mês, como luz e gás. Depois entram as demais. Falamos também da possibilidade de ter uma renda extra com as aulas, o que ajuda a compor esse quadro.
+
+Sei que nos primeiros meses alguns ajustes vão ser necessários, e está tudo certo. O foco agora é quitar as dívidas o quanto antes, para você recomeçar com mais tranquilidade. Você já deu um passo importante entrando em contato com alguns credores para entender as opções de pagamento, isso já é organização acontecendo.
+
+Sobre fidelizar clientela na estação de trem: gostei da ideia de você tentar ficar sempre no mesmo ponto. Isso ajuda bastante a fidelizar quem passa por ali com frequência. Um jeito simples e sem custo de cativar esse público é deixar um bilhete escrito no guardanapo ou no copinho, com o seu perfil do Instagram. Você já usa esse material no dia a dia, então não precisa gastar com cartão ou qualquer coisa extra.
+
+Como prometido, separei duas formas simples de controlar orçamento, pra você escolher a que fizer mais sentido no seu dia a dia:
+
+**Caderno**
+É a forma mais simples de todas: só papel e caneta. Uma página por mês, com duas colunas, o que entrou e o que saiu. Toda vez que gastar algo, anota na hora (ou no fim do dia, pelo que lembrar). No fim do mês, soma tudo e compara com quanto entrou. Não exige nenhuma familiaridade com tecnologia e já cria o hábito mais importante: registrar antes de esquecer.
+
+**Potes ou envelopes**
+Funciona bem pra quem lida melhor com dinheiro físico. A ideia é dividir o dinheiro em envelopes (ou potes) por finalidade assim que ele entra: um para contas fixas, um para alimentação, um para o negócio (insumos), um para guardar. Quando o envelope acaba, acabou, não se pega emprestado de outro. É bem visual e ajuda a sentir na prática onde o dinheiro está indo.
+
+O importante não é qual dos dois é melhor, e sim qual você realmente vai usar. Pode até começar com os dois juntos: caderno para registrar tudo, e potes para separar fisicamente o dinheiro do negócio do pessoal.
+
+Nosso próximo encontro fica marcado para terça-feira, dia 21/07, às 9h.
+
+Qualquer dúvida até lá, me chama.
+
+Rafael Córdova, CFP®
 
 ---
 

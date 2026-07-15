@@ -3,6 +3,7 @@
 ## Pílulas
 
 - [x] **Inflação pessoal vs. IPCA** — publicada como Pílula 05 (07/07/2026).
+- [x] **MP 1.303/2025 — fim da isenção de IR em renda fixa/FIIs** — publicada como Pílula 06 (15/07/2026). Gancho rápido; a análise aprofundada fica reservada pro Artigo 8 da Jornada do Investidor (Eficiência tributária).
 
 ## Artigos
 

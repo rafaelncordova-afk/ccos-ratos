@@ -38,6 +38,20 @@
 
 ---
 
+## MP 1.303/2025 — Unificação da tributação de renda fixa e FIIs
+
+- Fim da isenção de IR para LCI, LCA, CRI, CRA, debêntures incentivadas e FIIs para a maioria dos investidores
+- Alíquota única proposta: 17,5% (hoje varia de 0% a 22,5% conforme produto e prazo)
+- Também altera tributação de renda variável (apuração trimestral), criptoativos (fim da isenção de R$ 35 mil/mês, alíquota única de 17,5%) e JCP (de 15% para 20%)
+- Efeito imediato desde a publicação; MP tem prazo inicial de vigência de 60 dias, prorrogável por mais 60, e depende de aprovação do Congresso para virar lei definitiva
+- Usado na Pílula 06 (15/07/2026)
+- Fontes:
+  - https://www.blog.itcnet.com.br/post/novas-regras-do-imposto-de-renda-para-quem-investe-na-bolsa-a-partir-de-2026
+  - https://borainvestir.b3.com.br/noticias/imposto-de-renda/taxacao-de-fii-lci-lca-cdb-e-outros-veja-como-ficam-os-impostos-sobre-investimentos/
+  - https://riconnect.rico.com.vc/analises/imposto-de-renda-2026-entenda-as-mudancas/
+
+---
+
 ## Composição do IPCA e inflação percebida
 
 - Estrutura do IPCA dividida em 9 grupos de despesa (Alimentação, Habitação, Transportes, Saúde, etc.), com pesos definidos pela Pesquisa de Orçamentos Familiares (POF) do IBGE

@@ -8,6 +8,7 @@
 - NTN-B 2035 com juros semestrais: **12,29% dos dias**
 - NTN-B 2045 com juros semestrais: **12,01% dos dias**
 - Usado na Pílula 04 (30/06/2026)
+- Taxa da NTN-B 2035 subiu de 7,72% (maio/2026) para 8,14% (junho/2026) — usado na Pílula 06 (15/07/2026), ângulo de venda antecipada vs. aporte novo (marcação a mercado, zeragem de prazo para IR, viés comportamental de tentar acertar o "fundo do mercado")
 - Fontes:
   - https://www.infomoney.com.br/onde-investir/ntn-b-acima-de-7-e-oportunidade-rara-para-investidores-mostra-estudo/
   - https://www.infomoney.com.br/onde-investir/tesouro-ipca-tem-taxa-rara-na-historia-dos-titulos-publicos-de-inflacao-entenda/

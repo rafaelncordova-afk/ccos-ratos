@@ -1,0 +1,22 @@
+Pílula 06 — Vender o que rende bem só pra comprar uma taxa melhor?
+Publicada em: 15/07/2026
+
+Com o juro real do Tesouro IPCA+ perto de 8% ao ano, uma dúvida tem aparecido entre quem já tem NTN-B na carteira: vale vender o título comprado há alguns meses, com uma taxa "menor", para recomprar um novo com a taxa de agora?
+
+A pergunta faz sentido à primeira vista. A taxa subiu de forma expressiva nos últimos meses, de 7,72% em maio para 8,14% em junho, segundo dados de mercado. Mas antes de trocar, vale entender o que essa troca custa.
+
+Vender um Tesouro IPCA+ antes do vencimento significa vender pelo preço de mercado do dia (marcação a mercado), realizando o resultado até ali. Se o título valorizou, esse ganho entra na tabela regressiva de Imposto de Renda, de 22,5% a 15%, conforme o prazo que ficou aplicado. Depois de pagar esse imposto, o valor que sobra é reaplicado no título novo, com a contagem de prazo para o IR recomeçando do zero.
+
+Ou seja, a troca tem custo duplo: o imposto pago agora e o tempo de aplicação que se perde para fins de tributação.
+
+Quando a estratégia permite, costuma fazer mais sentido usar o aporte novo para comprar na taxa atual, mantendo o título anterior até o vencimento. Aumenta a posição na taxa boa de hoje, sem abrir mão do que já foi bem decidido no passado.
+
+Existe também uma armadilha de comportamento nessa vontade de vender e recomprar. É parecida com a do investidor de ações que só fica satisfeito se acertar exatamente o fundo do mercado para comprar. Buscar o ponto ótimo de entrada, desfazendo uma posição boa só para tentar um número um pouco maior, tende a custar mais do que rende.
+
+A taxa de hoje é uma oportunidade real. Ela cabe melhor como aporte novo dentro da sua estratégia, não como motivo para desmontar o que já foi construído.
+
+#CFP #Planejar #planejamentofinanceiro #investimentos
+
+---
+Fonte do dado de taxa: Quantum Finance via InfoMoney (evolução da NTN-B, maio a junho de 2026)
+Ver: educação financeira/Pílulas/fontes.md

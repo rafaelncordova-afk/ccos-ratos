@@ -1,0 +1,43 @@
+{ Estratégia: Alerta de Tendência (EMA) + Confirmação de Volume }
+{ v2 - modelo ALARME/INDICADOR - não envia ordem, só sinaliza }
+{ Ver day-trade/estrategia.md para contexto, pendências e decisões }
+
+Input
+  PeriodoEMACurta(9);
+  PeriodoEMALonga(21);
+  PeriodoMediaVolume(20);
+  MultiplicadorVolume(3);
+  HorarioInicio(90000);
+  HorarioFim(100000);
+
+Var
+  EMACurta: Float;
+  EMALonga: Float;
+  MediaVolume: Float;
+  TendenciaAlta: Boolean;
+  TendenciaBaixa: Boolean;
+  VolumeForte: Boolean;
+
+Begin
+  EMACurta := MediaExp(PeriodoEMACurta, Close);
+  EMALonga := MediaExp(PeriodoEMALonga, Close);
+  MediaVolume := Media(PeriodoMediaVolume, Volume);
+
+  TendenciaAlta := (Close > EMACurta) and (Close > EMALonga) and (EMACurta > EMALonga);
+  TendenciaBaixa := (Close < EMACurta) and (Close < EMALonga) and (EMACurta < EMALonga);
+  VolumeForte := Volume > (MediaVolume * MultiplicadorVolume);
+
+  If (Time >= HorarioInicio) and (Time <= HorarioFim) then
+  begin
+    If TendenciaAlta and VolumeForte then
+      Alert(clGreen);  { sinal de possível compra }
+
+    If TendenciaBaixa and VolumeForte then
+      Alert(clRed);    { sinal de possível venda }
+  end;
+End;
+
+{ Pendente de confirmação direto no editor do Profit (hover mostra sintaxe real):
+  - assinatura exata de Alert (só cor, ou também mensagem de texto)
+  - função de desenho de seta/marcador no gráfico junto do alerta
+  - se Media(Periodo, Serie) é a ordem certa dos parâmetros, ou é Serie primeiro }

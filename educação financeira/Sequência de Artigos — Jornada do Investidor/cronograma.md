@@ -11,7 +11,7 @@ Publicação semanal, quinta-feira. Fonte: roadmap definido pelo Rafa (12 itens 
 | 5 | O melhor ativo do mundo pode não ser para você (sobre perfil e suitability) | Perfil | NTN-B longa é ótima — mas não para quem não tolera volatilidade; cripto idem | Publicado |
 | 6 | Nem toda dívida é ruim: crédito colateral, home equity e outras ferramentas | Alavancagem | Dívida boa alavanca patrimônio; dívida ruim consome renda | Publicado |
 | 7 | Proteção cambial: faz sentido dolarizar parte do patrimônio? | Diversificação Geográfica | Proteção contra risco Brasil e exposição global | Publicado |
-| 8 | O Leão também é sócio: otimização tributária em investimentos | Eficiência | Ativos isentos, PGBL, holding — quanto você está deixando na mesa? | Rascunho pronto |
+| 8 | O Leão também é sócio: otimização tributária em investimentos | Eficiência | Ativos isentos, PGBL, holding — quanto você está deixando na mesa? | Publicado |
 | 9 | Além da renda fixa e variável: aluguel, estratégias e fontes alternativas | Estratégias | Diversificação real de fontes de retorno | A desenvolver |
 | 10 | Proteção patrimonial: quando o seguro vale a pena (e quando não) | Proteção | Seguro não é despesa — é transferência de risco | A desenvolver |
 | 11 | O maior desafio de todos: psicologia financeira e nossos vieses | Comportamento | Módulo 8 CFP: atitudes, crenças, prazer imediato vs longo prazo | A desenvolver |
